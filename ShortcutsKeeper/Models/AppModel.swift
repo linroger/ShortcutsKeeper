@@ -24,6 +24,7 @@ class AppModel {
     var isScanning = false
     var showSettingsWindow = false
     var showNewShortcutSheet = false
+    var showEditShortcutSheet = false
     var showCaptureWindow = false
     var hiddenApplications = Set<String>()
     
@@ -569,7 +570,8 @@ class AppModel {
     // MARK: - Memory Management & Performance Monitoring
     
     private func startMemoryMonitoring() {
-        memoryTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
+        // Reduce frequency to every 2 minutes instead of 10 seconds
+        memoryTimer = Timer.scheduledTimer(withTimeInterval: 120.0, repeats: true) { _ in
             Task { @MainActor in
                 self.checkMemoryUsage()
             }
@@ -589,7 +591,7 @@ class AppModel {
         
         if kerr == KERN_SUCCESS {
             let memoryUsageMB = memoryInfo.resident_size / 1_024 / 1_024
-            if memoryUsageMB > 500 { // Alert if over 500MB
+            if memoryUsageMB > 1000 { // Alert if over 1GB
                 print("⚠️ High memory usage: \(memoryUsageMB)MB")
                 performMemoryCleanup()
             }
@@ -601,6 +603,14 @@ class AppModel {
         
         // Clear application cache
         invalidateApplicationCache()
+        
+        // Save any pending changes
+        saveContext()
+        
+        // Clear search text to release any filtered results
+        if !searchText.isEmpty {
+            searchText = ""
+        }
         
         // Trigger garbage collection
         autoreleasepool {

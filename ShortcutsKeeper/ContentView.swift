@@ -183,6 +183,11 @@ struct ContentView: View {
         .sheet(isPresented: $showAdvancedSearch) {
             AdvancedSearchView(appModel: appModel)
         }
+        .sheet(isPresented: $appModel.showEditShortcutSheet) {
+            if let shortcut = appModel.selectedShortcut {
+                EditShortcutWrapper(shortcut: shortcut, appModel: appModel)
+            }
+        }
         .keyboardNavigation(appModel: appModel)
         .onAppear {
             appModel.setup(with: modelContext)
@@ -610,6 +615,27 @@ struct DetailEmptyView: View {
 
 extension Notification.Name {
     static let selectedShortcutChanged = Notification.Name("selectedShortcutChanged")
+}
+
+// MARK: - Edit Shortcut Wrapper
+
+struct EditShortcutWrapper: View {
+    let shortcut: Shortcut
+    @Bindable var appModel: AppModel
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        let viewModel = ShortcutsViewModel()
+        EditShortcutView(shortcut: shortcut, viewModel: viewModel)
+            .onAppear {
+                viewModel.setup(with: modelContext)
+            }
+            .onDisappear {
+                appModel.showEditShortcutSheet = false
+                appModel.fetchData() // Refresh data after edit
+            }
+    }
 }
 
 #Preview {

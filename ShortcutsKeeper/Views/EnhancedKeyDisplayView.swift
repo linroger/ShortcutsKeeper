@@ -48,24 +48,47 @@ struct EnhancedKeyDisplayView: View {
         var remaining = combo
         
         // Parse all possible modifiers and special keys
+        // Support both Unicode symbols and text representations
         let allKeys = [
-            ("fn", "Function", KeyType.fn),
-            ("⌘", "Command", KeyType.command),
-            ("⌃", "Control", KeyType.control),
-            ("⌥", "Option", KeyType.option),
-            ("⇧", "Shift", KeyType.shift),
-            ("⎋", "Escape", KeyType.escape),
-            ("⇥", "Tab", KeyType.tab)
+            ("fn", "Function", "fn", KeyType.fn),
+            ("⌘", "Command", "Command", KeyType.command),
+            ("⌃", "Control", "Control", KeyType.control),
+            ("⌥", "Option", "Option", KeyType.option),
+            ("⇧", "Shift", "Shift", KeyType.shift),
+            ("⎋", "Escape", "Escape", KeyType.escape),
+            ("⇥", "Tab", "Tab", KeyType.tab)
         ]
         
-        for (symbol, name, keyType) in allKeys {
-            if remaining.contains(symbol) {
-                components.append(EnhancedKeyComponent(
-                    symbol: symbol,
-                    name: name,
-                    keyType: keyType
-                ))
-                remaining = remaining.replacingOccurrences(of: symbol, with: "")
+        // First, handle text-based format (e.g., "Command-K", "Option-Command-K")
+        if remaining.contains("-") {
+            let parts = remaining.split(separator: "-").map { String($0) }
+            for part in parts.dropLast() { // All but the last part are modifiers
+                for (symbol, name, textForm, keyType) in allKeys {
+                    if part == textForm || part == symbol {
+                        components.append(EnhancedKeyComponent(
+                            symbol: symbol,
+                            name: name,
+                            keyType: keyType
+                        ))
+                        break
+                    }
+                }
+            }
+            // The last part is the main key
+            if let lastPart = parts.last {
+                remaining = lastPart
+            }
+        } else {
+            // Handle Unicode symbol format
+            for (symbol, name, _, keyType) in allKeys {
+                if remaining.contains(symbol) {
+                    components.append(EnhancedKeyComponent(
+                        symbol: symbol,
+                        name: name,
+                        keyType: keyType
+                    ))
+                    remaining = remaining.replacingOccurrences(of: symbol, with: "")
+                }
             }
         }
         

@@ -202,7 +202,8 @@ struct TableContextMenu: View {
         Divider()
         
         Button {
-            // Edit shortcut action
+            appModel.selectedShortcut = shortcut
+            appModel.showEditShortcutSheet = true
         } label: {
             Label("Edit Shortcut", systemImage: "pencil")
         }
