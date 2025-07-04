@@ -46,42 +46,6 @@ struct BeautifulMainContentView: View {
         }
         .background(.regularMaterial)
         .navigationTitle("")
-        .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
-                // Context-specific toolbar items with enhanced design
-                if selectedSection == .myShortcuts {
-                    BeautifulToolbarButton(
-                        title: "Add Shortcut",
-                        systemImage: "plus",
-                        style: .prominent
-                    ) {
-                        appModel.showNewShortcutSheet = true
-                    }
-                }
-                
-                if selectedSection == .allApps, appModel.selectedApplication != nil {
-                    BeautifulToolbarButton(
-                        title: "Add Shortcut",
-                        systemImage: "plus",
-                        style: .prominent
-                    ) {
-                        appModel.showNewShortcutSheet = true
-                    }
-                    
-                    BeautifulToolbarButton(
-                        title: "Extract Shortcuts",
-                        systemImage: "wand.and.stars",
-                        style: .normal
-                    ) {
-                        if let app = appModel.selectedApplication {
-                            Task {
-                                await appModel.extractShortcutsFromRunningApp(app)
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 
