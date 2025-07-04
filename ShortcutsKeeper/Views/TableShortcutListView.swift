@@ -70,7 +70,6 @@ struct TableShortcutListView: View {
                 TableContextMenu(shortcut: shortcut, appModel: appModel)
             }
         }
-        .searchable(text: $appModel.searchText, placement: .automatic)
     }
 }
 
