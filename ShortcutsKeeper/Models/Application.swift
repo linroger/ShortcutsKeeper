@@ -41,8 +41,23 @@ final class Application {
 
 extension Application {
     var icon: NSImage? {
-        guard let iconData = iconData else { return nil }
+        guard let iconData = iconData else { 
+            // PERFORMANCE: Lazy load icon from file system if needed
+            if let path = self.path {
+                return NSWorkspace.shared.icon(forFile: path)
+            }
+            return nil
+        }
         return NSImage(data: iconData)
+    }
+    
+    // MEMORY OPTIMIZATION: Compress icon data
+    func setCompressedIcon(_ image: NSImage) {
+        if let tiffData = image.tiffRepresentation,
+           let bitmapRep = NSBitmapImageRep(data: tiffData),
+           let jpegData = bitmapRep.representation(using: .jpeg, properties: [.compressionFactor: 0.7]) {
+            self.iconData = jpegData
+        }
     }
     
     var shortcutCount: Int {
@@ -50,12 +65,13 @@ extension Application {
     }
     
     static func createFromBundle(bundleIdentifier: String) -> Application? {
-        guard let appPath = NSWorkspace.shared.absolutePathForApplication(withBundleIdentifier: bundleIdentifier),
-              let bundle = Bundle(path: appPath),
+        guard let appURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleIdentifier),
+              let bundle = Bundle(url: appURL),
               let name = bundle.object(forInfoDictionaryKey: "CFBundleName") as? String else {
             return nil
         }
         
+        let appPath = appURL.path
         let app = Application(name: name, bundleIdentifier: bundleIdentifier, path: appPath)
         
         let icon = NSWorkspace.shared.icon(forFile: appPath)

@@ -19,6 +19,7 @@ struct EnhancedSettingsView: View {
     @AppStorage("displayInMenuBar") private var displayInMenuBar = false
     @AppStorage("openAtLogin") private var openAtLogin = false
     @AppStorage("displayInDock") private var displayInDock = true
+    @AppStorage("useTableView") private var useTableView = false
     
     @State private var showingChangeShortcutAlert = false
     
@@ -120,6 +121,28 @@ struct EnhancedSettingsView: View {
                 }
                 
                 Text("Select your preferred app theme.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            // View Style Section
+            VStack(alignment: .leading, spacing: 12) {
+                HStack {
+                    Text("Shortcut Display Style:")
+                        .font(.body)
+                        .fontWeight(.medium)
+                    
+                    Spacer()
+                    
+                    Picker("", selection: $useTableView) {
+                        Text("Card View").tag(false)
+                        Text("Table View").tag(true)
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(width: 200)
+                }
+                
+                Text("Choose between a modern card-based layout or a compact table view for displaying shortcuts.")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }

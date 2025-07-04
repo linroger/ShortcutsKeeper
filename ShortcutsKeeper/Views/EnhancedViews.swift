@@ -76,34 +76,39 @@ struct EnhancedAllShortcutsView: View {
             
             // Shortcuts list
             if sortedShortcuts.isEmpty {
-                EmptyStateView(
+                BeautifulEmptyState(
                     icon: "keyboard",
                     title: "No shortcuts yet",
-                    subtitle: "Add your first shortcut to get started",
+                    subtitle: "Add your first shortcut to get started organizing your workflow",
                     action: { appModel.showNewShortcutSheet = true },
                     actionTitle: "Add Shortcut"
                 )
             } else {
-                List(selection: $selectedShortcut) {
-                    if groupByApp {
-                        ForEach(groupedShortcuts.keys.sorted(), id: \.self) { appName in
-                            Section(appName) {
-                                ForEach(groupedShortcuts[appName] ?? []) { shortcut in
-                                    EnhancedShortcutRow(shortcut: shortcut, appModel: appModel)
-                                        .listRowSeparator(.hidden)
-                                        .listRowBackground(Color.clear)
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        if groupByApp {
+                            ForEach(groupedShortcuts.keys.sorted(), id: \.self) { appName in
+                                VStack(alignment: .leading, spacing: 8) {
+                                    BeautifulSectionHeader(
+                                        title: appName,
+                                        subtitle: nil,
+                                        count: groupedShortcuts[appName]?.count
+                                    )
+                                    
+                                    ForEach(groupedShortcuts[appName] ?? []) { shortcut in
+                                        BeautifulShortcutRow(shortcut: shortcut, appModel: appModel)
+                                    }
                                 }
                             }
-                        }
-                    } else {
-                        ForEach(sortedShortcuts) { shortcut in
-                            EnhancedShortcutRow(shortcut: shortcut, appModel: appModel)
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
+                        } else {
+                            ForEach(sortedShortcuts) { shortcut in
+                                BeautifulShortcutRow(shortcut: shortcut, appModel: appModel)
+                            }
                         }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
                 }
-                .listStyle(.plain)
                 .background(.regularMaterial)
             }
         }
@@ -172,22 +177,23 @@ struct EnhancedAppShortcutsView: View {
             
             // Shortcuts list
             if appShortcuts.isEmpty {
-                EmptyStateView(
+                BeautifulEmptyState(
                     icon: "keyboard",
                     title: "No shortcuts for \(application.name)",
-                    subtitle: "Add shortcuts for this application or extract them automatically",
+                    subtitle: "Add shortcuts for this application or extract them automatically from the running app",
                     action: { appModel.showNewShortcutSheet = true },
                     actionTitle: "Add Shortcut"
                 )
             } else {
-                List(selection: $selectedShortcut) {
-                    ForEach(appShortcuts) { shortcut in
-                        EnhancedShortcutRow(shortcut: shortcut, appModel: appModel, showAppName: false)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        ForEach(appShortcuts) { shortcut in
+                            BeautifulShortcutRow(shortcut: shortcut, appModel: appModel, showAppName: false)
+                        }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
                 }
-                .listStyle(.plain)
                 .background(.regularMaterial)
             }
         }
@@ -605,30 +611,11 @@ struct EnhancedShortcutRow: View {
                 VStack(alignment: .trailing, spacing: 8) {
                     // Key combination as individual buttons
                     VStack(alignment: .trailing, spacing: 6) {
-                        // Individual key buttons
-                        HStack(spacing: 6) {
-                            ForEach(Array(shortcut.keyCombination.keyComponents().enumerated()), id: \.offset) { index, key in
-                                if index > 0 {
-                                    Text("+")
-                                        .font(.system(.caption, weight: .medium))
-                                        .foregroundColor(.secondary)
-                                        .padding(.horizontal, 4)
-                                }
-                                
-                                Text(key)
-                                    .font(.system(.callout, design: .monospaced))
-                                    .fontWeight(.medium)
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 6)
-                                    .background(shortcut.keyCombination.keyBackgroundColor(for: key))
-                                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .stroke(Color.secondary.opacity(0.4), lineWidth: 1)
-                                    )
-                                    .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
-                            }
-                        }
+                        // Enhanced key display
+                        EnhancedKeyDisplayView(
+                            keyCombination: shortcut.keyCombination,
+                            style: .normal
+                        )
                         
                         // Readable key description
                         Text(shortcut.keyCombination.readableKeyDescription())

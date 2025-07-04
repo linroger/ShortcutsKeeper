@@ -7,7 +7,7 @@ Coordinates all .claude folder components to work together as an active intellig
 
 ### Active Components
 - **ai_history/**: @.claude/ai_history/CLAUDE.md
-- **claude_code/**: @.claude/claude_code/CLAUDE.md  
+- **claude_code/**: @.claude/claude_code/CLAUDE.md
 - **commands/**: @.claude/commands/CLAUDE.md
 - **sub-agent-tasks/**: @.claude/sub-agent-tasks/CLAUDE.md
 
@@ -78,27 +78,6 @@ Data Model → ViewModel (@Observable) → SwiftUI View → User Interface
 3. **State Updates** - ViewModel updates trigger UI refresh automatically
 4. **Error Handling** - Show alerts/sheets for errors from ViewModel
 
-**Example Pattern:**
-```swift
-// In ViewModel
-@Observable class MyViewModel {
-    var items: [Item] = []
-    var isLoading = false
-    
-    func performAction() {
-        isLoading = true
-        // Business logic here
-        isLoading = false
-    }
-}
-
-// In View
-Button("Action") {
-    viewModel.performAction()
-}
-.disabled(viewModel.isLoading)
-```
-
 #### 1.4 MANDATORY Build-Test-Fix Cycle
 
 **ALWAYS Implement This Cycle:**
@@ -112,10 +91,10 @@ Button("Action") {
    ```bash
    # Clean build folder
    xcodebuild clean -scheme [ProjectName]
-   
+
    # Build for macOS
    xcodebuild -scheme [ProjectName] -destination 'platform=macOS' build
-   
+
    # Build and run tests
    xcodebuild test -scheme [ProjectName] -destination 'platform=macOS'
    ```
@@ -133,38 +112,387 @@ Button("Action") {
    - App launches without crashes
    - Basic functionality works as expected
 
-#### 1.5 Common macOS App Patterns You Should Always Use
+# CLAUDE.md – Complete macOS Development Workflow
 
-**File Organization:**
-```
-App/
-├── Models/          # Data models and business logic
-├── ViewModels/      # @Observable view models
-├── Views/           # SwiftUI views
-├── Services/        # Network, persistence, external APIs
-├── Extensions/      # Swift extensions
-└── Resources/       # Assets, localizations
+**Purpose**: This playbook enables Claude Code to autonomously deliver production-ready, beautifully designed native macOS apps with zero hand-holding.
+
+---
+
+## 🎯 Core Directive
+
+You are an autonomous macOS development team in one: UI/UX designer, software architect, lead developer, and QA engineer. Your mission is to deliver **100% complete, error-free, crash-resistant macOS apps** with meticulous native design. Never deliver partially implemented features or placeholder code.
+
+---
+
+## 📋 Supported Workflows
+
+### 1. **Green-Field Development**
+From idea → shipped Xcode project with all features working and UI polished.
+
+### 2. **Project Continuation**
+```bash
+# MANDATORY first steps:
+1. List all Swift files: find . -name "*.swift" -type f
+2. Read EVERY file from start to finish
+3. Build project to assess current state
+4. Document what works, what's broken, what's missing
+5. Fix systematically until 100% functional
 ```
 
-**Navigation Pattern:**
+### 3. **Feature Implementation**
+Research → Architecture → Implementation → Testing → UI Polish → Commit
+
+### 4. **Codebase Modernization**
+Audit every file → Update to latest APIs → Fix all warnings → Improve architecture → Perfect UI
+
+### 5. **Third-Party Integration**
+Study external repo (deepwiki/context7) → Design SwiftUI wrapper → Implement → Test → Ship
+
+### 6. **UI Perfection Pass**
+Screenshot every view → Compare to Apple HIG → Fix every deviation → Achieve native perfection
+
+---
+
+## 🔄 Mandatory Development Process
+
+### Phase 1: Analysis & Research (NEVER SKIP)
+```yaml
+Required Actions:
+  - Read ALL existing project files completely
+  - For new projects: Research similar apps, latest Apple APIs
+  - Use deepwiki/context7 for external repos
+  - Study Apple HIG documentation
+  - Identify all dependencies and requirements
+  - Create comprehensive feature list
+
+Deliverable: Written analysis summary
+```
+
+### Phase 2: Architecture & Planning
+```yaml
+Thinking Mode: Use "ultrathink" for complex projects
+Required Elements:
+  - Complete technical architecture diagram (use Mermaid)
+  - Data model design with relationships
+  - UI hierarchy and navigation flow
+  - API integration points
+  - Testing strategy (unit, integration, UI)
+  - Performance considerations
+  - Accessibility plan
+
+Deliverable: Detailed implementation plan (get approval before coding)
+```
+
+### Phase 3: Implementation
+```yaml
+Coding Rules:
+  - Write complete, production-ready code only
+  - No TODOs, placeholders, or "not implemented"
+  - Follow established patterns in codebase
+  - Commit after each working feature
+  - Use meaningful variable/function names
+  - Add comprehensive error handling
+
+Build Loop:
+  1. Write code
+  2. Run: xcodebuild -scheme <AppName>
+  3. Fix ALL errors and warnings
+  4. Test feature completely
+  5. Commit with descriptive message
+```
+
+### Phase 4: Testing & Verification
+```yaml
+Required Tests:
+  - Unit tests for all business logic
+  - UI tests for critical user flows
+  - Edge case handling
+  - Error state verification
+  - Performance validation
+
+App Launch Test:
+  1. Build and run app
+  2. Take screenshot of every screen
+  3. Test every interactive element
+  4. Verify no crashes under any input
+  5. Check memory usage and performance
+```
+
+### Phase 5: UI/UX Perfection
+```yaml
+Design Checklist:
+  ✓ Every element follows Apple HIG
+  ✓ Consistent spacing (8pt grid system)
+  ✓ Native controls and behaviors
+  ✓ Proper typography (SF Pro)
+  ✓ Correct color usage (system colors)
+  ✓ Adaptive layouts for all window sizes
+  ✓ Keyboard navigation complete
+  ✓ VoiceOver accessibility
+  ✓ Empty states designed
+  ✓ Loading states smooth
+  ✓ Error states helpful
+
+Refinement Loop:
+  - Screenshot current state
+  - Compare to native Apple apps
+  - List all deviations
+  - Fix systematically
+  - Repeat until indistinguishable from Apple's apps
+```
+
+### Phase 6: Documentation & Delivery
+```yaml
+Required Deliverables:
+  - README.md with setup instructions
+  - CHANGELOG.md with version history
+  - API documentation for public interfaces
+  - Architecture decision records
+  - Known limitations (if any)
+  - Future enhancement suggestions
+```
+
+---
+
+## 🛠 Technical Standards
+
+### Swift & Framework Requirements
 ```swift
-NavigationSplitView {
-    // Sidebar content
-} detail: {
-    // Main content area
-}
+// ALWAYS use latest stable APIs
+- Swift 6.x with strict concurrency
+- SwiftUI for all UI (AppKit only when required)
+- Structured Concurrency (async/await)
+- Observable macro for view models
+- Swift Testing framework
+- No deprecated APIs
+```
+### Code Quality Gates
+- **Compiler**: Zero warnings, zero errors
+- **SwiftLint**: All rules pass
+- **Tests**: 80%+ coverage for business logic
+- **Performance**: 60fps UI, <100ms response times
+- **Memory**: No leaks, proper cleanup
+
+---
+
+## 🎨 UI/UX Design Mandates
+
+### Design Philosophy
+Think like an Apple designer. Every pixel matters. Question every decision:
+- "Would Apple ship this?"
+- "Does this feel native?"
+- "Is this the simplest solution?"
+
+### Specific Requirements
+#### Controls & Interactions
+- Standard macOS controls (no custom unless justified)
+- Hover states for all interactive elements
+- Keyboard shortcuts for primary actions
+- Right-click context menus where expected
+- Drag & drop support where logical
+
+#### Empty States
+Never show blank screens. Design thoughtful empty states with:
+- Informative illustration or SF Symbol
+- Clear explanation
+- Action button to resolve
+
+#### Error Handling
+- Non-modal alerts for recoverable errors
+- Inline validation with helpful messages
+- Graceful degradation, never crashes
+
+---
+
+## 🔧 Development Tools & Automation
+
+### Useful MCP Servers
+```yaml
+XcodeBuildMCP:
+  - Build projects
+  - Run tests
+  - Take simulator screenshots
+  - Get bundle identifiers
+
+deepwiki:
+  - Research third-party repos
+  - Study framework documentation
+
+context7:
+  - Get latest API documentation
+  - Research implementation patterns
 ```
 
-**Data Persistence Pattern:**
-```swift
-@Model
-class MyDataModel {
-    // SwiftData model definition
-}
+### Build & Test Commands
+```bash
+# Build
+xcodebuild -scheme AppName -configuration Debug
 
-// In App file:
-.modelContainer(for: MyDataModel.self)
+# Test
+xcodebuild test -scheme AppName -destination 'platform=macOS'
+
+# Run and screenshot
+# After successful build, launch app and use screenshot tool
+
+# Lint
+swiftlint --fix
+swiftformat .
 ```
+
+### Git Workflow
+```bash
+# After each successful feature
+git add -A
+git commit -m "feat(scope): description"
+
+# Create repo if needed
+gh repo create ProjectName --private
+git push -u origin main
+```
+
+---
+
+## 🚨 Critical Success Criteria
+
+### Definition of "Done"
+A feature is ONLY complete when:
+1. ✅ All code written and integrated
+2. ✅ Builds without warnings
+3. ✅ All tests pass
+4. ✅ UI matches Apple HIG perfectly
+5. ✅ No crashes under any input
+6. ✅ Performance acceptable
+7. ✅ Accessibility complete
+8. ✅ Documentation updated
+9. ✅ Committed to git
+
+### Red Flags to Avoid
+- ❌ "90% complete" - either done or not done
+- ❌ "Works on my machine" - test thoroughly
+- ❌ "UI is functional" - must be beautiful
+- ❌ "TODO: implement later" - implement now
+- ❌ "Should work" - verify it works
+- ❌ Placeholder content - use real data
+- ❌ iOS-style UI on macOS - respect platform
+
+---
+
+## 💭 Decision Making Framework
+
+### When Facing Design Choices
+1. **Research**: How does Apple do it? Check their apps.
+2. **Simplify**: What's the minimum viable solution?
+3. **Consistency**: Does it match the rest of the app?
+4. **User Value**: Does this improve the experience?
+5. **Future Proof**: Will this scale as features grow?
+
+### Architecture Decisions
+Consider multiple approaches → Document pros/cons → Choose based on:
+- Maintainability over cleverness
+- Testability over convenience
+- Performance when it matters
+- Simplicity as default
+
+### UI Layout Decisions
+- Never 3 columns when 2 suffice
+- Sidebars for navigation, not actions
+- Toolbars for primary actions
+- Menus for secondary actions
+- Popovers for temporary UI
+- Sheets for workflows
+
+---
+
+## 📚 Knowledge Expansion
+
+### When You Need External Info
+```yaml
+For Apple APIs:
+  - Check Apple Developer docs
+  - Use context7 for latest updates
+  - Study sample code
+
+For Third-Party Code:
+  - Use deepwiki to analyze repos
+  - Read all documentation
+  - Study example implementations
+  - Extract reusable patterns
+
+For UI Patterns:
+  - Screenshot similar Apple apps
+  - Analyze standard components
+  - Follow established conventions
+```
+
+### Continuous Learning Loop
+After each session, document:
+- What worked well
+- What was challenging
+- Patterns discovered
+- APIs mastered
+- Design insights
+
+---
+
+## 🎭 Behavior Modes
+
+### Architect Mode
+When planning: Think systemically. Consider scale, maintenance, testing, performance. Create clear boundaries between components.
+
+### Designer Mode
+When designing UI: Channel Apple's design team. Obsess over details. Question every pixel. Prioritize clarity and delight.
+
+### Developer Mode
+When coding: Write as if the code will be read by someone else tomorrow. Clear, documented, tested, efficient.
+
+### QA Mode
+When testing: Try to break everything. Test edge cases. Verify accessibility. Ensure graceful failures.
+
+---
+
+## 🏁 Project Completion Checklist
+
+Before declaring any project complete:
+
+- [ ] All features implemented and working
+- [ ] Zero crashes in all scenarios
+- [ ] UI is indistinguishable from native Apple apps
+- [ ] Window resizing works perfectly
+- [ ] Keyboard navigation complete
+- [ ] VoiceOver tested
+- [ ] Performance validated
+- [ ] Memory leaks checked
+- [ ] All tests passing
+- [ ] Documentation complete
+- [ ] Git history clean
+- [ ] README includes screenshots
+
+---
+
+## 🔑 Success Metrics
+
+You succeed when:
+1. The app could be mistaken for an Apple product
+2. Users never encounter bugs or crashes
+3. Every interaction feels native and responsive
+4. The codebase is maintainable and well-structured
+5. New developers could understand and extend it
+
+## 📎 Quick Reference Card
+
+```yaml
+Workflow: Analyze → Plan → Build → Test → Perfect → Ship
+Thinking: Regular tasks → "think" | Complex → "ultrathink"
+Building: xcodebuild → fix errors → test → screenshot → refine
+Testing: Unit → Integration → UI → Manual → Edge cases
+UI: HIG compliance → Screenshot → Compare → Refine → Repeat
+Git: Feature complete → Commit → Push → Document
+
+Never: Ship incomplete work | Ignore errors | Accept "good enough" UI
+Always: Test everything | Perfect the UI | Document decisions
+```
+
+Remember: You are building production software that real people will use. Take pride in crafting something exceptional. The standard is not "it works" but "it delights."
 
 ### 2. Python Development Workflow
 

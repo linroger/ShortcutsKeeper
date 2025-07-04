@@ -61,8 +61,8 @@ struct ShortcutRow: View {
             
             Spacer()
             
-            VStack(alignment: .trailing, spacing: 4) {
-                ShortcutKeyView(keyCombination: shortcut.keyCombination)
+            VStack(alignment: .trailing, spacing: 6) {
+                CompactKeyDisplay(keyCombination: shortcut.keyCombination)
                 
                 if let app = shortcut.application {
                     HStack(spacing: 4) {
@@ -70,6 +70,7 @@ struct ShortcutRow: View {
                             Image(nsImage: icon)
                                 .resizable()
                                 .frame(width: 16, height: 16)
+                                .clipShape(RoundedRectangle(cornerRadius: 3))
                         }
                         Text(app.name)
                             .font(.caption2)

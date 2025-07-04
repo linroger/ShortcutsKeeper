@@ -44,8 +44,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            // Enhanced Sidebar with translucent background and selection highlighting
-            EnhancedSidebarView(
+            // Beautiful native macOS sidebar
+            BeautifulSidebarView(
                 appModel: appModel, 
                 selectedSection: $selectedSidebarSection, 
                 showWelcome: $showWelcome, 
@@ -53,15 +53,15 @@ struct ContentView: View {
                 showSettings: $showSettings,
                 showAppSelector: $showAppSelector
             )
-            .navigationSplitViewColumnWidth(min: 250, ideal: 280, max: 320)
+            .navigationSplitViewColumnWidth(min: 260, ideal: 300, max: 340)
         } detail: {
-            // Main content view - shows everything based on sidebar selection
-            MainContentView(
+            // Main content view with enhanced design
+            BeautifulMainContentView(
                 selectedSection: selectedSidebarSection, 
                 appModel: appModel, 
                 selectedShortcut: $selectedShortcut
             )
-            .navigationSplitViewColumnWidth(min: 500, ideal: 800)
+            .navigationSplitViewColumnWidth(min: 600, ideal: 900)
         }
         .navigationTitle("")
         .toolbar {

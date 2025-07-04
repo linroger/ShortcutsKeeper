@@ -1,15 +1,13 @@
 //
-//  PerformanceOptimizationService.swift
-//  ShortcutsKeeper
-//
-//  Created by Roger Lin on 6/27/25.
+//  OptimizedPerformanceService.swift
+//  ShortcutsKeeper - PERFORMANCE OPTIMIZED VERSION
 //
 
 import Foundation
 import SwiftUI
 import Combine
 
-class PerformanceOptimizationService: ObservableObject {
+class OptimizedPerformanceService: ObservableObject {
     @Published var isOptimizing = false
     @Published var optimizationProgress: Double = 0.0
     
@@ -173,89 +171,5 @@ class PerformanceOptimizationService: ObservableObject {
         // Remove orphaned shortcuts from lookup
         let allUsedIds = Set(searchIndex.values.flatMap { $0 })
         shortcutLookup = shortcutLookup.filter { allUsedIds.contains($0.key) }
-    }
-}
-
-// MARK: - Virtual Scrolling Support (Unchanged for compatibility)
-class VirtualScrollingManager: ObservableObject {
-    @Published var visibleItems: [Shortcut] = []
-    @Published var totalItemsCount: Int = 0
-    
-    private var allItems: [Shortcut] = []
-    private let itemHeight: CGFloat = 60
-    private let bufferSize: Int = 10
-    
-    func updateItems(_ items: [Shortcut]) {
-        allItems = items
-        totalItemsCount = items.count
-        updateVisibleItems(scrollOffset: 0, viewHeight: 400)
-    }
-    
-    func updateVisibleItems(scrollOffset: CGFloat, viewHeight: CGFloat) {
-        let startIndex = max(0, Int(scrollOffset / itemHeight) - bufferSize)
-        let visibleCount = Int(viewHeight / itemHeight) + 2 * bufferSize
-        let endIndex = min(allItems.count, startIndex + visibleCount)
-        
-        if startIndex < endIndex {
-            visibleItems = Array(allItems[startIndex..<endIndex])
-        } else {
-            visibleItems = []
-        }
-    }
-    
-    func getItemOffset(for index: Int) -> CGFloat {
-        return CGFloat(index) * itemHeight
-    }
-    
-    func getTotalHeight() -> CGFloat {
-        return CGFloat(totalItemsCount) * itemHeight
-    }
-}
-
-// Custom view for virtual scrolling
-struct VirtualScrollView<Content: View>: View {
-    let items: [Shortcut]
-    let content: (Shortcut) -> Content
-    
-    @StateObject private var manager = VirtualScrollingManager()
-    @State private var scrollOffset: CGFloat = 0
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ForEach(manager.visibleItems) { item in
-                        content(item)
-                            .frame(height: 60)
-                    }
-                }
-                .frame(height: manager.getTotalHeight())
-                .background(
-                    GeometryReader { scrollGeometry in
-                        Color.clear.onAppear {
-                            updateScrollOffset(scrollGeometry, viewGeometry: geometry)
-                        }
-                        .onChange(of: scrollGeometry.frame(in: .named("scroll"))) { _, newFrame in
-                            updateScrollOffset(scrollGeometry, viewGeometry: geometry)
-                        }
-                    }
-                )
-            }
-            .coordinateSpace(name: "scroll")
-            .onAppear {
-                manager.updateItems(items)
-            }
-            .onChange(of: items) { _, newItems in
-                manager.updateItems(newItems)
-            }
-        }
-    }
-    
-    private func updateScrollOffset(_ scrollGeometry: GeometryProxy, viewGeometry: GeometryProxy) {
-        let newOffset = -scrollGeometry.frame(in: .named("scroll")).minY
-        if abs(newOffset - scrollOffset) > 10 { // Debounce updates
-            scrollOffset = newOffset
-            manager.updateVisibleItems(scrollOffset: newOffset, viewHeight: viewGeometry.size.height)
-        }
     }
 }

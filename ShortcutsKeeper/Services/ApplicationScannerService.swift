@@ -96,9 +96,9 @@ class ApplicationScannerService {
             isSystemApp: path.hasPrefix("/System/")
         )
         
-        // Get app icon
+        // MEMORY OPTIMIZATION: Get compressed app icon
         let icon = NSWorkspace.shared.icon(forFile: path)
-        app.iconData = icon.tiffRepresentation
+        app.setCompressedIcon(icon)
         
         return app
     }

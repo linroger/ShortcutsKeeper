@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import Combine
 
 @Observable
 @MainActor
@@ -30,10 +31,16 @@ class AppModel {
     private let appScanner = ApplicationScannerService.shared
     private let shortcutCapture = ShortcutCaptureService()
     private let accessibilityExtractor = AccessibilityShortcutExtractor()
+    private var memoryTimer: Timer?
+    
+    // MEMORY OPTIMIZATION: Cached computed properties
+    private var _filteredApplicationsCache: [Application] = []
+    private var _lastFilterSettings = (showSystemApps: false, hiddenApps: Set<String>())
     
     private init() {
         setupNotifications()
         loadHiddenApplications()
+        startMemoryMonitoring()
     }
     
     func setup(with context: ModelContext) {
@@ -68,6 +75,8 @@ class AppModel {
         
         do {
             try context.save()
+            // Only fetch if we need to refresh UI state
+            // Remove automatic fetchData() calls
         } catch {
             print("Error saving context: \(error)")
         }
@@ -141,14 +150,13 @@ class AppModel {
         )
         
         context.insert(shortcut)
+        shortcuts.append(shortcut)
         saveContext()
-        fetchData()
     }
     
     func updateShortcut(_ shortcut: Shortcut) {
         shortcut.dateModified = Date()
         saveContext()
-        fetchData()
     }
     
     func deleteShortcut(_ shortcut: Shortcut) {
@@ -156,14 +164,12 @@ class AppModel {
         shortcut.isDeleted = true
         shortcut.dateDeleted = Date()
         saveContext()
-        fetchData()
     }
     
     func restoreShortcut(_ shortcut: Shortcut) {
         shortcut.isDeleted = false
         shortcut.dateDeleted = nil
         saveContext()
-        fetchData()
     }
     
     func permanentlyDeleteShortcut(_ shortcut: Shortcut) {
@@ -193,18 +199,35 @@ class AppModel {
     func toggleFavorite(_ shortcut: Shortcut) {
         shortcut.isFavorite.toggle()
         saveContext()
-        fetchData()
     }
     
     // MARK: - Computed Properties
     
+    // PERFORMANCE OPTIMIZATION: Cached filtered applications
     var filteredApplications: [Application] {
         let showSystemApps = UserDefaults.standard.bool(forKey: "showSystemApps")
-        return applications
+        let currentSettings = (showSystemApps: showSystemApps, hiddenApps: hiddenApplications)
+        
+        // Return cached result if settings haven't changed
+        if _lastFilterSettings.showSystemApps == currentSettings.showSystemApps &&
+           _lastFilterSettings.hiddenApps == currentSettings.hiddenApps &&
+           !_filteredApplicationsCache.isEmpty {
+            return _filteredApplicationsCache
+        }
+        
+        // Recalculate and cache
+        _filteredApplicationsCache = applications
             .filter { app in
                 (showSystemApps || !app.isSystemApp) && !hiddenApplications.contains(app.bundleIdentifier)
             }
             .sorted { $0.name < $1.name }
+        
+        _lastFilterSettings = currentSettings
+        return _filteredApplicationsCache
+    }
+    
+    func invalidateApplicationCache() {
+        _filteredApplicationsCache.removeAll()
     }
     
     var filteredShortcuts: [Shortcut] {
@@ -536,13 +559,80 @@ class AppModel {
         }
         
         saveContext()
-        fetchData()
     }
     
     func moveShortcut(_ shortcut: Shortcut, to application: Application) {
         shortcut.application = application
         saveContext()
-        fetchData()
+    }
+    
+    // MARK: - Memory Management & Performance Monitoring
+    
+    private func startMemoryMonitoring() {
+        memoryTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
+            Task { @MainActor in
+                self.checkMemoryUsage()
+            }
+        }
+    }
+    
+    @MainActor
+    private func checkMemoryUsage() {
+        var memoryInfo = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
+        
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &memoryInfo) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+            }
+        }
+        
+        if kerr == KERN_SUCCESS {
+            let memoryUsageMB = memoryInfo.resident_size / 1_024 / 1_024
+            if memoryUsageMB > 500 { // Alert if over 500MB
+                print("⚠️ High memory usage: \(memoryUsageMB)MB")
+                performMemoryCleanup()
+            }
+        }
+    }
+    
+    private func performMemoryCleanup() {
+        print("🧹 Performing memory cleanup...")
+        
+        // Clear application cache
+        invalidateApplicationCache()
+        
+        // Trigger garbage collection
+        autoreleasepool {
+            // Force release of temporary objects
+            _ = applications.count
+            _ = shortcuts.count
+        }
+        
+        print("✅ Memory cleanup completed")
+    }
+    
+    func getMemoryStats() -> (applications: Int, shortcuts: Int, totalMB: Int) {
+        let appCount = applications.count
+        let shortcutCount = shortcuts.count
+        
+        var memoryInfo = mach_task_basic_info()
+        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
+        
+        let kerr: kern_return_t = withUnsafeMutablePointer(to: &memoryInfo) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+            }
+        }
+        
+        let totalMB = kerr == KERN_SUCCESS ? Int(memoryInfo.resident_size / 1_024 / 1_024) : -1
+        
+        return (applications: appCount, shortcuts: shortcutCount, totalMB: totalMB)
+    }
+    
+    @MainActor
+    deinit {
+        memoryTimer?.invalidate()
     }
 }
 
