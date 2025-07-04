@@ -1,0 +1,46 @@
+App,Shortcut,Description,Tags,Pinned
+Raycast,Option-N,Raycast Notes,untagged,0
+Supercharge,Command-F4,Capture and Translate,untagged,0
+macOS,Control-W,Writing Tools,AI,0
+macOS,Option-Command-K,Launch Shortcut Keeper,macOS,1
+Obsidian,Command-Space,Open Command Palette,Obsidian,0
+Obsidian,Control-A,Add Alias,Obsidian,0
+Obsidian,Control-Option-Command-T,AI Tagger,Obsidian,0
+macOS,Control-S,Save Clipboard to File,untagged,0
+macOS,Shift-Command-.,Show Hidden Files in Finder,finder files,0
+Supercharge,Option-N,Create New Text File,finder text file create,0
+Supercharge,Command-Escape,Hide All Windows,display windows,0
+Supercharge,Command-F1,Dark Mode,display,0
+PastePal,Command-[,Previous Collection,pastepal collection,0
+PastePal,Command-],Next Collection,pastepal collection,0
+macOS,F3,Reposition Display,macOS display fn key,0
+Cursor,Shift-Command-X,Split Notebook Cell,cursor,0
+Cursor,Command-C,Copy Notebook Cell,cursor,0
+Cursor,Option-C,Copy Notebook Cell Output,cursor,0
+macOS,Option-E,Open Type,untagged,0
+macOS,Option-Tab,Initialize DockDoor,untagged,0
+macOS,Option-T,Select Window to Pin - TopIt,topit,0
+macOS,Command-K,Open Interpreter Actions,open app,0
+Bartender,Command-.,Toggle Always Hidden Section,ice menubar,0
+Bartender,"Command-,",Toggle Hidden Section,ice menubar,0
+PixelSnap 2,Command-F7,Restore Last Session,screenshot clipboard fn key pixelsnap,0
+PixelSnap 2,F7,Pixelsnap 2,screenshot clipboard fn key pixelsnap menubar,0
+TextSniper,Command-F6,Additive Clipboard,screenshot textsniper fn key,0
+TextSniper,F6,Capture Text,screenshot textsniper fn key,0
+CleanShot X,Shift-Command-F8,Capture FullScreen,screenshot cleanshot fn key,0
+CleanShot X,Option-A,Scrolling Capture,screenshot cleanshot,0
+CleanShot X,F8,Capture Area,screenshot cleanshot fn key menubar,0
+CleanShot X,Command-F8,All-in-One ScreenCapture,screenshot cleanshot fn key,0
+CleanShot X,Option-F8,Capture Previous Area,screenshot cleanshot fn key,0
+Finder,Option-Command-Space,Show Finder Search Window,files and folders,0
+Finder,Command-K,Compare in Kaleidescope,files and folders,0
+macOS,Option-Command-F,FindAnyFile,open app,0
+Raycast,Caps Lock,Raycast,raycast open app,0
+PastePal,Option-V,Paste From Queue,clipboard,0
+PastePal,Control-Command-V,Main Window,clipboard,0
+PastePal,Shift-Command-C,Clipboard Queue,clipboard,0
+PastePal,Shift-Caps Lock,Toggle Side Window,clipboard,0
+macOS,Command-Space,ChatGPT,macOS ChatGPT,0
+Launchpad,Control-Tab,Launchpad,macOS,0
+macOS,Control-Space,Terminal,macOS,0
+Supercharge,F4,Opens Finder,untagged,0

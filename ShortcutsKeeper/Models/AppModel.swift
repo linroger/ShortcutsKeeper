@@ -630,6 +630,132 @@ class AppModel {
         return (applications: appCount, shortcuts: shortcutCount, totalMB: totalMB)
     }
     
+    // MARK: - Import/Export
+    
+    func exportShortcutsToCSV() -> String {
+        var csvString = "App,Shortcut,Description,Tags,Pinned\n"
+        
+        for shortcut in shortcuts.filter({ !($0.isDeleted ?? false) }) {
+            let appName = shortcut.application?.name ?? "Unknown"
+            let keyCombination = shortcut.keyCombination
+            let description = shortcut.description
+            let tags = shortcut.tags.joined(separator: " ")
+            let pinned = shortcut.isFavorite ? "1" : "0"
+            
+            // Escape fields that contain commas
+            let escapedDescription = description.contains(",") ? "\"\(description)\"" : description
+            
+            csvString += "\(appName),\(keyCombination),\(escapedDescription),\(tags),\(pinned)\n"
+        }
+        
+        return csvString
+    }
+    
+    func importShortcutsFromCSV(_ csvContent: String) async throws -> (imported: Int, skipped: Int) {
+        let lines = csvContent.components(separatedBy: .newlines)
+        guard lines.count > 1 else { throw ImportError.invalidFormat }
+        
+        var imported = 0
+        var skipped = 0
+        
+        for (index, line) in lines.enumerated() {
+            if index == 0 || line.isEmpty { continue } // Skip header and empty lines
+            
+            let fields = parseCSVLine(line)
+            guard fields.count >= 5 else { 
+                skipped += 1
+                continue 
+            }
+            
+            let appName = fields[0]
+            let keyCombination = fields[1]
+            let description = fields[2]
+            let tags = fields[3].split(separator: " ").map { String($0) }
+            let isFavorite = fields[4] == "1"
+            
+            // Find or create application
+            var application: Application?
+            if appName != "macOS" && appName != "Unknown" {
+                application = applications.first { $0.name == appName }
+                
+                if application == nil {
+                    // Create a placeholder application
+                    application = Application(
+                        name: appName,
+                        bundleIdentifier: "com.placeholder.\(appName.lowercased().replacingOccurrences(of: " ", with: ""))",
+                        path: "/Applications/\(appName).app"
+                    )
+                    if let context = modelContext {
+                        context.insert(application!)
+                        applications.append(application!)
+                    }
+                }
+            }
+            
+            // Check if shortcut already exists
+            let exists = shortcuts.contains { 
+                $0.keyCombination == keyCombination && 
+                $0.application?.name == application?.name 
+            }
+            
+            if !exists {
+                addShortcut(
+                    title: description.isEmpty ? "Imported Shortcut" : description,
+                    keyCombination: keyCombination,
+                    description: description,
+                    category: "General",
+                    application: application,
+                    tags: tags
+                )
+                
+                // Set favorite status if needed
+                if isFavorite, let newShortcut = shortcuts.last {
+                    newShortcut.isFavorite = true
+                }
+                
+                imported += 1
+            } else {
+                skipped += 1
+            }
+        }
+        
+        return (imported, skipped)
+    }
+    
+    private func parseCSVLine(_ line: String) -> [String] {
+        var fields: [String] = []
+        var currentField = ""
+        var inQuotes = false
+        
+        for char in line {
+            if char == "\"" {
+                inQuotes.toggle()
+            } else if char == "," && !inQuotes {
+                fields.append(currentField)
+                currentField = ""
+            } else {
+                currentField.append(char)
+            }
+        }
+        
+        fields.append(currentField)
+        return fields
+    }
+    
+    enum ImportError: LocalizedError {
+        case invalidFormat
+        case readError
+        
+        var errorDescription: String? {
+            switch self {
+            case .invalidFormat:
+                return "Invalid CSV format"
+            case .readError:
+                return "Failed to read file"
+            }
+        }
+    }
+    
     @MainActor
     deinit {
         memoryTimer?.invalidate()

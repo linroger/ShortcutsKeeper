@@ -265,8 +265,18 @@ struct EnhancedSettingsView: View {
         panel.nameFieldStringValue = "Shortcuts.\(format == .json ? "json" : "csv")"
         
         if panel.runModal() == .OK, let url = panel.url {
-            // Export logic would go here
-            print("Exporting to \(url)")
+            if format == .csv {
+                let csvContent = appModel.exportShortcutsToCSV()
+                do {
+                    try csvContent.write(to: url, atomically: true, encoding: .utf8)
+                    print("Successfully exported \(appModel.shortcuts.count) shortcuts to CSV")
+                } catch {
+                    print("Export failed: \(error)")
+                }
+            } else {
+                // JSON export not implemented yet
+                print("JSON export not yet implemented")
+            }
         }
     }
     
@@ -276,8 +286,29 @@ struct EnhancedSettingsView: View {
         panel.allowsMultipleSelection = false
         
         if panel.runModal() == .OK, let url = panel.urls.first {
-            // Import logic would go here
-            print("Importing from \(url)")
+            if format == .csv {
+                do {
+                    let csvContent = try String(contentsOf: url, encoding: .utf8)
+                    print("Importing from file: \(url)")
+                    
+                    Task {
+                        do {
+                            let result = try await appModel.importShortcutsFromCSV(csvContent)
+                            await MainActor.run {
+                                print("Import complete: \(result.imported) imported, \(result.skipped) skipped")
+                                // Optionally show an alert with the results
+                            }
+                        } catch {
+                            print("Import failed: \(error)")
+                        }
+                    }
+                } catch {
+                    print("Failed to read file: \(error)")
+                }
+            } else {
+                // JSON import not implemented yet
+                print("JSON import not yet implemented")
+            }
         }
     }
 }
