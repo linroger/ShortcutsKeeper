@@ -88,7 +88,7 @@ class AppModel {
     func scanForAllApplications() async {
         isScanning = true
         
-        await appScanner.scanForApplications { [weak self] scannedApps in
+        appScanner.scanForApplications { [weak self] scannedApps in
             guard let self = self, let context = self.modelContext else { return }
             
             for scannedApp in scannedApps {
@@ -136,6 +136,7 @@ class AppModel {
         keyCombination: String,
         description: String,
         category: String,
+        subcategory: String? = nil,
         application: Application?,
         tags: [String]
     ) {
@@ -146,6 +147,7 @@ class AppModel {
             keyCombination: keyCombination,
             shortcutDescription: description,
             category: category.isEmpty ? "General" : category,
+            subcategory: subcategory,
             application: application,
             tags: tags
         )
@@ -161,10 +163,19 @@ class AppModel {
     }
     
     func deleteShortcut(_ shortcut: Shortcut) {
+        print("Debug: AppModel deleteShortcut called for: \(shortcut.title)")
+        
         // Soft delete - move to bin
         shortcut.isDeleted = true
         shortcut.dateDeleted = Date()
+        
+        print("Debug: Marked as deleted, saving context...")
         saveContext()
+        
+        print("Debug: Fetching data to refresh UI...")
+        fetchData()
+        
+        print("Debug: Delete operation completed. Shortcuts count: \(shortcuts.count)")
     }
     
     func restoreShortcut(_ shortcut: Shortcut) {
@@ -176,6 +187,21 @@ class AppModel {
     func permanentlyDeleteShortcut(_ shortcut: Shortcut) {
         guard let context = modelContext else { return }
         context.delete(shortcut)
+        saveContext()
+        fetchData()
+    }
+    
+    func clearAllShortcuts() {
+        guard let context = modelContext else { return }
+        
+        // Delete all shortcuts from the data store
+        for shortcut in shortcuts {
+            context.delete(shortcut)
+        }
+        
+        // Clear the in-memory array
+        shortcuts.removeAll()
+        
         saveContext()
         fetchData()
     }
@@ -668,24 +694,68 @@ class AppModel {
         var imported = 0
         var skipped = 0
         
+        // Check header format to determine CSV structure
+        let header = lines[0].lowercased()
+        let isNewFormat = header.contains("app_name") && header.contains("key_combination")
+        let isGeminiFormat = header.contains("subcategory") && header.contains("name")
+        
         for (index, line) in lines.enumerated() {
             if index == 0 || line.isEmpty { continue } // Skip header and empty lines
             
             let fields = parseCSVLine(line)
-            guard fields.count >= 5 else { 
-                skipped += 1
-                continue 
-            }
             
-            let appName = fields[0]
-            let keyCombination = fields[1]
-            let description = fields[2]
-            let tags = fields[3].split(separator: " ").map { String($0) }
-            let isFavorite = fields[4] == "1"
+            var appName: String
+            var keyCombination: String
+            var description: String
+            var tags: [String]
+            var subcategory: String? = nil
+            var isFavorite = false
+            
+            if isGeminiFormat {
+                // Gemini format: App,Shortcut,Name,Tags,Pinned,description,subcategory
+                guard fields.count >= 6 else { 
+                    skipped += 1
+                    continue 
+                }
+                
+                appName = fields[0]
+                keyCombination = fields[1]
+                let shortcutName = fields[2]
+                tags = fields[3].split(separator: " ").map { String($0.trimmingCharacters(in: .whitespaces)) }
+                isFavorite = fields[4] == "1"
+                description = fields[5].isEmpty ? shortcutName : fields[5]
+                if fields.count > 6 && !fields[6].isEmpty {
+                    subcategory = fields[6]
+                }
+            } else if isNewFormat {
+                // New format: app_name,shortcut_name,key_combination,description,tags
+                guard fields.count >= 5 else { 
+                    skipped += 1
+                    continue 
+                }
+                
+                appName = fields[0]
+                let shortcutName = fields[1]
+                keyCombination = fields[2]
+                description = fields[3].isEmpty ? shortcutName : fields[3]
+                tags = fields[4].split(separator: ",").map { String($0.trimmingCharacters(in: .whitespaces)) }
+            } else {
+                // Old format: App,Shortcut,Description,Tags,Pinned
+                guard fields.count >= 5 else { 
+                    skipped += 1
+                    continue 
+                }
+                
+                appName = fields[0]
+                keyCombination = fields[1]
+                description = fields[2]
+                tags = fields[3].split(separator: " ").map { String($0) }
+                isFavorite = fields[4] == "1"
+            }
             
             // Find or create application
             var application: Application?
-            if appName != "macOS" && appName != "Unknown" {
+            if appName != "macOS" && appName != "Unknown" && !appName.isEmpty {
                 application = applications.first { $0.name == appName }
                 
                 if application == nil {
@@ -713,7 +783,8 @@ class AppModel {
                     title: description.isEmpty ? "Imported Shortcut" : description,
                     keyCombination: keyCombination,
                     description: description,
-                    category: "General",
+                    category: "Imported",
+                    subcategory: subcategory,
                     application: application,
                     tags: tags
                 )
@@ -752,11 +823,12 @@ class AppModel {
         return fields
     }
     
+    @MainActor
     enum ImportError: LocalizedError {
         case invalidFormat
         case readError
         
-        var errorDescription: String? {
+        nonisolated var errorDescription: String? {
             switch self {
             case .invalidFormat:
                 return "Invalid CSV format"

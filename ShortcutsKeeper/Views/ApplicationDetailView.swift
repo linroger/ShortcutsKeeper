@@ -75,8 +75,8 @@ struct ApplicationDetailView: View {
     
     private func exportAppShortcuts() {
         // Export only this app's shortcuts
-        let appShortcuts = viewModel.shortcuts.filter { $0.application == application }
-        // Implementation for export
+        let _ = viewModel.shortcuts.filter { $0.application == application }
+        // TODO: Implementation for export
     }
 }
 

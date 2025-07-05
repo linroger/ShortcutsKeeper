@@ -22,6 +22,7 @@ struct EnhancedSettingsView: View {
     @AppStorage("useTableView") private var useTableView = false
     
     @State private var showingChangeShortcutAlert = false
+    @State private var showingClearAllAlert = false
     
     enum GlobalBehavior: String, CaseIterable {
         case bringToFront = "Bring to Front"
@@ -243,6 +244,24 @@ struct EnhancedSettingsView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
+                
+                // Clear All Shortcuts Section
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Clear All Shortcuts:")
+                        .font(.body)
+                        .fontWeight(.medium)
+                    
+                    Button("Clear All Shortcuts") {
+                        showingClearAllAlert = true
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.regular)
+                    .tint(.red)
+                    
+                    Text("⚠️ This will permanently delete ALL shortcuts. This action cannot be undone.")
+                        .font(.caption)
+                        .foregroundColor(.red)
+                }
             }
             }
         }
@@ -254,6 +273,14 @@ struct EnhancedSettingsView: View {
             Button("Save") { }
         } message: {
             Text("Enter a new global shortcut (e.g., ⌘⌥K)")
+        }
+        .alert("Clear All Shortcuts", isPresented: $showingClearAllAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Clear All", role: .destructive) {
+                appModel.clearAllShortcuts()
+            }
+        } message: {
+            Text("This will permanently delete all \(appModel.shortcuts.count) shortcuts. This action cannot be undone.")
         }
     }
     

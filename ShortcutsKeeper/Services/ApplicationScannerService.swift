@@ -56,7 +56,8 @@ class ApplicationScannerService {
         var info = ApplicationInfo()
         
         if !app.bundleIdentifier.isEmpty,
-           let path = NSWorkspace.shared.absolutePathForApplication(withBundleIdentifier: app.bundleIdentifier) {
+           let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: app.bundleIdentifier) {
+            let path = url.path
             info.path = path
             
             if let bundle = Bundle(path: path) {
@@ -108,11 +109,14 @@ class ApplicationScannerService {
     }
     
     func launchApplication(_ app: Application) {
-        if !app.bundleIdentifier.isEmpty {
-            NSWorkspace.shared.launchApplication(withBundleIdentifier: app.bundleIdentifier, 
-                                               options: [], 
-                                               additionalEventParamDescriptor: nil, 
-                                               launchIdentifier: nil)
+        if !app.bundleIdentifier.isEmpty,
+           let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: app.bundleIdentifier) {
+            let configuration = NSWorkspace.OpenConfiguration()
+            NSWorkspace.shared.openApplication(at: url, configuration: configuration) { _, error in
+                if let error = error {
+                    print("Failed to launch application: \(error)")
+                }
+            }
         }
     }
 }

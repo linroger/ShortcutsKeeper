@@ -15,6 +15,7 @@ final class Shortcut {
     var keyCombination: String
     var shortcutDescription: String
     var category: String
+    var subcategory: String?
     var isFavorite: Bool
     var dateCreated: Date
     var dateModified: Date
@@ -36,6 +37,7 @@ final class Shortcut {
         keyCombination: String,
         shortcutDescription: String = "",
         category: String = "General",
+        subcategory: String? = nil,
         application: Application? = nil,
         isFavorite: Bool = false,
         tags: [String] = []
@@ -45,6 +47,7 @@ final class Shortcut {
         self.keyCombination = keyCombination
         self.shortcutDescription = shortcutDescription
         self.category = category
+        self.subcategory = subcategory
         self.application = application
         self.isFavorite = isFavorite
         self.dateCreated = Date()
@@ -59,7 +62,8 @@ final class Shortcut {
 
 extension Shortcut {
     var searchableText: String {
-        "\(title) \(keyCombination) \(shortcutDescription) \(category) \(tags.joined(separator: " "))"
+        let subcategoryText = subcategory ?? ""
+        return "\(title) \(keyCombination) \(shortcutDescription) \(category) \(subcategoryText) \(tags.joined(separator: " "))"
     }
     
     var description: String {

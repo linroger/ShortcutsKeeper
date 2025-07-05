@@ -79,6 +79,12 @@ struct FilteredTableShortcutListView: View {
                 .padding(.vertical, 4)
             }
             .width(min: 150, ideal: 200)
+            
+            // Subcategory column
+            TableColumn("Subcategory") { shortcut in
+                SubcategoryColumnView(shortcut: shortcut)
+            }
+            .width(min: 100, ideal: 150)
         }
         .tableStyle(.inset(alternatesRowBackgrounds: false))
         .onChange(of: selection) { _, newSelection in
@@ -94,7 +100,7 @@ struct FilteredTableShortcutListView: View {
         .contextMenu(forSelectionType: Shortcut.ID.self) { selectedIds in
             if let selectedId = selectedIds.first,
                let shortcut = sortedShortcuts.first(where: { $0.id == selectedId }) {
-                TableContextMenu(shortcut: shortcut, appModel: appModel)
+                TableContextMenu(shortcut: shortcut, appModel: appModel, selection: $selection)
             }
         }
     }

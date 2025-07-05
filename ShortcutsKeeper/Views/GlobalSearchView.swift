@@ -242,29 +242,33 @@ struct GlobalSearchResultRow: View {
             return Text(text)
         }
         
-        var result = Text("")
+        // Build an array of text components
+        var components: [Text] = []
         var currentIndex = text.startIndex
         
         for range in ranges {
             // Add text before the match
             if currentIndex < range.lowerBound {
-                result = result + Text(String(text[currentIndex..<range.lowerBound]))
+                components.append(Text(String(text[currentIndex..<range.lowerBound])))
             }
             
             // Add highlighted match
-            result = result + Text(String(text[range]))
-                .foregroundColor(.accentColor)
-                .fontWeight(.semibold)
+            components.append(
+                Text(String(text[range]))
+                    .foregroundColor(.accentColor)
+                    .fontWeight(.semibold)
+            )
             
             currentIndex = range.upperBound
         }
         
         // Add remaining text
         if currentIndex < text.endIndex {
-            result = result + Text(String(text[currentIndex...]))
+            components.append(Text(String(text[currentIndex...])))
         }
         
-        return result
+        // Combine all components
+        return components.reduce(Text("")) { $0 + $1 }
     }
 }
 

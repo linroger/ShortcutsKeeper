@@ -47,6 +47,12 @@ struct TableShortcutListView: View {
             }
             .width(min: 150, ideal: 200)
             
+            // Subcategory column
+            TableColumn("Subcategory") { shortcut in
+                SubcategoryColumnView(shortcut: shortcut)
+            }
+            .width(min: 100, ideal: 150)
+            
             // Application column
             TableColumn("Application") { shortcut in
                 ApplicationColumnView(shortcut: shortcut)
@@ -67,7 +73,10 @@ struct TableShortcutListView: View {
         .contextMenu(forSelectionType: Shortcut.ID.self) { selectedIds in
             if let selectedId = selectedIds.first,
                let shortcut = sortedShortcuts.first(where: { $0.id == selectedId }) {
-                TableContextMenu(shortcut: shortcut, appModel: appModel)
+                TableContextMenu(shortcut: shortcut, appModel: appModel, selection: $selection)
+            } else if let selectedId = selection,
+                      let shortcut = sortedShortcuts.first(where: { $0.id == selectedId }) {
+                TableContextMenu(shortcut: shortcut, appModel: appModel, selection: $selection)
             }
         }
     }
@@ -139,6 +148,29 @@ struct TagsColumnView: View {
     }
 }
 
+struct SubcategoryColumnView: View {
+    let shortcut: Shortcut
+    
+    var body: some View {
+        if let subcategory = shortcut.subcategory, !subcategory.isEmpty {
+            Text(subcategory)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 2)
+                .background(.blue.opacity(0.15))
+                .foregroundColor(.blue)
+                .clipShape(Capsule())
+                .padding(.vertical, 4)
+        } else {
+            Text("—")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.vertical, 4)
+        }
+    }
+}
+
 struct ApplicationColumnView: View {
     let shortcut: Shortcut
     
@@ -191,6 +223,7 @@ struct MiniTagLabel: View {
 struct TableContextMenu: View {
     let shortcut: Shortcut
     @Bindable var appModel: AppModel
+    @Binding var selection: Shortcut.ID?
     
     var body: some View {
         Button {
@@ -226,7 +259,15 @@ struct TableContextMenu: View {
         Divider()
         
         Button(role: .destructive) {
+            print("Debug: Deleting shortcut: \(shortcut.title)")
             appModel.deleteShortcut(shortcut)
+            
+            // Force UI refresh by updating selection
+            if selection == shortcut.id {
+                selection = nil
+            }
+            
+            print("Debug: Delete action completed")
         } label: {
             Label("Delete Shortcut", systemImage: "trash")
         }

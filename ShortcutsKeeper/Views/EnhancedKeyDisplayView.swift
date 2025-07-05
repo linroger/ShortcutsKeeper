@@ -56,7 +56,13 @@ struct EnhancedKeyDisplayView: View {
             ("⌥", "Option", "Option", KeyType.option),
             ("⇧", "Shift", "Shift", KeyType.shift),
             ("⎋", "Escape", "Escape", KeyType.escape),
-            ("⇥", "Tab", "Tab", KeyType.tab)
+            ("⇥", "Tab", "Tab", KeyType.tab),
+            ("􀊜", "Click", "Click", KeyType.gesture),
+            ("􀆔", "Tap", "Tap", KeyType.gesture),
+            ("􀦍", "Drag", "Drag", KeyType.gesture),
+            ("􀅭", "Rotate", "Rotate", KeyType.gesture),
+            ("􀣸", "Pinch", "Pinch", KeyType.gesture),
+            ("􀺪", "Two-Finger", "Two-Finger", KeyType.gesture)
         ]
         
         // First, handle text-based format (e.g., "Command-K", "Option-Command-K")
@@ -172,6 +178,7 @@ enum KeyType {
     case letter, number, function
     case space, special, arrow, navigation
     case escape, tab
+    case gesture
     case other
     
     var isModifier: Bool {
@@ -213,6 +220,8 @@ enum KeyType {
             return Color(red: 1.0, green: 0.7, blue: 0.3) // Orange-yellow
         case .letter:
             return Color(red: 0.7, green: 0.9, blue: 0.7) // Light green
+        case .gesture:
+            return Color(red: 0.9, green: 0.6, blue: 1.0) // Light purple for gestures
         case .other:
             return Color(NSColor.controlBackgroundColor)
         }
@@ -220,7 +229,7 @@ enum KeyType {
     
     var foregroundColor: Color {
         switch self {
-        case .fn, .command, .control, .option, .shift, .function, .special, .escape, .tab:
+        case .fn, .command, .control, .option, .shift, .function, .special, .escape, .tab, .gesture:
             return .white
         default:
             return .primary
