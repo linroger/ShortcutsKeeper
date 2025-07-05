@@ -38,14 +38,28 @@ struct ContentView: View {
     @State private var showSettings = false
     @State private var showAppSelector = false
     
-    @State private var appModel = AppModel.shared
+    @State private var appModel: AppModel?
     @StateObject private var globalHotkeyService = GlobalHotkeyService()
     @AppStorage("appTheme") private var appTheme = AppTheme.system
     
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility) {
-            // Beautiful native macOS sidebar
-            BeautifulSidebarView(
+        if let appModel = appModel {
+            if appModel.isLoading {
+                // Show loading view while data is being fetched
+                VStack {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                    Text("Initializing application data...")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(NSColor.windowBackgroundColor))
+            } else {
+            NavigationSplitView(columnVisibility: $columnVisibility) {
+            // Beautiful native macOS sidebar with translucent effects
+            EnhancedSidebarView(
                 appModel: appModel, 
                 selectedSection: $selectedSidebarSection, 
                 showWelcome: $showWelcome, 
@@ -54,14 +68,16 @@ struct ContentView: View {
                 showAppSelector: $showAppSelector
             )
             .navigationSplitViewColumnWidth(min: 260, ideal: 300, max: 340)
+            .toolbarBackground(.ultraThinMaterial, for: .windowToolbar)
         } detail: {
-            // Main content view with enhanced design
-            BeautifulMainContentView(
+            // Main content view with enhanced native design
+            MainContentView(
                 selectedSection: selectedSidebarSection, 
                 appModel: appModel, 
                 selectedShortcut: $selectedShortcut
             )
             .navigationSplitViewColumnWidth(min: 600, ideal: 900)
+            .toolbarBackground(.ultraThinMaterial, for: .windowToolbar)
         }
         .navigationTitle("")
         .toolbar {
@@ -82,7 +98,7 @@ struct ContentView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                     
-                    Text("(\(appModel.filteredApplications.count))")
+                    Text("(\(appModel.filteredApplicationsCount))")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     
@@ -164,11 +180,20 @@ struct ContentView: View {
                 .help("Add applications to track shortcuts")
             }
         }
-        .searchable(text: $appModel.searchText, prompt: "Search shortcuts...")
-        .sheet(isPresented: $appModel.showNewShortcutSheet) {
+        .searchable(text: Binding(
+            get: { appModel.searchText },
+            set: { appModel.searchText = $0 }
+        ), prompt: "Search shortcuts...")
+        .sheet(isPresented: Binding(
+            get: { appModel.showNewShortcutSheet },
+            set: { appModel.showNewShortcutSheet = $0 }
+        )) {
             ModernNewShortcutView(appModel: appModel)
         }
-        .sheet(isPresented: $appModel.showCaptureWindow) {
+        .sheet(isPresented: Binding(
+            get: { appModel.showCaptureWindow },
+            set: { appModel.showCaptureWindow = $0 }
+        )) {
             ModernShortcutCaptureView(appModel: appModel)
         }
         .sheet(isPresented: $showSettings) {
@@ -183,14 +208,15 @@ struct ContentView: View {
         .sheet(isPresented: $showAdvancedSearch) {
             AdvancedSearchView(appModel: appModel)
         }
-        .sheet(isPresented: $appModel.showEditShortcutSheet) {
+        .sheet(isPresented: Binding(
+            get: { appModel.showEditShortcutSheet },
+            set: { appModel.showEditShortcutSheet = $0 }
+        )) {
             if let shortcut = appModel.selectedShortcut {
                 EditShortcutWrapper(shortcut: shortcut, appModel: appModel)
             }
         }
-        .keyboardNavigation(appModel: appModel)
         .onAppear {
-            appModel.setup(with: modelContext)
             setupGlobalHotkey()
             checkFirstLaunch()
         }
@@ -206,6 +232,28 @@ struct ContentView: View {
             AboutFAQView()
         }
         .preferredColorScheme(appTheme.colorScheme)
+            }
+        } else {
+            // Show loading view while AppModel initializes
+            VStack {
+                ProgressView("Initializing...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding()
+                Text("Setting up application...")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(NSColor.windowBackgroundColor))
+            .onAppear {
+                if appModel == nil {
+                    // Initialize AppModel safely
+                    let model = AppModel.shared
+                    model.setup(with: modelContext)
+                    appModel = model
+                }
+            }
+        }
     }
     
     private func checkFirstLaunch() {
@@ -216,7 +264,7 @@ struct ContentView: View {
     }
     
     private func loadCommonShortcuts() {
-        guard let app = appModel.selectedApplication else { return }
+        guard let appModel = appModel, let app = appModel.selectedApplication else { return }
         
         let extractor = AccessibilityShortcutExtractor()
         let commonShortcuts = extractor.getCommonShortcuts(for: app.bundleIdentifier)
@@ -332,7 +380,7 @@ struct EnhancedSidebarView: View {
                                 .frame(width: 16)
                             Text("All Apps")
                             Spacer()
-                            Text("\(appModel.filteredApplications.count)")
+                            Text("\(appModel.filteredApplicationsCount)")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
