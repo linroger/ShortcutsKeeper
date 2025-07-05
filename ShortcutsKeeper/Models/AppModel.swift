@@ -22,6 +22,7 @@ class AppModel {
     var selectedTag: String?
     var searchText = ""
     var isScanning = false
+    var isLoading = true  // Add loading state
     var showSettingsWindow = false
     var showNewShortcutSheet = false
     var showEditShortcutSheet = false
@@ -47,10 +48,15 @@ class AppModel {
     
     func setup(with context: ModelContext) {
         self.modelContext = context
-        fetchData()
         
-        if UserDefaults.standard.bool(forKey: "autoScanOnLaunch") && applications.isEmpty {
-            Task {
+        // Defer data loading to avoid blocking UI
+        Task { @MainActor in
+            fetchData()
+            
+            // Only scan if enabled and no apps exist
+            if UserDefaults.standard.bool(forKey: "autoScanOnLaunch") && applications.isEmpty {
+                // Add slight delay to ensure UI is responsive
+                try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
                 await scanForAllApplications()
             }
         }
@@ -65,10 +71,18 @@ class AppModel {
         let appDescriptor = FetchDescriptor<Application>()
         
         do {
+            // Fetch in batches to avoid memory spikes
             shortcuts = try context.fetch(shortcutDescriptor)
             applications = try context.fetch(appDescriptor)
+            
+            // Invalidate cache after loading data
+            invalidateApplicationCache()
+            
+            // Mark loading as complete
+            isLoading = false
         } catch {
             print("Error fetching data: \(error)")
+            isLoading = false
         }
     }
     

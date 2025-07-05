@@ -216,21 +216,17 @@ struct NewShortcutView: View {
         
         let tagArray = tags.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
         
-        do {
-            viewModel.addShortcut(
-                title: title.trimmingCharacters(in: .whitespaces),
-                keyCombination: keyCombination.trimmingCharacters(in: .whitespaces),
-                description: description.trimmingCharacters(in: .whitespaces),
-                category: category.isEmpty ? "General" : category,
-                application: selectedApplication,
-                tags: tagArray
-            )
-            
-            print("✅ Successfully added shortcut: \(title)")
-            dismiss()
-        } catch {
-            showValidationError("Failed to save shortcut: \(error.localizedDescription)")
-        }
+        viewModel.addShortcut(
+            title: title.trimmingCharacters(in: .whitespaces),
+            keyCombination: keyCombination.trimmingCharacters(in: .whitespaces),
+            description: description.trimmingCharacters(in: .whitespaces),
+            category: category.isEmpty ? "General" : category,
+            application: selectedApplication,
+            tags: tagArray
+        )
+        
+        print("✅ Successfully added shortcut: \(title)")
+        dismiss()
     }
     
     private func isValidShortcutFormat(_ shortcut: String) -> Bool {

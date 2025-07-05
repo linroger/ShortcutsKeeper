@@ -43,7 +43,23 @@ struct ContentView: View {
     @AppStorage("appTheme") private var appTheme = AppTheme.system
     
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility) {
+        if appModel.isLoading {
+            // Show loading view while data is being fetched
+            VStack {
+                ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding()
+                Text("Initializing application data...")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(NSColor.windowBackgroundColor))
+            .onAppear {
+                appModel.setup(with: modelContext)
+            }
+        } else {
+            NavigationSplitView(columnVisibility: $columnVisibility) {
             // Beautiful native macOS sidebar with translucent effects
             BeautifulSidebarView(
                 appModel: appModel, 
@@ -192,7 +208,6 @@ struct ContentView: View {
         }
         .keyboardNavigation(appModel: appModel)
         .onAppear {
-            appModel.setup(with: modelContext)
             setupGlobalHotkey()
             checkFirstLaunch()
         }
@@ -208,6 +223,7 @@ struct ContentView: View {
             AboutFAQView()
         }
         .preferredColorScheme(appTheme.colorScheme)
+        }
     }
     
     private func checkFirstLaunch() {

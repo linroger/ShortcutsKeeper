@@ -142,13 +142,11 @@ struct BeautifulShortcutRow: View {
                     y: isHovered ? 2 : 0
                 )
         )
-        .scaleEffect(isHovered ? 1.02 : 1.0)
-        .animation(.easeInOut(duration: 0.2), value: isHovered)
+        .scaleEffect(isHovered ? 1.01 : 1.0)
+        .animation(.easeInOut(duration: 0.15), value: isHovered)
         .animation(.easeInOut(duration: 0.15), value: isSelected)
         .onHover { hovering in
-            withAnimation(.easeInOut(duration: 0.2)) {
-                isHovered = hovering
-            }
+            isHovered = hovering
         }
         .onTapGesture {
             withAnimation(.easeInOut(duration: 0.15)) {
@@ -504,24 +502,15 @@ struct BeautifulSectionHeader: View {
 // MARK: - View Extensions
 
 extension View {
+    // Simplified press events without rapid-fire issues
     func pressEvents(onPress: @escaping () -> Void, onRelease: @escaping () -> Void) -> some View {
-        modifier(PressEventsModifier(onPress: onPress, onRelease: onRelease))
-    }
-}
-
-struct PressEventsModifier: ViewModifier {
-    let onPress: () -> Void
-    let onRelease: () -> Void
-    
-    func body(content: Content) -> some View {
-        content
-            .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
-                if pressing {
-                    onPress()
-                } else {
+        self
+            .onTapGesture {
+                onPress()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     onRelease()
                 }
-            }, perform: {})
+            }
     }
 }
 

@@ -257,12 +257,10 @@ struct BeautifulSidebarRow: View {
             )
         }
         .buttonStyle(.plain)
-        .animation(.easeInOut(duration: 0.2), value: isSelected)
+        .animation(.easeInOut(duration: 0.15), value: isSelected)
         .animation(.easeInOut(duration: 0.15), value: isHovered)
         .onHover { hovering in
-            withAnimation(.easeInOut(duration: 0.15)) {
-                isHovered = hovering
-            }
+            isHovered = hovering
         }
         // ACCESSIBILITY: Enhanced VoiceOver support
         .accessibilityLabel(count != nil ? "\(title), \(count!) items" : title)
@@ -348,9 +346,7 @@ struct BeautifulAppSidebarRow: View {
         .animation(.easeInOut(duration: 0.15), value: isSelected)
         .animation(.easeInOut(duration: 0.15), value: isHovered)
         .onHover { hovering in
-            withAnimation(.easeInOut(duration: 0.15)) {
-                isHovered = hovering
-            }
+            isHovered = hovering
         }
         .contextMenu {
             AppContextMenu(application: application, appModel: appModel, selectedSection: $selectedSection)
