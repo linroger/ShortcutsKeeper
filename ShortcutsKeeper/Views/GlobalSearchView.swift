@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct GlobalSearchView: View {
     let appModel: AppModel
@@ -242,33 +243,22 @@ struct GlobalSearchResultRow: View {
             return Text(text)
         }
         
-        // Build an array of text components
-        var components: [Text] = []
-        var currentIndex = text.startIndex
+        // Create AttributedString for highlighting
+        var attributedString = AttributedString(text)
         
-        for range in ranges {
-            // Add text before the match
-            if currentIndex < range.lowerBound {
-                components.append(Text(String(text[currentIndex..<range.lowerBound])))
+        // Apply highlighting to matched ranges (iterate in reverse to avoid index shifting)
+        for range in ranges.reversed() {
+            let startIndex = AttributedString.Index(range.lowerBound, within: attributedString)
+            let endIndex = AttributedString.Index(range.upperBound, within: attributedString)
+            
+            if let start = startIndex, let end = endIndex {
+                let attributedRange = start..<end
+                attributedString[attributedRange].foregroundColor = .accentColor
+                attributedString[attributedRange].font = .body.weight(.semibold)
             }
-            
-            // Add highlighted match
-            components.append(
-                Text(String(text[range]))
-                    .foregroundColor(.accentColor)
-                    .fontWeight(.semibold)
-            )
-            
-            currentIndex = range.upperBound
         }
         
-        // Add remaining text
-        if currentIndex < text.endIndex {
-            components.append(Text(String(text[currentIndex...])))
-        }
-        
-        // Combine all components
-        return components.reduce(Text("")) { $0 + $1 }
+        return Text(attributedString)
     }
 }
 

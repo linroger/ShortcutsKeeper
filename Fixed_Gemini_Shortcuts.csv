@@ -1,0 +1,1324 @@
+App,Shortcut,Name,Tags,Pinned,description,subcategory
+macOS,Control-Command-Space,Emoji & Symbols,text work,0,"Show the Character Viewer to choose emoji, symbols, and other characters",
+macOS,Shift-Command-5,Screenshot,screengrab work,0,Open Screenshot utility to capture screen images or record video,
+macOS,Command-Space,Spotlight,search work productivity,0,Show or hide the Spotlight search field,
+ChatGPT,⌘Space,ChatGPT Chat Bar,chatgpt,0,Open ChatGPT Chat Bar for Quick Message,
+macOS,⌘C,Copy,macos clipboard command,0,Copy the selected item to the Clipboard. This also works for files in the Finder.,"Cut, copy, and paste"
+macOS,⌘V,Paste,macos system clipboard paste command,0,Paste the contents of the Clipboard into the current document or app. This also works for files in the Finder.,
+Raycast,Option-N,Raycast Notes,untagged,0,Raycast Notes,
+Supercharge,Command-F4,Capture and Translate,untagged,0,Capture and Translate,
+Obsidian,Control-A,Add Alias,Obsidian,0,Add Alias,
+Obsidian,Control-Option-Command-T,AI Tagger,Obsidian,0,AI Tagger,
+Shortcuts,Control-S,Save Clipboard to File,untagged,0,Save Clipboard to File,
+Finder,Shift-Command-.,Show Hidden Files,finder files,0,Show Hidden Files in Finder,
+Supercharge,Command-Escape,Hide All Windows,display windows,0,Hide All Windows,
+Supercharge,Command-F1,Dark Mode,display,0,Dark Mode,
+PastePal,Command-[,Previous Collection,pastepal collection,0,Previous Collection,
+PastePal,Command-],Next Collection,pastepal collection,0,Next Collection,
+Cursor,Shift-Command-X,Split Notebook Cell,cursor,0,Split Notebook Cell,
+Cursor,Command-C,Copy Notebook Cell,cursor,0,Copy Notebook Cell,
+Cursor,Option-C,Copy Notebook Cell Output,cursor,0,Copy Notebook Cell Output,
+Bartender,Command-.,Toggle Always Hidden Section,ice menubar,0,Toggle Always Hidden Section,
+PixelSnap 2,Command-F7,Restore Last Session,screenshot clipboard fn key pixelsnap,0,Restore Last Session,
+PixelSnap 2,F7,Pixelsnap 2,screenshot clipboard fn key pixelsnap menubar,0,Pixelsnap 2,
+TextSniper,Command-F6,Additive Clipboard,screenshot textsniper fn key,0,Additive Clipboard,
+TextSniper,F6,Capture Text,screenshot textsniper fn key,0,Capture Text,
+CleanShot X,Shift-Command-F8,Capture FullScreen,screenshot cleanshot fn key,0,Capture FullScreen,
+CleanShot X,Option-A,Scrolling Capture,screenshot cleanshot,0,Scrolling Capture,
+CleanShot X,F8,Capture Area,screenshot cleanshot fn key menubar,0,Capture Area,
+CleanShot X,Command-F8,All-in-One ScreenCapture,screenshot cleanshot fn key,0,All-in-One ScreenCapture,
+CleanShot X,Option-F8,Capture Previous Area,screenshot cleanshot fn key,0,Capture Previous Area,
+Finder,Option-Command-Space,Show Finder Search Window,files and folders,0,Show Finder Search Window,
+FindAnyFile,Option-Command-F,FindAnyFile,open app,0,FindAnyFile,
+Raycast,Caps Lock,Raycast,raycast open app,0,Raycast,
+PastePal,Option-V,Paste From Queue,clipboard,0,Paste From Queue,
+PastePal,Control-Command-V,Main Window,clipboard,0,Main Window,
+PastePal,Shift-Command-C,Clipboard Queue,clipboard,0,Clipboard Queue,
+PastePal,Shift-Caps Lock,Toggle Side Window,clipboard,0,Toggle Side Window,
+Launchpad,Control-Tab,Launchpad,macOS,0,Launchpad,
+FindAnyFile,Control-Space,Terminal,macOS,0,Terminal,
+Supercharge,F4,Opens Finder,untagged,0,Opens Finder,
+Raycast,Global Hotkey,Shift-Option-Command,Main Raycast launcher hotkey,0,Shift-Option-Command,
+Raycast,Command+W,Close Raycast window (onboarding shortcut),0,⌘W,,
+System Preferences,Left Arrow + Control,Move window to left half of screen,system window-management,0,Move window to left half of screen,
+System Preferences,Up Arrow + Control,Maximize window to full screen,system window-management,0,Maximize window to full screen,
+System Preferences,Right Arrow + Control,Move window to right half of screen,system window-management,0,Move window to right half of screen,
+macOS,Fn + F11,Toggle Dock Hiding,system dock navigation,0,Toggle dock auto-hide feature,
+macOS,Fn + Shift + F11,Open Launchpad,system dock navigation,0,Open Launchpad for app access,
+macOS,Fn + F16,Open Notification Center,system notifications,0,Open Notification Center,
+macOS,Fn + F17,Toggle Do Not Disturb,system notifications,0,Toggle Do Not Disturb mode,
+macOS,Fn + Option + F16,Show Notification Center (Alt),system notifications,0,Alternative Notification Center shortcut,
+macOS,Fn + Option + F17,Turn Do Not Disturb On/Off (Alt),system notifications,0,Alternative Do Not Disturb shortcut,
+macOS,Fn + Shift + Left Arrow,Open Mission Control View,system window-management,0,Open Mission Control view,
+macOS,Fn + Shift + Right Arrow,Show All Application Windows,system window-management,0,Show all windows for current app,
+macOS,Control + Tab,Change Tab Focus,system navigation accessibility,0,Change how Tab key moves focus,
+macOS,Fn + F5,Open Launchpad (F5),system dock navigation,0,Open Launchpad,
+macOS,Ctrl + Cmd + K,Send to Keka,compression archiving,0,Send files to Keka for compression,
+macOS,Ctrl + Cmd + X,Extract using Keka,compression archiving extraction,0,Extract archives using Keka,
+macOS,Ctrl + Cmd + C,Compress using Keka,compression archiving,0,Compress files using Keka,
+macOS,Shift + Ctrl + Option + C,Convert to Traditional Chinese,text chinese localization,0,Convert simplified to traditional Chinese text,
+macOS,Shift + Ctrl + Option + Tilde + C,Convert to Simplified Chinese,text chinese localization,0,Convert traditional to simplified Chinese text,
+Xcode-beta,⌘B,Build,build compile ios macos swift,0,Build current project,
+Xcode-beta,⌘R,Run,run debug ios macos swift,0,Run current project,
+Xcode-beta,⌘U,Test,test unit-testing ios macos swift,0,Run unit tests,
+Xcode-beta,⌘.,Stop,stop build run ios macos swift,0,Stop current build/run,
+Xcode-beta,⌘⇧K,Clean Build Folder,clean build ios macos swift,0,Clean build folder,
+Xcode-beta,⌘⇧R,Build and Run without Debugging,run build ios macos swift,0,Build and run without debugging,
+Xcode-beta,⌘I,Profile,profile performance debug ios macos swift,0,Profile app with Instruments,
+Xcode-beta,⌘⇧B,Archive,archive distribution ios macos swift,0,Archive for distribution,
+Xcode-beta,⌘⇧O,Quick Open File,navigation file-management productivity ios macos swift,0,Quickly open file by name,
+Xcode-beta,⌘⌃J,Jump to Definition,navigation code-navigation ios macos swift,0,Jump to definition of symbol,
+Xcode-beta,⌘3,Show Find Navigator,navigation search ios macos swift,0,Show find navigator,
+Xcode-beta,⌘4,Show Issue Navigator,debugging error-handling ios macos swift,0,Show issue navigator,
+Xcode-beta,⌘6,Show Debug Navigator,debugging runtime ios macos swift,0,Show debug navigator,
+Xcode-beta,⌘7,Show Breakpoint Navigator,debugging breakpoints ios macos swift,0,Show breakpoint navigator,
+Xcode-beta,⌘9,Show Report Navigator,build logs ios macos swift,0,Show report navigator,
+Xcode-beta,⌘⇧Y,Toggle Debug Area Visibility,debugging workspace ios macos swift,0,Toggle debug area visibility,
+Xcode-beta,⌘0,Toggle Navigator Area,workspace layout ios macos swift,0,Toggle navigator area,
+Xcode-beta,⌘⌥0,Toggle Inspector Area,workspace layout ios macos swift,0,Toggle inspector area,
+Xcode-beta,⌘/,Toggle Line Comments,editing code-formatting ios macos swift,0,Toggle line comments,
+Xcode-beta,⌘],Indent Lines,editing code-formatting ios macos swift,0,Indent selected lines,
+Xcode-beta,⌘[,Outdent Lines,editing code-formatting ios macos swift,0,Outdent selected lines,
+Xcode-beta,⌃Space,Show Code Completions,editing autocomplete ios macos swift,0,Show code completions,
+Xcode-beta,⌘⇧F,Find in Project,search global-search ios macos swift,0,Find in project,
+Xcode-beta,⌘⌥⇧F,Replace in Project,search global-replace ios macos swift,0,Replace in project,
+Xcode-beta,⌘N,New File,file-management project-management ios macos swift,0,Create new file,
+Xcode-beta,⌘⇧N,New Project,project-management ios macos swift,0,Create new project,
+Xcode-beta,⌘⇧0,Show Documentation Window,documentation reference ios macos swift,0,Show documentation window,
+Xcode-beta,⌘L,Jump to Line,navigation goto ios macos swift,0,Jump to specific line number,
+Xcode-beta,⌘\,Add/Remove Breakpoint,debugging breakpoints ios macos swift,0,Add/remove breakpoint,
+Xcode-beta,⌘⌃Y,Continue Execution,debugging runtime ios macos swift,0,Continue execution,
+GitHub Desktop,⌘T,Repository Browser,git repository-management version-control,0,Browse repositories,
+GitHub Desktop,⌘⇧O,Clone Repository,git clone version-control,0,Clone a repository,
+GitHub Desktop,⌘⇧N,Create Branch,git branching version-control,0,Create new branch,
+GitHub Desktop,⌘B,Switch Branch,git branching version-control,0,Switch between branches,
+GitHub Desktop,⌘⇧P,Pull Changes,git sync version-control,0,Pull changes from remote,
+GitHub Desktop,⌘P,Push Changes,git sync version-control,0,Push changes to remote,
+GitHub Desktop,⌘Return,Commit Staged Changes,git commit version-control,0,Commit staged changes,
+GitHub Desktop,⌘D,Show Changes Diff,git diff version-control,0,Show diff of changes,
+GitHub Desktop,⌘⌥Z,Discard Changes,git undo version-control,0,Discard selected changes,
+GitHub Desktop,⌘H,Show Commit History,git history version-control,0,Show commit history,
+GitHub Desktop,⌘⇧G,View Repository on GitHub,git web version-control,0,Open repository on GitHub.com,
+GitHub Desktop,⌘⇧A,Show in Finder,file-management git version-control,0,Show repository in Finder,
+CotEditor,⌘N,New Document,file-management text-editing,0,Create new document,
+CotEditor,⌘O,Open Document,file-management text-editing,0,Open existing document,
+CotEditor,⌘S,Save Document,file-management text-editing,0,Save current document,
+CotEditor,⌘F,Find Text,search text-editing,0,Find text in document,
+CotEditor,⌘⌥F,Find and Replace Text,search text-editing replace,0,Find and replace text,
+CotEditor,⌘L,Toggle Line Numbers,text-editing line-numbers display,0,Toggle line numbers,
+CotEditor,⌘⇧S,Change Syntax Highlighting,text-editing syntax highlighting,0,Change syntax highlighting,
+CotEditor,⌘],Increase Indentation,text-editing indentation code,0,Increase line indentation,
+CotEditor,⌘[,Decrease Indentation,text-editing indentation code,0,Decrease line indentation,
+CotEditor,⌘G,Go to Line,navigation goto text-editing,0,Go to specific line,
+Sketch,⌘D,Duplicate Object,design duplication ui-design,0,Duplicate selected object,
+Sketch,⌘G,Group Objects,design organization ui-design,0,Group selected objects,
+Sketch,⌘⇧G,Ungroup Objects,design organization ui-design,0,Ungroup selected group,
+Sketch,⌘⌥C,Copy Object Style,design styling ui-design,0,Copy object style,
+Sketch,⌘⌥V,Paste Object Style,design styling ui-design,0,Paste object style,
+Sketch,⌘0,Zoom to Fit All Content,design zoom navigation ui-design,0,Zoom to fit all content,
+Sketch,⌘1,Zoom to Selection,design zoom navigation ui-design,0,Zoom to selected object,
+Sketch,⌘2,Actual Size (100% Zoom),design zoom navigation ui-design,0,Zoom to 100%,
+Sketch,⌘⌥1,Toggle Layers Panel,design workspace ui-design,0,Toggle layers panel,
+Sketch,⌘⌥2,Toggle Inspector Panel,design workspace ui-design,0,Toggle inspector panel,
+Sketch,⌘E,Export Objects,design export ui-design,0,Export selected objects,
+Draw.io,⌘N,New Diagram,diagram flowchart design,0,Create new diagram,
+Draw.io,⌘O,Open Diagram,diagram file-management,0,Open existing diagram,
+Draw.io,⌘S,Save Diagram,diagram file-management,0,Save current diagram,
+Draw.io,⌘Z,Undo,editing undo diagram,0,Undo last action,
+Draw.io,⌘⇧Z,Redo,editing redo diagram,0,Redo last undone action,
+Draw.io,⌘C,Copy Elements,editing clipboard diagram,0,Copy selected elements,
+Draw.io,⌘V,Paste Elements,editing clipboard diagram,0,Paste copied elements,
+Draw.io,⌘A,Select All,editing selection diagram,0,Select all elements,
+Draw.io,⌘G,Group Elements,editing organization diagram,0,Group selected elements,
+Draw.io,⌘⇧G,Ungroup Elements,editing organization diagram,0,Ungroup selected group,
+Draw.io,⌘⇧],Bring to Front,editing layering diagram,0,Bring element to front,
+Draw.io,⌘⇧[,Send to Back,editing layering diagram,0,Send element to back,
+Draw.io,⌘+,Zoom In,navigation zoom diagram,0,Zoom in,
+Draw.io,⌘-,Zoom Out,navigation zoom diagram,0,Zoom out,
+Draw.io,⌘0,Fit Diagram to Page,navigation zoom diagram,0,Fit diagram to page,
+Windsurf,⌘⇧P,Open Command Palette,ai-coding command-palette code-editor,0,Open command palette,
+Windsurf,⌘S,Save File,ai-coding file-management code-editor,0,Save current file,
+Windsurf,⌘F,Find in Current File,ai-coding search code-editor,0,Find in current file,
+Windsurf,⌘⇧F,Find Across All Files,ai-coding global-search code-editor,0,Find across all files,
+Windsurf,⌘⌥F,Find and Replace,ai-coding search replace code-editor,0,Find and replace,
+Windsurf,⇧F12,Find All References,ai-coding navigation code-editor,0,Find all references,
+Windsurf,⌘/,Toggle Line Comment,ai-coding commenting code-editor,0,Toggle line comment,
+Windsurf,⌘⇧M,Show Problems Panel,ai-coding debugging code-editor,0,Show problems panel,
+Windsurf,⌘`,Open Integrated Terminal,ai-coding terminal code-editor,0,Open integrated terminal,
+Windsurf,⌘⇧E,Show File Explorer,ai-coding file-management code-editor,0,Show file explorer,
+Windsurf,⌘⇧G,Show Source Control,ai-coding git version-control code-editor,0,Show source control,
+Windsurf,⌘⇧X,Show Extensions,ai-coding extensions code-editor,0,Show extensions,
+Windsurf,⌘⇧D,Show Debug Panel,ai-coding debugging code-editor,0,Show debug panel,
+Windsurf,⌘⇧P → Tasks,Run Build/Test Tasks,ai-coding build automation code-editor,0,Run build/test tasks,
+Cursor,⌘B,Toggle Sidebar Visibility,code-editor workspace,0,Toggle sidebar visibility,
+Cursor,⌘K Z,Enter Distraction-Free Mode,code-editor focus,0,Enter distraction-free mode,
+Cursor,⌘\,Split Editor Vertically,code-editor workspace,0,Split editor vertically,
+Cursor,⌘W,Close Current Editor Tab,code-editor workspace,0,Close current editor tab,
+Cursor,⌘⇧`,Create New Terminal,code-editor terminal,0,Create new terminal,
+Cursor,⌘G,Go to Specific Line,code-editor navigation,0,Go to specific line,
+Cursor,⌥F12,Peek Definition Inline,code-editor navigation,0,Peek definition inline,
+Cursor,⌘T,Show All Symbols in Workspace,code-editor navigation,0,Show all symbols in workspace,
+ChatGPT Desktop,Option+Space,Toggle Launcher,launcher quick-access,0,Open/close the main ChatGPT launcher,
+Discord,Cmd+Shift+M,Mute/Unmute Microphone,voice communication,0,Mute or unmute microphone during voice chat,
+Discord,Cmd+Shift+D,Deafen/Undeafen,voice communication,0,Toggle deafen to stop hearing all audio,
+Discord,Cmd+Shift+O,Toggle Camera,video communication,0,Turn camera on/off during video call,
+Discord,Cmd+Shift+R,Start Voice Call,calling,0,Start a voice call in current channel/DM,
+Messages,Cmd+Shift+A,Archive Conversation,organization,0,Archive the current conversation,
+FaceTime,Cmd+Shift+M,Toggle Microphone Mute,voice communication,0,Toggle microphone mute during call,
+FaceTime,Cmd+Ctrl+F,Enter/Exit Full Screen,interface,0,Enter/exit full screen mode,
+Notion,Cmd+Shift+P,Global Search,search,0,Global search across workspace,
+VLC Media Player,Command+f,Toggle Fullscreen,media playback,0,Enter or exit fullscreen mode,
+VLC Media Player,Command+=,Faster Playback,media playback,0,Increase playback speed,
+VLC Media Player,Command+-,Slower Playback,media playback,0,Decrease playback speed,
+VLC Media Player,Command+Right,Next Track,media playback,0,Skip to next media file,
+VLC Media Player,Command+Left,Previous Track,media playback,0,Skip to previous media file,
+VLC Media Player,Command+.,Stop Playback,media playback,0,Stop playback,
+VLC Media Player,Command+Ctrl+Left,Jump Very Short Backward,media navigation,0,Jump backward by very short interval,
+VLC Media Player,Command+Ctrl+Right,Jump Very Short Forward,media navigation,0,Jump forward by very short interval,
+VLC Media Player,Command+Alt+Left,Jump Short Backward,media navigation,0,Jump backward by short interval,
+VLC Media Player,Command+Alt+Right,Jump Short Forward,media navigation,0,Jump forward by short interval,
+VLC Media Player,Command+Shift+Left,Jump Medium Backward,media navigation,0,Jump backward by medium interval,
+VLC Media Player,Command+Shift+Right,Jump Medium Forward,media navigation,0,Jump forward by medium interval,
+VLC Media Player,Command+Shift+Alt+Left,Jump Long Backward,media navigation,0,Jump backward by long interval,
+VLC Media Player,Command+Shift+Alt+Right,Jump Long Forward,media navigation,0,Jump forward by long interval,
+VLC Media Player,Ctrl+m,Open Disc Menu,media navigation,0,Open disc menu,
+VLC Media Player,Ctrl+p,Previous Title,media navigation,0,Go to previous title,
+VLC Media Player,Ctrl+n,Next Title,media navigation,0,Go to next title,
+VLC Media Player,Ctrl+u,Previous Chapter,media navigation,0,Go to previous chapter,
+VLC Media Player,Ctrl+d,Next Chapter,media navigation,0,Go to next chapter,
+VLC Media Player,Command+q,Quit VLC Application,application control,0,Exit VLC application,
+VLC Media Player,Command+Up,Volume Up,audio control,0,Increase volume,
+VLC Media Player,Command+Down,Volume Down,audio control,0,Decrease volume,
+VLC Media Player,Command+Alt+Down,Toggle Mute,audio control,0,Toggle mute,
+VLC Media Player,Shift+h,Subtitle Sync Mark Audio,subtitle control,0,Mark audio point for subtitle sync,
+VLC Media Player,Shift+j,Subtitle Sync Mark Subtitle,subtitle control,0,Mark subtitle point for sync,
+VLC Media Player,Shift+k,Subtitle Sync Apply,subtitle control,0,Apply subtitle synchronization,
+VLC Media Player,Command+Shift+k,Subtitle Sync Reset,subtitle control,0,Reset subtitle synchronization,
+VLC Media Player,Shift+a,Cycle Audio Devices,audio control,0,Cycle through audio devices,
+VLC Media Player,Alt+s,Previous Subtitle Track,subtitle control,0,Go to previous subtitle track,
+VLC Media Player,Shift+s,Toggle Subtitles,subtitle control,0,Show or hide subtitles,
+VLC Media Player,Shift+x,Previous Program/Stream,media navigation,0,Switch to previous program/stream,
+VLC Media Player,Alt+o,Increase Video Scale,video control,0,Increase video scale factor,
+VLC Media Player,Shift+Alt+o,Decrease Video Scale,video control,0,Decrease video scale factor,
+VLC Media Player,Shift+d,Cycle Deinterlacing Modes,video control,0,Cycle deinterlacing modes,
+VLC Media Player,Command+Alt+s,Take Screenshot,video control,0,Capture screenshot of video,
+VLC Media Player,Command+Shift+r,Start/Stop Recording,media recording,0,Start or stop recording,
+VLC Media Player,Shift+z,Unzoom Video,video control,0,Zoom out on video,
+VLC Media Player,Alt+i,Crop Video Top,video control,0,Crop video from top,
+VLC Media Player,Alt+Shift+i,Uncrop Video Top,video control,0,Remove top cropping,
+VLC Media Player,Alt+j,Crop Video Left,video control,0,Crop video from left,
+VLC Media Player,Alt+Shift+j,Uncrop Video Left,video control,0,Remove left cropping,
+VLC Media Player,Alt+k,Crop Video Bottom,video control,0,Crop video from bottom,
+VLC Media Player,Alt+Shift+k,Uncrop Video Bottom,video control,0,Remove bottom cropping,
+VLC Media Player,Alt+l,Crop Video Right,video control,0,Crop video from right,
+VLC Media Player,Alt+Shift+l,Uncrop Video Right,video control,0,Remove right cropping,
+VLC Media Player,Command+z,Toggle Random/Shuffle,playlist control,0,Toggle random/shuffle mode,
+VLC Media Player,Shift+l,Toggle Loop Mode,playlist control,0,Toggle loop mode,
+VLC Media Player,Command+0,Zoom to 25%,video control,0,Set zoom to 25%,
+VLC Media Player,Command+0,Zoom to 50%,video control,0,Set zoom to 50%,
+VLC Media Player,Command+1,Zoom to 100%,video control,0,Set zoom to 100%,
+VLC Media Player,Command+2,Zoom to 200%,video control,0,Set zoom to 200%,
+VLC Media Player,Command+F1,Set Bookmark 1,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F2,Set Bookmark 2,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F3,Set Bookmark 3,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F4,Set Bookmark 4,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F5,Set Bookmark 5,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F6,Set Bookmark 6,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F7,Set Bookmark 7,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+F8,Set Bookmark 8,bookmark control,0,Set bookmark at current position,
+VLC Media Player,Command+0,Reset Subtitle Text Scale,subtitle control,0,Reset subtitle text scale,
+VLC Media Player,Command+Mouse Wheel Up,Increase Subtitle Text Size,subtitle control,0,Increase subtitle text size,
+VLC Media Player,Command+Mouse Wheel Down,Decrease Subtitle Text Size,subtitle control,0,Decrease subtitle text size,
+Chrome,Cmd + Shift + T,Reopen Closed Tab,browser tab-management,0,Reopen recently closed tab,
+Chrome,Cmd + Option + Right Arrow,Next Tab,browser tab-navigation,0,Switch to next tab,
+Chrome,Cmd + Option + Left Arrow,Previous Tab,browser tab-navigation,0,Switch to previous tab,
+Chrome,Cmd + Shift + N,New Incognito Window,browser window-management privacy,0,Open a new incognito window,
+Chrome,Cmd + Shift + W,Close Window,browser window-management,0,Close current window,
+Chrome,Cmd + Shift + R,Hard Refresh,browser navigation cache,0,Hard refresh (bypass cache),
+Chrome,Cmd + Shift + H,Go to Home Page,browser navigation,0,Go to home page,
+Chrome,Cmd + Shift + O,Open Bookmarks Manager,browser bookmarks,0,Open bookmarks manager,
+Chrome,Cmd + Shift + D,Bookmark All Open Tabs,browser bookmarks,0,Bookmark all open tabs,
+Chrome,Cmd + Shift + J,Open Downloads Page,browser downloads,0,Open downloads page,
+Chrome,Cmd + Option + I,Open Developer Tools,browser developer-tools,0,Open developer tools,
+Chrome,Cmd + Option + J,Open JavaScript Console,browser developer-tools,0,Open JavaScript console,
+Chrome,Cmd + Option + U,View Page Source Code,browser developer-tools,0,View page source code,
+Chrome,Cmd + Shift + G,Find Previous Occurrence,browser search,0,Find previous occurrence,
+Chrome,Shift + Escape,Open Chrome Task Manager,browser system-tools,0,Open Chrome task manager,
+Chrome,Cmd + Shift + M,Browse as Guest,browser privacy,0,Browse as guest,
+Chrome,Cmd + Control + F,Toggle Full Screen Mode,browser view,0,Toggle full screen mode,
+Safari,Cmd + Shift + N,New Private Window,browser window-management privacy,0,Open a new private window,
+Safari,Cmd + Option + 2,Show All Browsing History,browser history,0,Show all browsing history,
+Safari,Cmd + Option + B,Show Bookmarks,browser bookmarks,0,Show bookmarks,
+Safari,Cmd + Shift + D,Add Page to Reading List,browser reading-list,0,Add page to reading list,
+Safari,Cmd + Shift + L,Show Reading List Sidebar,browser reading-list,0,Show reading list sidebar,
+Safari,Cmd + Option + L,Show Downloads,browser downloads,0,Show downloads,
+Safari,Cmd + Option + I,Open Web Inspector,browser developer-tools,0,Open web inspector,
+Safari,Cmd + Shift + Backslash,Hide/Show Toolbar,browser view,0,Hide/show toolbar,
+Safari,Cmd + Option + 1,Show Top Sites Page,browser navigation,0,Show top sites page,
+Safari,Shift + Cmd + Backslash,Show Tab Overview,browser tab-management,0,Show tab overview,
+Arc Browser,Cmd + Shift + T,Restore Recently Closed Tab,browser tab-management,0,Restore recently closed tab,
+Arc Browser,Cmd + Shift + N,New Little Arc Window,browser window-management,0,Open new Little Arc window,
+Arc Browser,Cmd + Shift + D,Open Split View Mode,browser view,0,Open split view mode,
+Arc Browser,Cmd + Shift + P,Toggle Picture-in-Picture,browser media,0,Toggle picture-in-picture,
+Raycast,Shift-Option-Command-15,Global Launcher,productivity launcher hotkeys,0,Main application launcher shortcut,
+Raycast,⌘W,Quick Close Window,productivity window-management,0,Close Raycast window quickly,
+Raycast,File Search,Spotlight Alternative,productivity search launcher,0,Enhanced file and application search,
+ChatGPT,Shift+Alt+1,Toggle Attached Launcher,ai chatbot launcher attachments,0,Open ChatGPT launcher with attachment options,
+Ice,⌃F5,Toggle Always Hidden Section,menu-bar-management,0,Toggle visibility of always hidden menu bar items,
+Ice,⌃B,Toggle Hidden Section,menu-bar-management,0,Toggle visibility of hidden menu bar items,
+Sidekick AI,Cmd+Shift+I,Toggle Inline Assistant,ai productivity entertainment,0,Toggle the inline AI assistant interface,
+Finder,Cmd+Shift+.,Toggle Hidden Files Visibility,file_visibility navigation finder,0,Toggle hidden files visibility,
+Finder,Cmd+Shift+N,Create New Folder,file_operations finder folder_creation,0,Create new folder,
+Finder,Cmd+Shift+Delete,Empty Trash Completely,trash_management finder cleanup,0,Empty trash completely,
+Finder,Cmd+Shift+G,Navigate to Specific Folder Path,navigation finder path_navigation,0,Navigate to specific folder path,
+Finder,Cmd+Shift+C,Navigate to Computer View,navigation finder computer_view,0,Navigate to computer view,
+Finder,Cmd+Shift+D,Navigate to Desktop Folder,navigation finder desktop,0,Navigate to desktop folder,
+Finder,Cmd+Shift+O,Navigate to Documents Folder,navigation finder documents,0,Navigate to documents folder,
+Finder,Cmd+Alt+L,Navigate to Downloads Folder,navigation finder downloads,0,Navigate to downloads folder,
+Finder,Cmd+Shift+H,Navigate to Home Folder,navigation finder home,0,Navigate to home folder,
+Finder,Cmd+Shift+A,Navigate to Applications Folder,navigation finder applications,0,Navigate to applications folder,
+Finder,Cmd+Shift+U,Navigate to Utilities Folder,navigation finder utilities,0,Navigate to utilities folder,
+Finder,Cmd+Alt+T,Toggle Toolbar Visibility,interface finder toolbar,0,Toggle toolbar visibility,
+Finder,Cmd+Alt+P,Toggle Path Bar Visibility,interface finder path_bar,0,Toggle path bar visibility,
+macOS,Option-Command-Esc,Force Quit App,macos app-management,0,Force quit an app.,App management
+macOS,Command-Tab,App Switcher,macos app-management,0,Switch to the next most recently used app among your open apps.,App management
+macOS,Command-F,Find Items/Open Find Window,macos search,0,Find items in a document or open a Find window.,Common Shortcuts
+macOS,Command-G,Find Next Occurrence,macos search,0,Find the next occurrence of the item previously found.,Common Shortcuts
+macOS,Command-H,Hide Front App Windows,macos window-management,0,Hide the windows of the front app.,Common Shortcuts
+macOS,Command-M,Minimize Front Window,macos window-management,0,Minimize the front window to the Dock.,Common Shortcuts
+macOS,Command-P,Open Print Dialog,macos printing,0,Open a print dialog so that you can print the current document.,Common Shortcuts
+macOS,Command-Q,Quit Current App,macos app-management,0,Quit the current app.,Common Shortcuts
+macOS,Command-S,Save Current Document,macos file-management,0,Save the current document.,Common Shortcuts
+macOS,Command-T,Open New Tab,macos tab-management,0,Open a new tab.,Common Shortcuts
+macOS,Command-W,Close Front Window,macos window-management,0,Close the front window.,Common Shortcuts
+macOS,Quick Look Selected Item,Space bar,macos quick-look preview,0,Use Quick Look to preview the selected item.,Common Shortcuts
+macOS,Switch App Windows,Command–Grave accent (`),macos app-management window-management,0,Switch between the windows of the app you're using.,Common Shortcuts
+macOS,Shift-Command-5,Take Screenshot/Screen Recording,macos screenshot screen-recording,0,Take a screenshot or make a screen recording.,Common Shortcuts
+macOS,Shift-Command-N,Create New Empty Folder (Finder),finder file-management,0,Create a new empty folder in the Finder.,Common Shortcuts
+macOS,Control-Command-N,Create New Folder with Selected Items,finder file-management,0,Create a new folder that contains the currently selected items.,Common Shortcuts
+macOS,Fn-Q,Create Quick Note,macos notes quick-note,0,Create a Quick Note.,Common Shortcuts
+macOS,Command-D,Duplicate Selected Files,finder file-management,0,Duplicate the selected files.,Finder & System
+macOS,Command-E,Eject Disk/Volume,finder file-management,0,Eject the selected disk or volume.,Finder & System
+macOS,Command-F,Start Spotlight Search (Finder),finder search,0,Start a Spotlight search in the Finder window.,Finder & System
+macOS,Command-I,Show Get Info Window,finder file-info,0,Show the Get Info window for a selected file.,Finder & System
+macOS,Command-R,Show Original File (Alias),finder alias,0,When an alias is selected in the Finder: show the original file for the selected alias.,Finder & System
+macOS,Shift-Command-C,Open Computer Window,finder navigation,0,Open the Computer window.,Finder & System
+macOS,Shift-Command-D,Open Desktop Folder,finder navigation,0,Open the desktop folder.,Finder & System
+macOS,Shift-Command-G,Open Go to Folder Window,finder navigation,0,Open a Go to Folder window.,Finder & System
+macOS,Shift-Command-H,Open Home Folder,finder navigation,0,Open the Home folder of the current macOS user account.,Finder & System
+macOS,Shift-Command-I,Open iCloud Drive,finder navigation,0,Open iCloud Drive.,Finder & System
+macOS,Shift-Command-K,Open Network Window,finder navigation,0,Open the Network window.,Finder & System
+macOS,Option-Command-L,Open Downloads Folder,finder navigation,0,Open the Downloads folder.,Finder & System
+macOS,Shift-Command-O,Open Documents Folder,finder navigation,0,Open the Documents folder.,Finder & System
+macOS,Shift-Command-P,Show/Hide Preview Pane (Finder),finder display,0,Show or hide the Preview pane in Finder windows.,Finder & System
+macOS,Shift-Command-R,Open AirDrop Window,finder airdrop,0,Open the AirDrop window.,Finder & System
+macOS,Shift-Command-T,Show/Hide Tab Bar (Finder),finder display,0,Show or hide the tab bar in Finder windows.,Finder & System
+macOS,Control-Shift-Command-T,Add Finder Item to Dock,finder dock,0,Add selected Finder item to the Dock (OS X Mavericks or later).,Finder & System
+macOS,Control-Shift,Toggle Dock Magnification,macos dock,0,Press and hold while accessing the Dock to use or stop using Dock magnification.,Finder & System
+macOS,Shift-Command-U,Open Utilities Folder,finder navigation,0,Open the Utilities folder.,Finder & System
+macOS,Option-Command-D,Show/Hide Dock,macos dock,0,Show or hide the Dock.,Finder & System
+macOS,Control-Command-T,Add Item to Sidebar,finder sidebar,0,Add the selected item to the sidebar (OS X Mavericks or later).,Finder & System
+macOS,Option-Command-P,Hide/Show Path Bar (Finder),finder display,0,Hide or show the path bar in Finder windows.,Finder & System
+macOS,Option-Command-S,Hide/Show Sidebar (Finder),finder display,0,Hide or show the Sidebar in Finder windows.,Finder & System
+macOS,Hide/Show Status Bar (Finder),Command–Slash (/),finder display,0,Hide or show the status bar in Finder windows.,Finder & System
+macOS,Command-J,Show View Options,finder display,0,Show View Options.,Finder & System
+macOS,Command-K,Open Connect to Server Window,finder network,0,Open the Connect to Server window.,Finder & System
+macOS,Control-Command-A,Make Alias of Selected Item,finder alias,0,Make an alias of the selected item.,Finder & System
+macOS,Command-N,Open New Finder Window,finder window-management,0,Open a new Finder window.,Finder & System
+macOS,Option-Command-N,Create New Smart Folder,finder folder-management,0,Create a new Smart Folder.,Finder & System
+macOS,Command-T,Show/Hide Tab Bar (Single Tab),finder display,0,Show or hide the tab bar when a single tab is open in the current Finder window.,Finder & System
+macOS,Option-Command-T,Show/Hide Toolbar (Single Tab),finder display,0,Show or hide the toolbar when a single tab is open in the current Finder window.,Finder & System
+macOS,Option-Command-V,Move Files from Clipboard,finder clipboard,0,Move the files in the Clipboard from their original location to the current location.,Finder & System
+macOS,Command-Y,Quick Look Selected Files,finder quick-look preview,0,Use Quick Look to preview the selected files.,Finder & System
+macOS,Option-Command-Y,Quick Look Slideshow,finder quick-look slideshow,0,View a Quick Look slideshow of the selected files.,Finder & System
+macOS,Command-1,View as Icons,finder view,0,View the items in the Finder window as icons.,Finder & System
+macOS,Command-2,View as List,finder view,0,View the items in a Finder window as a list.,Finder & System
+macOS,Command-3,View as Columns,finder view,0,View the items in a Finder window in columns.,Finder & System
+macOS,Command-4,View as Gallery,finder view,0,View the items in a Finder window in a gallery.,Finder & System
+macOS,Go to Previous Folder,Command–Left Bracket ([),finder navigation,0,Go to the previous folder.,Finder & System
+macOS,Go to Next Folder,Command–Right Bracket (]),finder navigation,0,Go to the next folder.,Finder & System
+macOS,Open Parent Folder,Command–Up Arrow,finder navigation,0,Open the folder that contains the current folder.,Finder & System
+macOS,Open Parent Folder in New Window,Control–Command–Up Arrow,finder navigation,0,Open the folder that contains the current folder in a new window.,Finder & System
+macOS,Open Selected Item,Command–Down Arrow,finder file-management,0,Open the selected item.,Finder & System
+macOS,Right Arrow,Open Selected Folder (List View),finder navigation,0,Open the selected folder. This works only when in list view.,Finder & System
+macOS,Left Arrow,Close Selected Folder (List View),finder navigation,0,Close the selected folder. This works only when in list view.,Finder & System
+macOS,Command-Delete,Move Selected Item to Trash,finder trash,0,Move the selected item to the Trash.,Finder & System
+macOS,Shift-Command-Delete,Empty Trash,finder trash,0,Empty the Trash.,Finder & System
+macOS,Option-Shift-Command-Delete,Empty Trash (No Confirmation),finder trash,0,Empty the Trash without confirmation dialog.,Finder & System
+macOS,Toggle Video Mirroring,Command–Brightness Down,macos display,0,Turn video mirroring on or off when your Mac is connected to more than one display.,Finder & System
+macOS,Open Displays Settings,Option–Brightness Up,macos display settings,0,Open Displays settings. This works with either Brightness key.,Finder & System
+macOS,Open Mission Control Settings,Option–Mission Control,macos mission-control settings,0,Open Mission Control settings.,Finder & System
+macOS,Command–Mission Control or Fn-H or Fn-F11,Show Desktop,macos desktop,0,Show the desktop.,Finder & System
+macOS,Open Mission Control,Control–Up Arrow,macos mission-control,0,Open Mission Control.,Finder & System
+macOS,Show All Windows of Front App,Control–Down Arrow,macos window-management,0,Show all windows of the front app.,Finder & System
+macOS,Open Sound Settings,Option–Volume Up,macos audio settings,0,Open Sound settings. This works with any of the volume keys.,Finder & System
+macOS,Adjust Sound Volume (Smaller Steps),Option–Shift–Volume Up or Option–Shift–Volume Down,macos audio,0,Adjust the sound volume in smaller steps.,Finder & System
+macOS,Open Keyboard Settings,Option–Keyboard Brightness Up,macos keyboard settings,0,Open Keyboard settings. This works with either Keyboard Brightness key.,Finder & System
+macOS,Adjust Keyboard Brightness (Smaller Steps),Option–Shift–Keyboard Brightness Up or Option–Shift–Keyboard Brightness Down,macos keyboard,0,Adjust the keyboard brightness in smaller steps.,Finder & System
+macOS,Command key while double-clicking,Open Folder in New Tab/Window,finder file-management,0,Open a folder in a separate tab or window.,Finder & System
+macOS,Option key while dragging,Copy Dragged Item,finder file-management,0,Copy the dragged item. The pointer changes while you drag the item.,Finder & System
+macOS,Option-Command while dragging,Make Alias of Dragged Item,finder file-management,0,Make an alias of the dragged item. The pointer changes while you drag the item.,Finder & System
+macOS,Option-click a disclosure triangle,Open All Folders Within Selected Folder,finder navigation,0,Open all folders within the selected folder. This works only when in list view.,Finder & System
+macOS,Command-click a window title,See Parent Folders (Window Title),finder navigation,0,See the folders that contain the current folder.,Finder & System
+macOS,Command or Shift while selecting an item,Select Multiple Items,finder selection,0,Select multiple items in the Finder.,Finder & System
+macOS,Fn-C,Show/Hide Control Center,macos control-center,0,Show or hide Control Center.,Finder & System
+macOS,Fn-D,Start/Stop Dictation,macos dictation,0,Start or stop dictation. You may be able to set a different dictation shortcut in Keyboard settings.,Finder & System
+macOS,Fn-N,Show/Hide Notification Center,macos notifications,0,Show or hide Notification Center.,Finder & System
+macOS,Fn-Shift-A,Show/Hide Launchpad,macos launchpad,0,Show or hide Launchpad.,Finder & System
+macOS,Fn-Fn,Open Character Viewer (Fn-Fn),macos text-work symbols,0,Open the Character Viewer.,Finder & System
+macOS,Command + Command (press twice),Open/Close Type to Siri,macos siri,0,Open or close Type to Siri.,Finder & System
+macOS,Command-K,Add Web Link,macos text-editing,0,Add a web link.,Text-editing
+macOS,Command-T,Show/Hide Fonts Window,macos text-editing,0,Show or hide the Fonts window.,Text-editing
+macOS,Command-D,Select Desktop Folder (Open/Save Dialog),macos text-editing,0,Select the Desktop folder from within an Open dialog or Save dialog.,Text-editing
+macOS,Control-Command-D,Show/Hide Word Definition,macos text-editing,0,Show or hide the definition of the selected word.,Text-editing
+macOS,Shift-Command-Colon (:),Show Spelling and Grammar Window,macos text-editing,0,Show the Spelling and Grammar window.,Text-editing
+macOS,Command-Semicolon (;),Find Misspelled Words,macos text-editing,0,Find misspelled words in the document.,Text-editing
+macOS,Option-Delete,Delete Word to Left,macos text-editing,0,Delete the word to the left of the insertion point.,Text-editing
+macOS,Control-H,Delete Character to Left,macos text-editing,0,Delete the character to the left of the insertion point.,Text-editing
+macOS,Control-D,Delete Character to Right,macos text-editing,0,Delete the character to the right of the insertion point.,Text-editing
+macOS,Fn-Delete,Forward Delete,macos text-editing,0,Forward delete on keyboards that don't have a Forward Delete key.,Text-editing
+macOS,Control-K,Delete to End of Line/Paragraph,macos text-editing,0,Delete the text between the insertion point and the end of the line or paragraph.,Text-editing
+macOS,Scroll Up One Page,Fn–Up Arrow,macos text-editing,0,Scroll up one page.,Text-editing
+macOS,Scroll Down One Page,Fn–Down Arrow,macos text-editing,0,Scroll down one page.,Text-editing
+macOS,Scroll to Beginning of Document,Fn–Left Arrow,macos text-editing,0,Scroll to the beginning of a document.,Text-editing
+macOS,Scroll to End of Document,Fn–Right Arrow,macos text-editing,0,Scroll to the end of a document.,Text-editing
+macOS,Move Insertion Point to Document Beginning,Command–Up Arrow,macos text-editing,0,Move the insertion point to the beginning of the document.,Text-editing
+macOS,Move Insertion Point to Document End,Command–Down Arrow,macos text-editing,0,Move the insertion point to the end of the document.,Text-editing
+macOS,Move Insertion Point to Line Beginning,Command–Left Arrow,macos text-editing,0,Move the insertion point to the beginning of the current line.,Text-editing
+macOS,Move Insertion Point to Line End,Command–Right Arrow,macos text-editing,0,Move the insertion point to the end of the current line.,Text-editing
+macOS,Move Insertion Point to Previous Word Beginning,Option–Left Arrow,macos text-editing,0,Move the insertion point to the beginning of the previous word.,Text-editing
+macOS,Move Insertion Point to Next Word End,Option–Right Arrow,macos text-editing,0,Move the insertion point to the end of the next word.,Text-editing
+macOS,Select Text to Document Beginning,Shift–Command–Up Arrow,macos text-editing,0,Select the text between the insertion point and the beginning of the document.,Text-editing
+macOS,Select Text to Document End,Shift–Command–Down Arrow,macos text-editing,0,Select the text between the insertion point and the end of the document.,Text-editing
+macOS,Select Text to Line Beginning,Shift–Command–Left Arrow,macos text-editing,0,Select the text between the insertion point and the beginning of the current line.,Text-editing
+macOS,Select Text to Line End,Shift–Command–Right Arrow,macos text-editing,0,Select the text between the insertion point and the end of the current line.,Text-editing
+macOS,Extend Selection Up One Line,Shift–Up Arrow,macos text-editing,0,Extend text selection to the nearest character at the same horizontal location on the line above.,Text-editing
+macOS,Extend Selection Down One Line,Shift–Down Arrow,macos text-editing,0,Extend text selection to the nearest character at the same horizontal location on the line below.,Text-editing
+macOS,Extend Selection Left One Character,Shift–Left Arrow,macos text-editing,0,Extend text selection one character to the left.,Text-editing
+macOS,Extend Selection Right One Character,Shift–Right Arrow,macos text-editing,0,Extend text selection one character to the right.,Text-editing
+macOS,Control-A,Move to Line/Paragraph Beginning,macos text-editing,0,Move to the beginning of the line or paragraph.,Text-editing
+macOS,Control-E,Move to Line/Paragraph End,macos text-editing,0,Move to the end of a line or paragraph.,Text-editing
+macOS,Control-F,Move One Character Forward,macos text-editing,0,Move one character forward.,Text-editing
+macOS,Control-B,Move One Character Backward,macos text-editing,0,Move one character backward.,Text-editing
+macOS,Control-L,Center Cursor/Selection,macos text-editing,0,Center the cursor or selection in the visible area.,Text-editing
+macOS,Control-P,Move Up One Line,macos text-editing,0,Move up one line.,Text-editing
+macOS,Control-N,Move Down One Line,macos text-editing,0,Move down one line.,Text-editing
+macOS,Control-O,Insert New Line After Insertion Point,macos text-editing,0,Insert a new line after the insertion point.,Text-editing
+macOS,Control-T,Swap Characters,macos text-editing,0,Swap the character behind the insertion point with the character in front of the insertion point.,Text-editing
+macOS,Left Align Text,Command–Left Curly Bracket ({),macos text-editing,0,Left align.,Text-editing
+macOS,Right Align Text,Command–Right Curly Bracket (}),macos text-editing,0,Right align.,Text-editing
+macOS,Center Align Text,Shift–Command–Vertical bar (|),macos text-editing,0,Center align.,Text-editing
+macOS,Option-Command-F,Go to Search Field,macos text-editing,0,Go to the search field.,Text-editing
+macOS,Option-Command-T,Show/Hide Toolbar (App),macos app-interface,0,Show or hide a toolbar in the app.,Text-editing
+macOS,Option-Command-C,Copy Style,macos text-editing,0,Copy Style: Copy the formatting settings of the selected item to the Clipboard.,Text-editing
+macOS,Option-Command-V,Paste Style,macos text-editing,0,Paste Style: Apply the copied style to the selected item.,Text-editing
+macOS,Option-Shift-Command-V,Paste and Match Style,macos text-editing,0,Paste and Match Style: Apply the style of the surrounding content to the item pasted within that content.,Text-editing
+macOS,Option-Command-I,Show/Hide Inspector Window,macos app-interface,0,Show or hide the inspector window.,Text-editing
+macOS,Shift-Command-P,Page Setup,macos printing,0,Page setup: Show a window for selecting document settings.,Text-editing
+macOS,Shift–Command–Minus sign (-),Decrease Selected Item Size,macos text-editing,0,Decrease the size of the selected item.,Text-editing
+macOS,Shift–Command–Plus sign (+),Increase Selected Item Size,macos text-editing,0,Increase the size of the selected item. Command–Equal sign (=) performs the same function.,Text-editing
+macOS,Open Help Menu,Shift–Command–Question mark (?),macos help,0,Open the Help menu.,Text-editing
+macOS,Control-Option-Command-8,Invert Colors,macos accessibility vision,0,Invert colors.,Accessibility - Vision
+macOS,Control-Option-Command-Period (. ),Increase Contrast,macos accessibility vision,0,Increase contrast.,Accessibility - Vision
+macOS,Control-F2 or Fn-Control-F2,Move Focus to Menu Bar,macos accessibility keyboard-focus,0,Move focus to the menu bar.,Accessibility - Keyboard Focus
+macOS,Control-F3 or Fn-Control-F3,Move Focus to Dock,macos accessibility keyboard-focus,0,Move focus to the Dock.,Accessibility - Keyboard Focus
+macOS,Control-F4 or Fn-Control-F4,Move Focus to Active/Next Window,macos accessibility keyboard-focus,0,Move focus to the active window or next window.,Accessibility - Keyboard Focus
+macOS,Control-F5 or Fn-Control-F5,Move Focus to Window Toolbar,macos accessibility keyboard-focus,0,Move focus to the window toolbar.,Accessibility - Keyboard Focus
+macOS,Control-F6 or Fn-Control-F6,Move Focus to Floating Window,macos accessibility keyboard-focus,0,Move focus to the floating window.,Accessibility - Keyboard Focus
+macOS,Control-Shift-F6,Move Focus to Previous Panel,macos accessibility keyboard-focus,0,Move focus to the previous panel.,Accessibility - Keyboard Focus
+macOS,Control-F8 or Fn-Control-F8,Move Focus to Status Menu,macos accessibility keyboard-focus,0,Move focus to the status menu in the menu bar.,Accessibility - Keyboard Focus
+macOS,Activate Next Open Window (Front App),Command–Grave accent (`),macos accessibility keyboard-focus,0,Activate the next open window in the front app.,Accessibility - Keyboard Focus
+macOS,Activate Previous Open Window (Front App),Shift–Command–Grave accent (`),macos accessibility keyboard-focus,0,Activate the previous open window in the front app.,Accessibility - Keyboard Focus
+macOS,Move Focus to Window Drawer,Option–Command–Grave accent (`),macos accessibility keyboard-focus,0,Move the focus to the window drawer.,Accessibility - Keyboard Focus
+macOS,Tab,Move to Next Control,macos accessibility keyboard-focus,0,Move to next control.,Accessibility - Keyboard Focus
+macOS,Shift-Tab,Move to Previous Control,macos accessibility keyboard-focus,0,Move to previous control.,Accessibility - Keyboard Focus
+macOS,Control-Tab,Move to Next Control (Text Field Selected),macos accessibility keyboard-focus,0,Move to the next control when a text field is selected.,Accessibility - Keyboard Focus
+macOS,Control-Shift-Tab,Move to Previous Grouping of Controls,macos accessibility keyboard-focus,0,Move to the previous grouping of controls.,Accessibility - Keyboard Focus
+macOS,Move to Control Adjacent to Text Field,Control–Arrow keys,macos accessibility keyboard-focus,0,Move to a control adjacent to the text field.,Accessibility - Keyboard Focus
+Find My,Command-1,Switch to People List,macos find-my sidebar,0,Switch to the People list,Find My - Sidebar
+Find My,Command-2,Switch to Devices List,macos find-my sidebar,0,Switch to the Devices list,Find My - Sidebar
+Find My,Command-3,Switch to Items List,macos find-my sidebar,0,Switch to the Items list,Find My - Sidebar
+Find My,Rotate Map,Click and hold the compass while you drag,macos find-my map,0,Rotate the map,Find My - Map
+Find My,Double-click the map or Command-Plus Sign (+),Zoom In (Map),macos find-my map,0,Zoom in,Find My - Map
+Find My,Command-Minus Sign (-),Zoom Out (Map),macos find-my map,0,Zoom out,Find My - Map
+Find My,Shift-Command-L,Share My Location,macos find-my general,0,Share My Location,Find My - General
+Find My,Command-H,Hide Find My,macos find-my general,0,Hide Find My,Find My - General
+Find My,Option-Command-H,Hide Everything Except Find My,macos find-my general,0,Hide everything except Find My,Find My - General
+Find My,Command-Q,Quit Find My,macos find-my general,0,Quit Find My,Find My - General
+Find My,Command-W,Close Find My Window,macos find-my general,0,Close the Find My window,Find My - General
+Find My,Command-M,Minimize Window,macos find-my general,0,Minimize a window,Find My - General
+Find My,Control-Command-F,Enter or Exit Full-screen View,macos find-my general,0,Enter or exit full-screen view,Find My - General
+Calendar,Command-T,Go to Today's Date,macos calendar navigation,0,Go to today’s date,Calendar - Navigation
+Calendar,Shift-Command-T,Go to Specific Date,macos calendar navigation,0,Go to a specific date,Calendar - Navigation
+Calendar,Command-1,Switch to Day View,macos calendar view,0,Switch to Day view,Calendar - View
+Calendar,Command-2,Switch to Week View,macos calendar view,0,Switch to Week view,Calendar - View
+Calendar,Command-3,Switch to Month View,macos calendar view,0,Switch to Month view,Calendar - View
+Calendar,Command-4,Switch to Year View,macos calendar view,0,Switch to Year view,Calendar - View
+Calendar,Control-Command-F,Switch to Full-Screen View,macos calendar view,0,Switch to full-screen view,Calendar - View
+Calendar,Escape,Exit Full-Screen View,macos calendar view,0,Exit full-screen view,Calendar - View
+Calendar,Command-Plus Sign (+),Make Text Bigger,macos calendar text-size,0,Make text bigger,Calendar - Text Size
+Calendar,Command-Minus Sign (–),Make Text Smaller,macos calendar text-size,0,Make text smaller,Calendar - Text Size
+Calendar,Command-R,Refresh All Calendars,macos calendar sync,0,Refresh all calendars,Calendar - Calendars
+Calendar,Select/Deselect Calendar Checkbox,Space bar (with calendar list open),macos calendar selection,0,Select or deselect the checkbox next to the selected calendar,Calendar - Calendars
+Calendar,Command-click any calendar’s checkbox,Select/Deselect All Calendar Checkboxes,macos calendar selection,0,Select or deselect all the checkboxes next to calendars in the Calendar list,Calendar - Calendars
+Calendar,Option-Command-click any calendar’s checkbox,Select Calendar and Deselect Others,macos calendar selection,0,Select the checkbox next to the selected calendar and deselect all other checkboxes,Calendar - Calendars
+Calendar,Shift-Command-N,Add New Calendar Group,macos calendar organization,0,Add a new calendar group,Calendar - Calendars
+Calendar,Option-Command-S,Add New Subscribed Calendar,macos calendar organization,0,Add a new subscribed calendar,Calendar - Calendars
+Calendar,Command-N,Add New Event,macos calendar events,0,Add a new event,Calendar - Events
+Calendar,Command-E,Edit Selected Event,macos calendar events,0,Edit the selected event,Calendar - Events
+Calendar,Option-Command-I,Edit Selected Event in Inspector,macos calendar events,0,Edit the selected event in the inspector window,Calendar - Events
+Calendar,Go to Next Field (Event Open),Tab (while an event is open),macos calendar navigation,0,Go to the next field,Calendar - Events
+Calendar,Shift-Tab (while an event is open),Go to Previous Field (Event Open),macos calendar navigation,0,Go to the previous field,Calendar - Events
+Calendar,Close Event Editor,Return or Escape (while an event is open),macos calendar events,0,Close the event editor,Calendar - Events
+Calendar,Tab,Select Next Event,macos calendar events,0,Select the next event,Calendar - Events
+Calendar,Shift-Tab,Select Previous Event,macos calendar events,0,Select the previous event,Calendar - Events
+Calendar,Select Next or Previous Event,Arrow keys,macos calendar events,0,Select the next or previous event,Calendar - Events
+Calendar,Command-F,Search for Events,macos calendar search,0,Search for events,Calendar - Events
+Calendar,Control-Option–Up Arrow,Move Event 15 Minutes Earlier (Day/Week View),macos calendar events,0,Move the selected event 15 minutes earlier (in Day or Week view),Calendar - Events
+Calendar,Control-Option–Up Arrow,Move Event One Week Earlier (Month View),macos calendar events,0,Move the selected event one week earlier (in Month view),Calendar - Events
+Calendar,Control-Option–Down Arrow,Move Event 15 Minutes Later (Day/Week View),macos calendar events,0,Move the selected event 15 minutes later (in Day or Week view),Calendar - Events
+Calendar,Control-Option–Down Arrow,Move Event One Week Later (Month View),macos calendar events,0,Move the selected event one week later (in Month view),Calendar - Events
+Calendar,Control-Option–Right Arrow,Move Event One Day Later (Week/Month View),macos calendar events,0,Move the selected event one day later (in Week or Month view),Calendar - Events
+Calendar,Control-Option–Left Arrow,Move Event One Day Earlier (Week/Month View),macos calendar events,0,Move the selected event one day earlier (in Week or Month view),Calendar - Events
+Calendar,Command-I,Show Information for Calendar/Event,macos calendar information,0,Show information for a calendar or event,Calendar - Events
+Calendar,Command-P,Print Selected Events/Time Range,macos calendar printing,0,Print the selected events or events in a time range,Calendar - Events
+Calendar,Shift-Command-A,Show/Hide Availability Panel,macos calendar events,0,Show or hide the Availability panel,Calendar - Events
+Calendar,Command-comma,Open Calendar Settings,macos calendar settings,0,Open Calendar settings,Calendar - Settings
+App Store,Command-1,Display Discover Apps,macos app-store navigation,0,Display Discover apps,App Store
+App Store,Command-2,Display Arcade Apps,macos app-store navigation,0,Display Arcade apps,App Store
+App Store,Command-3,Display Create Apps,macos app-store navigation,0,Display Create apps,App Store
+App Store,Command-4,Display Work Apps,macos app-store navigation,0,Display Work apps,App Store
+App Store,Command-5,Display Play Apps,macos app-store navigation,0,Display Play apps,App Store
+App Store,Command-6,Display Develop Apps,macos app-store navigation,0,Display Develop apps,App Store
+App Store,Command-7,Display Categories Apps,macos app-store navigation,0,Display Categories apps,App Store
+App Store,Command-8,Display Updates,macos app-store navigation,0,Display Updates,App Store
+App Store,Command-F,Search for an App,macos app-store search,0,Search for an app,App Store
+App Store,Command-R,Refresh Current Page,macos app-store refresh,0,Refresh the current page,App Store
+App Store,Command-Left bracket ([),Go to Previous Page,macos app-store navigation,0,Go to the previous page,App Store
+Keynote,Fn-D,Start Dictation,apple productivity dictation,0,Start dictation,Keynote - General
+Keynote,Command-N,Open Theme Chooser,apple productivity presentation,0,Open the theme chooser,Keynote - General
+Keynote,Option-Command-N,Open Theme Chooser & Show Language Pop-up,apple productivity presentation,0,Open the theme chooser and show the Language pop-up menu,Keynote - General
+Keynote,Esc,Close Theme Chooser,apple productivity presentation,0,Close the theme chooser,Keynote - General
+Keynote,Command-O,Open Existing Presentation,apple productivity file-management,0,Open an existing presentation,Keynote - General
+Keynote,Command-S,Save Presentation,apple productivity file-management,0,Save a presentation,Keynote - General
+Keynote,Option-Shift-Command-S,Save As,apple productivity file-management,0,Save as,Keynote - General
+Keynote,Shift-Command-S,Duplicate Presentation,apple productivity file-management,0,Duplicate a presentation,Keynote - General
+Keynote,Command-P,Print Presentation,apple productivity printing,0,Print a presentation,Keynote - General
+Keynote,Shift-Command-Question Mark (?),Open Keynote User Guide,apple productivity help,0,Open the Keynote User Guide,Keynote - General
+Keynote,Option-Command-W,Close All Windows,apple productivity window-management,0,Close all windows,Keynote - General
+Keynote,Option-Command-M,Minimize All Windows,apple productivity window-management,0,Minimize all windows,Keynote - General
+Keynote,Control-Command-F,Enter Full-screen View,apple productivity view,0,Enter full-screen view,Keynote - General
+Keynote,Option-Shift-Command-0,Zoom to Fit Content,apple productivity zoom,0,Zoom to fit content (including objects on the extended canvas) in the window,Keynote - General
+Keynote,Option-Command-0,Fit Slide in Window,apple productivity zoom,0,Fit slide in the window,Keynote - General
+Keynote,Command-0,Return to Actual Size,apple productivity zoom,0,Return to actual size,Keynote - General
+Keynote,Command-R,Show Presentation Rulers,apple productivity display,0,Show the presentation rulers,Keynote - General
+Keynote,Shift-Command-V,Choose File to Insert,apple productivity file-management,0,Choose a file to insert,Keynote - General
+Keynote,Shift-Command-C,Show Colors Window,apple productivity interface,0,Show the Colors window,Keynote - General
+Keynote,Option-Command-T,Hide or Show Toolbar,apple productivity interface,0,Hide or show the toolbar,Keynote - General
+Keynote,Command-drag,Rearrange Item in Toolbar,apple productivity interface,0,Rearrange an item in the toolbar,Keynote - General
+Keynote,Command-drag away from the toolbar,Remove Item from Toolbar,apple productivity interface,0,Remove an item from the toolbar,Keynote - General
+Keynote,Option-Command-I,Hide or Show Inspector Sidebars,apple productivity interface,0,Hide or show inspector sidebars,Keynote - General
+Keynote,Shift-Command-L,Hide or Show Object List,apple productivity interface,0,Hide or show the object list,Keynote - General
+Keynote,Command-A,Select All Object Types (Object List Filter),apple productivity selection,0,Select all object types in the object list filter menu,Keynote - General
+Keynote,Shift-Command-A,Deselect All Object Types (Object List Filter),apple productivity selection,0,Deselect all object types in the object list filter menu,Keynote - General
+Keynote,Control-Grave (`),Open Next Tab in Sidebar,apple productivity navigation,0,Open the next tab in the sidebar,Keynote - General
+Keynote,Shift-Control-Grave (`),Open Previous Tab in Sidebar,apple productivity navigation,0,Open the previous tab in the sidebar,Keynote - General
+Keynote,Shift-Command-E,Enter or Exit Edit Slide Layouts View,apple productivity layout,0,Enter or exit Edit Slide Layouts view,Keynote - General
+Keynote,Shift-Command-N,Add New Slide Layout (from Edit View),apple productivity layout,0,Add a new slide layout (from Edit Slide Layouts view),Keynote - General
+Keynote,Command-H,Hide Keynote,apple productivity app-management,0,Hide Keynote,Keynote - General
+Keynote,Option-Command-H,Hide Other Windows,apple productivity app-management,0,Hide other windows,Keynote - General
+Keynote,Command-Z,Undo Last Action,apple productivity undo,0,Undo the last action,Keynote - General
+Keynote,Shift-Command-Z,Redo Last Action,apple productivity redo,0,Redo the last action,Keynote - General
+Keynote,Command-Q,Quit Keynote,apple productivity app-management,0,Quit Keynote,Keynote - General
+Keynote,Option-Command-Q,Quit Keynote & Keep Windows Open,apple productivity app-management,0,Quit Keynote and keep windows open,Keynote - General
+Keynote,Left Arrow,Move One Character to Left,apple productivity text-editing,0,Move one character to the left,Keynote - Text Movement
+Keynote,Right Arrow,Move One Character to Right,apple productivity text-editing,0,Move one character to the right,Keynote - Text Movement
+Keynote,Up Arrow,Move to Line Above,apple productivity text-editing,0,Move to the line above,Keynote - Text Movement
+Keynote,Down Arrow,Move to Line Below,apple productivity text-editing,0,Move to the line below,Keynote - Text Movement
+Keynote,Option-Left Arrow or Control-Option-B,Move to Beginning of Current/Previous Word,apple productivity text-editing,0,Move to the beginning of the current or previous word,Keynote - Text Movement
+Keynote,Option-Right Arrow or Control-Option-F,Move to End of Current/Next Word,apple productivity text-editing,0,Move to the end of the current or next word,Keynote - Text Movement
+Keynote,Command-Up Arrow,Move to Beginning of Current Text Area,apple productivity text-editing,0,Move to the beginning of the current text area,Keynote - Text Movement
+Keynote,Command-Down Arrow,Move to Bottom of Current Text Area,apple productivity text-editing,0,Move to the bottom of the current text area,Keynote - Text Movement
+Keynote,Command-Left Arrow,Move to Beginning of Current Line,apple productivity text-editing,0,Move to the beginning of the current line,Keynote - Text Movement
+Keynote,Command-Right Arrow,Move to End of Current Line,apple productivity text-editing,0,Move to the end of the current line,Keynote - Text Movement
+Keynote,Option-Up Arrow,Move to Beginning of Current Paragraph,apple productivity text-editing,0,Move to the beginning of the current paragraph,Keynote - Text Movement
+Keynote,Option-Down Arrow,Move to End of Current Paragraph,apple productivity text-editing,0,Move to the end of the current paragraph,Keynote - Text Movement
+Keynote,Command-E,Find Selected Item in Presentation,apple productivity search,0,Find the selected item in the presentation,Keynote - Text Movement
+Keynote,Command-J,Jump to Selection in Presentation,apple productivity navigation,0,Jump to a selection in a presentation,Keynote - Text Movement
+Keynote,Home or Fn-Up Arrow,Scroll to Beginning of Slide,apple productivity navigation,0,Scroll to the beginning of the slide,Keynote - Slide Navigation
+Keynote,End or Fn-Down Arrow,Scroll to End of Slide,apple productivity navigation,0,Scroll to the end of the slide,Keynote - Slide Navigation
+Keynote,Control-L,Center Insertion Point in App Window,apple productivity text-editing,0,Center the insertion point in the app window,Keynote - Text Movement
+Keynote,Fn-Down Arrow or Page Down,Move to Next Slide,apple productivity navigation,0,Move to the next slide,Keynote - Slide Navigation
+Keynote,Fn-Up Arrow or Page Up,Move to Previous Slide,apple productivity navigation,0,Move to the previous slide,Keynote - Slide Navigation
+Keynote,Fn-Left Arrow or Home,Move to First Slide,apple productivity navigation,0,Move to the first slide,Keynote - Slide Navigation
+Keynote,Fn-Right Arrow or End,Move to Last Slide,apple productivity navigation,0,Move to the last slide,Keynote - Slide Navigation
+Keynote,Control-Command-G,Go to Specific Slide,apple productivity navigation,0,Go to a specific slide,Keynote - Slide Navigation
+Keynote,Select One or More Characters,Click in front of first character and drag,apple productivity selection,0,Select one or more characters,Keynote - Text Selection
+Keynote,Click-Click,Select a Word,apple productivity selection,0,Select a word,Keynote - Text Selection
+Keynote,Click-Click-Click,Select a Paragraph,apple productivity selection,0,Select a paragraph,Keynote - Text Selection
+Keynote,Command-A,Select All Objects and Text,apple productivity selection,0,Select all objects and text,Keynote - Text Selection
+Keynote,Shift-Command-A,Deselect All Objects and Text,apple productivity selection,0,Deselect all objects and text,Keynote - Text Selection
+Keynote,Shift-Right Arrow,Extend Selection One Character Right,apple productivity selection,0,Extend the selection one character to the right,Keynote - Text Selection
+Keynote,Shift-Left Arrow,Extend Selection One Character Left,apple productivity selection,0,Extend the selection one character to the left,Keynote - Text Selection
+Keynote,Option-Shift-Left Arrow,Extend Selection to Beginning of Word,apple productivity selection,0,Extend the selection to the beginning of the current word,Keynote - Text Selection
+Keynote,Shift-Command-Right Arrow,Extend Selection to End of Current Line,apple productivity selection,0,Extend the selection to the end of the current line,Keynote - Text Selection
+Keynote,Shift-Command-Left Arrow,Extend Selection to Beginning of Current Line,apple productivity selection,0,Extend the selection to the beginning of the current line,Keynote - Text Selection
+Keynote,Shift-Up Arrow,Extend Selection to Line Above,apple productivity selection,0,Extend the selection to the line above,Keynote - Text Selection
+Keynote,Shift-Down Arrow,Extend Selection to Line Below,apple productivity selection,0,Extend the selection to the line below,Keynote - Text Selection
+Keynote,Option-Shift-Up Arrow,Extend Selection to Beginning of Paragraph,apple productivity selection,0,Extend the selection to the beginning of the current paragraph,Keynote - Text Selection
+Keynote,Option-Shift-Down Arrow,Extend Selection to End of Paragraph,apple productivity selection,0,Extend the selection to the end of the current paragraph,Keynote - Text Selection
+Keynote,Shift-Command-Up Arrow or Shift-Home,Extend Selection to Beginning of Text,apple productivity selection,0,Extend the selection to the beginning of the text,Keynote - Text Selection
+Keynote,Shift-Command-Down Arrow or Shift-End,Extend Selection to End of Text,apple productivity selection,0,Extend the selection to the end of the text,Keynote - Text Selection
+Keynote,Select a Bullet and its Text,Click the bullet,apple productivity selection,0,Select a bullet and its text,Keynote - Text Selection
+Keynote,Command-T,Show Fonts Window,apple productivity text-editing,0,Show the Fonts window,Keynote - Text Editing
+Keynote,Command-B,Apply Boldface to Selected Text,apple productivity text-editing,0,Apply boldface to selected text,Keynote - Text Editing
+Keynote,Command-I,Apply Italic to Selected Text,apple productivity text-editing,0,Apply italic to selected text,Keynote - Text Editing
+Keynote,Command-U,Apply Underline to Selected Text,apple productivity text-editing,0,Apply underline to selected text,Keynote - Text Editing
+Keynote,Delete,Delete Previous Character or Selection,apple productivity text-editing,0,Delete the previous character or selection,Keynote - Text Editing
+Keynote,Fn-Delete or Forward Delete,Delete Next Character or Selection,apple productivity text-editing,0,Delete the next character or selection,Keynote - Text Editing
+Keynote,Option-Delete,Delete Word Before Insertion Point,apple productivity text-editing,0,Delete the word before the insertion point,Keynote - Text Editing
+Keynote,Option-Forward Delete,Delete Word After Insertion Point,apple productivity text-editing,0,Delete the word after the insertion point,Keynote - Text Editing
+Keynote,Control-K,Delete Text to Next Paragraph Break,apple productivity text-editing,0,Delete the text between the insertion point and the next paragraph break,Keynote - Text Editing
+Keynote,Command-Plus Sign (+),Make Font Size Bigger,apple productivity text-editing,0,Make the font size bigger,Keynote - Text Editing
+Keynote,Command-Minus Sign (-),Make Font Size Smaller,apple productivity text-editing,0,Make the font size smaller,Keynote - Text Editing
+Keynote,Option-Command-Left Bracket ([),Decrease Space Between Characters,apple productivity text-editing,0,Decrease the space between selected characters,Keynote - Text Editing
+Keynote,Option-Command-Right Bracket (]),Increase Space Between Characters,apple productivity text-editing,0,Increase the space between selected characters,Keynote - Text Editing
+Keynote,Control-Command-Plus Sign (+),Make Text Superscript,apple productivity text-editing,0,Make the text superscript,Keynote - Text Editing
+Keynote,Control-Command-Minus Sign (-),Make Text Subscript,apple productivity text-editing,0,Make the text subscript,Keynote - Text Editing
+Keynote,Command-Left Brace ({),Align Text Flush Left,apple productivity text-editing,0,Align the text flush left,Keynote - Text Editing
+Keynote,Command-Vertical Bar (|),Center Text,apple productivity text-editing,0,Center the text,Keynote - Text Editing
+Keynote,Command-Right Brace (}),Align Text Flush Right,apple productivity text-editing,0,Align the text flush right,Keynote - Text Editing
+Keynote,Option-Command-Vertical Bar (|),Align Text Justify,apple productivity text-editing,0,Align the text flush left and flush right (justify),Keynote - Text Editing
+Keynote,Command-Left Bracket ([),Decrease Indent Level (Text/List),apple productivity text-editing,0,Decrease the indent level of a block of text or a list item,Keynote - Text Editing
+Keynote,Command-Right Bracket (]),Increase Indent Level (Text/List),apple productivity text-editing,0,Increase the indent level of a block of text or a list item,Keynote - Text Editing
+Keynote,Shift-Tab,Decrease Indent Level (List/Headline),apple productivity text-editing,0,Decrease the indent level of a list item or headline,Keynote - Text Editing
+Keynote,Tab,Increase Indent Level (List/Headline),apple productivity text-editing,0,Increase the indent level of a list item or headline,Keynote - Text Editing
+Keynote,Command-K,Turn Text/Object into Link,apple productivity text-editing,0,Turn text or an object into a link,Keynote - Text Editing
+Keynote,Command-X,Cut Selection,apple productivity text-editing,0,Cut the selection,Keynote - Text Editing
+Keynote,Command-C,Copy Selection,apple productivity text-editing,0,Copy the selection,Keynote - Text Editing
+Keynote,Option-Command-C,Copy Paragraph Style,apple productivity text-editing,0,Copy the paragraph style,Keynote - Text Editing
+Keynote,Command-V,Paste Selection,apple productivity text-editing,0,Paste the selection,Keynote - Text Editing
+Keynote,Option-Command-V,Paste Paragraph Style,apple productivity text-editing,0,Paste the paragraph style,Keynote - Text Editing
+Keynote,Shift-drag or Command-drag,Add/Remove Range from Selection,apple productivity selection,0,Add a range to (or remove it from) the selection,Keynote - Text Editing
+Keynote,Option-Space bar,Insert Nonbreaking Space,apple productivity text-editing,0,Insert a nonbreaking space,Keynote - Text Editing
+Keynote,Shift-Return,Insert Line Break (Soft Return),apple productivity text-editing,0,Insert a line break (soft return),Keynote - Text Editing
+Keynote,Return,Insert Paragraph Break,apple productivity text-editing,0,Insert a paragraph break,Keynote - Text Editing
+Keynote,Control-Command-Space,Enter Special Characters,apple productivity text-editing,0,Enter special characters,Keynote - Text Editing
+Keynote,Control-T,Transpose Characters,apple productivity text-editing,0,Transpose the characters on either side of the insertion point,Keynote - Text Editing
+Keynote,Command-F,Find,apple productivity search,0,Find,Keynote - Find and Replace
+Keynote,Command-G,Find Next (in Find Window),apple productivity search,0,Find next (while in the Find window),Keynote - Find and Replace
+Keynote,Shift-Command-G,Find Previous (in Find Window),apple productivity search,0,Find previous (while in the Find window),Keynote - Find and Replace
+Keynote,Command-E,Place Selected Text in Find & Replace Field,apple productivity search,0,Place the selected text in the Find & Replace text field,Keynote - Find and Replace
+Keynote,Return,Replace Text,apple productivity search,0,Replace text,Keynote - Find and Replace
+Keynote,Command-J,Scroll Window to Show Selected Text/Object,apple productivity navigation,0,Scroll the window to show the selected text or object,Keynote - Find and Replace
+Keynote,Esc,Hide Find Window,apple productivity search,0,Hide the Find window,Keynote - Find and Replace
+Keynote,Control-Command-D,Look Up Word at Insertion Point,apple productivity reference,0,Look up the word at the insertion point,Keynote - Find and Replace
+Keynote,Option-Esc,Display List of Word Completions,apple productivity text-editing,0,Display a list of words to complete the selected word,Keynote - Find and Replace
+Keynote,Command-Semicolon (;),Check Spelling and Grammar,apple productivity text-editing,0,Check spelling and grammar,Keynote - Find and Replace
+Keynote,Command-Return,Save Comment,apple productivity commenting,0,Save a comment,Keynote - Find and Replace
+Keynote,Option-Command-K,Show Next Comment,apple productivity commenting,0,Show the next comment,Keynote - Find and Replace
+Keynote,Option-Shift-Command-K,Show Previous Comment,apple productivity commenting,0,Show the previous comment,Keynote - Find and Replace
+Keynote,Shift-Command-L,Show or Hide Object List,apple productivity interface,0,Show or hide the object list,Keynote - Objects
+Keynote,Select Objects by Dragging,Drag from a blank part of slide,apple productivity selection,0,Select objects by dragging,Keynote - Objects
+Keynote,Option-Command-scroll,Scroll Zoom (Magic Mouse/Trackpad),apple productivity zoom,0,Scroll zoom,Keynote - Objects
+Keynote,Command-drag,Add/Remove Objects from Selection,apple productivity selection,0,Add or remove objects from the selection,Keynote - Objects
+Keynote,Tab,Select Next Object on Slide,apple productivity navigation,0,Select the next object on the slide,Keynote - Objects
+Keynote,Shift-Tab,Select Previous Object on Slide,apple productivity navigation,0,Select the previous object on the slide,Keynote - Objects
+Keynote,Command-click or Shift-click,Select/Deselect Additional Objects,apple productivity selection,0,Select or deselect additional objects,Keynote - Objects
+Keynote,Drag,Move Selected Objects,apple productivity movement,0,Move selected objects,Keynote - Objects
+Keynote,Move Selected Object One Point,Press an arrow key,apple productivity movement,0,Move the selected object one point,Keynote - Objects
+Keynote,Move Selected Object Ten Points,Press Shift and an arrow key,apple productivity movement,0,Move the selected object ten points,Keynote - Objects
+Keynote,Move Selected Object One Screen Pixel,Press an arrow key,apple productivity movement,0,Move the selected object one screen pixel,Keynote - Objects
+Keynote,Move Selected Object Ten Screen Pixels,Press Shift and an arrow key,apple productivity movement,0,Move the selected object ten screen pixels,Keynote - Objects
+Keynote,Option-Command-C,Copy Graphic Style of Text,apple productivity text-editing,0,Copy the graphic style of text,Keynote - Objects
+Keynote,Option-Command-V,Paste Graphic Style of Text,apple productivity text-editing,0,Paste the graphic style of text,Keynote - Objects
+Keynote,Shift-Command-B,Send Selected Object to Back,apple productivity layering,0,Send the selected object to the back,Keynote - Objects
+Keynote,Option-Shift-Command-B,Send Selected Object One Layer Back,apple productivity layering,0,Send the selected object one layer back,Keynote - Objects
+Keynote,Shift-Command-F,Bring Selected Object to Front,apple productivity layering,0,Bring the selected object to the front,Keynote - Objects
+Keynote,Option-Shift-Command-F,Bring Selected Object One Layer Forward,apple productivity layering,0,Bring the selected object one layer forward,Keynote - Objects
+Keynote,Option-Command-G,Group Selected Objects,apple productivity organization,0,Group selected objects,Keynote - Objects
+Keynote,Option-Shift-Command-G,Ungroup Selected Objects,apple productivity organization,0,Ungroup selected objects,Keynote - Objects
+Keynote,Click-Click,Select Object in a Group,apple productivity selection,0,Select an object in a group,Keynote - Objects
+Keynote,Command-L,Lock Selected Objects,apple productivity organization,0,Lock selected objects,Keynote - Objects
+Keynote,Option-Command-L,Unlock Selected Objects,apple productivity organization,0,Unlock selected objects,Keynote - Objects
+Keynote,Shift-drag,Constrain Object Movement to 45°,apple productivity movement,0,Constrain the movement of the object to 45°,Keynote - Objects
+Keynote,Resize Object,Drag a selection handle,apple productivity resizing,0,Resize the object,Keynote - Objects
+Keynote,Command-drag,Disable Alignment Guides While Resizing,apple productivity resizing,0,Disable alignment guides while resizing,Keynote - Objects
+Keynote,Option-drag a selection handle,Resize Object from Center,apple productivity resizing,0,Resize the object from the center,Keynote - Objects
+Keynote,Shift-drag a selection handle,Constrain Aspect Ratio While Resizing,apple productivity resizing,0,Constrain the aspect ratio when resizing the object,Keynote - Objects
+Keynote,Option-Shift-drag a selection handle,Constrain Aspect Ratio from Center,apple productivity resizing,0,Constrain the aspect ratio when resizing the object from the center,Keynote - Objects
+Keynote,Command-drag a selection handle,Rotate Object,apple productivity rotation,0,Rotate the object,Keynote - Objects
+Keynote,Rotate Object 45°,Press Shift while rotating,apple productivity rotation,0,Rotate the object 45°,Keynote - Objects
+Keynote,Option-Command-drag a selection handle,Rotate Object Around Opposite Handle,apple productivity rotation,0,Rotate the object around the opposite handle (instead of the center),Keynote - Objects
+Keynote,Option-Shift-Command-drag a selection handle,Rotate Object 45° Around Opposite Handle,apple productivity rotation,0,Rotate the object 45° around the opposite handle (instead of the center),Keynote - Objects
+Keynote,Command-drag,Turn Off Alignment Guides While Moving,apple productivity movement,0,Turn off alignment guides while moving an object,Keynote - Objects
+Keynote,Shift-Command-M,Mask or Unmask Object,apple productivity image-editing,0,Mask or unmask the object,Keynote - Objects
+Keynote,Double-click the masked image,Show Mask Controls,apple productivity image-editing,0,Show mask controls. Double-click the masked image,Keynote - Objects
+Keynote,Control-click the item,Open Shortcut Menu for Selected Item,apple productivity context-menu,0,Open the shortcut menu for the selected item,Keynote - Objects
+Keynote,Command-Return,Exit Text Editing and Select Object,apple productivity text-editing,0,Exit text editing and select the object,Keynote - Objects
+Keynote,Control-Option-Command-I,Define Object as Media Placeholder,apple productivity placeholders,0,Define the object as a media placeholder,Keynote - Objects
+Keynote,Control-Option-Command-T,Define Selected Text as Text Placeholder,apple productivity placeholders,0,Define the selected text as a text placeholder,Keynote - Objects
+Keynote,Double-click the edge of the shape,Make Custom Shape Editable,apple productivity drawing,0,Make a custom shape editable,Keynote - Shapes
+Keynote,Option-Shift-Command-P,Draw Custom Shape with Pen Tool,apple productivity drawing,0,Draw a custom shape with the Pen tool,Keynote - Shapes
+Keynote,Move Point of Editable Shape,Drag the point to another location,apple productivity drawing,0,Move a point of an editable shape,Keynote - Shapes
+Keynote,Command-drag the midpoint of a line,Add Sharp Point to Editable Shape,apple productivity drawing,0,Add a sharp point to an editable shape,Keynote - Shapes
+Keynote,Add Smooth Point to Editable Shape,Drag the midpoint of a line,apple productivity drawing,0,Add a smooth point to an editable shape,Keynote - Shapes
+Keynote,Option-drag the midpoint of a line,Add Bézier Point to Editable Shape,apple productivity drawing,0,Add a Bézier point to an editable shape,Keynote - Shapes
+Keynote,Double-click the curved point,Change Curve Point to Corner Point,apple productivity drawing,0,Change a curve point of an editable shape into a corner point,Keynote - Shapes
+Keynote,Reshape Curve of Smooth Point,Drag the line adjacent to the smooth point,apple productivity drawing,0,Reshape the curve of a smooth point,Keynote - Shapes
+Keynote,Reshape Curve of Bézier Point,Click a Bézier point and drag the control,apple productivity drawing,0,Reshape the curve of a Bézier point,Keynote - Shapes
+Keynote,Option-Command-E,Insert Equation,apple productivity equations,0,Insert an equation,Keynote - Tables
+Keynote,Option-Up Arrow,Add Row Above Selected Cells,apple productivity tables,0,Add a row above the selected cells,Keynote - Tables
+Keynote,Option-Down Arrow,Add Row Below Selected Cells,apple productivity tables,0,Add a row below the selected cells,Keynote - Tables
+Keynote,Option-Right Arrow,Add Column to Right of Selected Cells,apple productivity tables,0,Add a column to the right of the selected cells,Keynote - Tables
+Keynote,Option-Left Arrow,Add Column to Left of Selected Cells,apple productivity tables,0,Add a column to the left of the selected cells,Keynote - Tables
+Keynote,Option-Command-Return,Select All Rows Intersecting Selection,apple productivity tables,0,Select all rows that intersect the current selection,Keynote - Tables
+Keynote,Control-Command-Return,Select All Columns Intersecting Selection,apple productivity tables,0,Select all columns that intersect the current selection,Keynote - Tables
+Keynote,Shift-Up Arrow or Shift-Down Arrow,Select Additional Rows,apple productivity tables,0,Select additional rows,Keynote - Tables
+Keynote,Shift-Right Arrow or Shift-Left Arrow,Select Additional Columns,apple productivity tables,0,Select additional columns,Keynote - Tables
+Keynote,Shift-click,Select Additional Cells,apple productivity tables,0,Select additional cells,Keynote - Tables
+Keynote,Double-click letter for column/number for row,Select Only Body Cells in Row/Column,apple productivity tables,0,Select only body cells in a row or column,Keynote - Tables
+Keynote,Stop Reordering Rows or Columns,Press Esc while dragging,apple productivity tables,0,Stop the reordering of rows or columns,Keynote - Tables
+Keynote,Command-A,Select All Content in Table,apple productivity tables,0,Select all content in a table,Keynote - Tables
+Keynote,Shift-drag the table,Constrain Table Movement & Snap to Guides,apple productivity tables,0,Constrain the movement of the table and snap to guides,Keynote - Tables
+Keynote,Replace Cell Contents,Drag selected cell to another cell,apple productivity tables,0,Replace the contents of the selected cell with the contents of the destination cell,Keynote - Tables
+Keynote,Option-drag selected cell to another cell,Copy Cell Contents,apple productivity tables,0,Copy the contents of the selected cell into the destination cell,Keynote - Tables
+Keynote,Option-Command-C,Copy Cell Style,apple productivity tables,0,Copy cell style,Keynote - Tables
+Keynote,Option-Command-V,Paste Cell Style,apple productivity tables,0,Paste cell style,Keynote - Tables
+Keynote,Option-Shift-Command-V,Paste & Preserve Style of Destination Cell,apple productivity tables,0,Paste and preserve the style of the destination cell,Keynote - Tables
+Keynote,Click a cell in selected table (double-click unselected table),Select a Cell,apple productivity tables,0,Select a cell,Keynote - Tables
+Keynote,Highlight Row and Column for Cell,Press Option as you move over a cell,apple productivity tables,0,Highlight the row and column for a cell,Keynote - Tables
+Keynote,Open Pop-up Menu in Selected Cell,Space bar,apple productivity tables,0,Open a pop-up menu in a selected cell,Keynote - Tables
+Keynote,Command-click a selected or unselected cell,Add/Remove Cell from Selection,apple productivity tables,0,Add a cell to (or remove it from) the selection,Keynote - Tables
+Keynote,Option-Command-U,Auto-align Cell Content,apple productivity tables,0,Auto-align cell content,Keynote - Tables
+Keynote,Command-Return,Stop Editing Cell & Select Cell,apple productivity tables,0,Stop editing the cell and select the cell,Keynote - Tables
+Keynote,Command-Return twice,Stop Editing Cell & Select Table,apple productivity tables,0,Stop editing the cell and select the table,Keynote - Tables
+Keynote,Move Selected Table One Point,Press an arrow key,apple productivity tables,0,Move the selected table one point,Keynote - Tables
+Keynote,Move Selected Table Ten Points,Press Shift and an arrow key,apple productivity tables,0,Move the selected table ten points,Keynote - Tables
+Keynote,Shift-Tab,Select Previous Cell,apple productivity tables,0,Select the previous cell,Keynote - Tables
+note: I'll continue in the next response. I have more data to add.```csv,None,,,,,
+App,Shortcut,Name,Tags,Pinned,description,subcategory
+Keynote,Return,Select Cell Below,apple productivity tables,0,Select the cell below,Keynote - Tables
+Keynote,Shift-Return,Select Cell Above,apple productivity tables,0,Select the cell above,Keynote - Tables
+Keynote,Extend Cell Selection by One Cell,Press Shift and an arrow key (from a selected cell),apple productivity tables,0,Extend the cell selection by one cell,Keynote - Tables
+Keynote,Command-Return,Select Parent of Current Selection,apple productivity tables,0,Select the parent of the current selection,Keynote - Tables
+Keynote,Option-Tab,Insert Tab (Editing Text/Formula),apple productivity tables,0,Insert a tab when editing text or a formula,Keynote - Tables
+Keynote,Shift-Return,Insert Line Break (Text in Cell),apple productivity tables,0,Insert a line break (soft return) when editing text in a cell,Keynote - Tables
+Keynote,Return,Insert Paragraph Break (Text in Cell),apple productivity tables,0,Insert a paragraph break (hard return) when editing text in a cell,Keynote - Tables
+Keynote,Equal Sign (=),Open Formula Editor (Nonformula Cell),apple productivity tables,0,Open the Formula Editor for the selected nonformula cell,Keynote - Tables
+Keynote,Double-click or Option-Return,Open Formula Editor (Formula/Formatted Number),apple productivity tables,0,Open the Formula Editor for the cell containing a formula or formatted number,Keynote - Tables
+Keynote,Option-Command-Left Arrow,Select First Populated Cell (Current Row),apple productivity tables,0,Select the first populated cell in the current row,Keynote - Tables
+Keynote,Option-Command-Right Arrow,Select Last Populated Cell (Current Row),apple productivity tables,0,Select the last populated cell in the current row,Keynote - Tables
+Keynote,Option-Command-Up Arrow,Select First Populated Cell (Current Column),apple productivity tables,0,Select the first populated cell in the current column,Keynote - Tables
+Keynote,Option-Command-Down Arrow,Select Last Populated Cell (Current Column),apple productivity tables,0,Select the last populated cell in the current column,Keynote - Tables
+Keynote,Option-Command-Delete,Delete Selected Rows,apple productivity tables,0,Delete selected rows,Keynote - Tables
+Keynote,Control-Command-Delete,Delete Selected Columns,apple productivity tables,0,Delete selected columns,Keynote - Tables
+Keynote,Shift-Tab,Select Table Name,apple productivity tables,0,Select the table name,Keynote - Tables
+Keynote,Shift-Command-V,Paste Formula Result,apple productivity tables,0,Paste a formula result,Keynote - Tables
+Keynote,Return,Select First Cell in Selected Table,apple productivity tables,0,Select the first cell in a selected table,Keynote - Tables
+Keynote,Option-Shift-Command-Left Arrow,Expand Selection to First Populated Cell (Row),apple productivity tables,0,Expand the current selection to include the first populated cell in the current row,Keynote - Tables
+Keynote,Option-Shift-Command-Right Arrow,Expand Selection to Last Populated Cell (Row),apple productivity tables,0,Expand the current selection to include the last populated cell in the current row,Keynote - Tables
+Keynote,Option-Shift-Command-Up Arrow,Expand Selection to First Populated Cell (Column),apple productivity tables,0,Expand the current selection to include the first populated cell in the current column,Keynote - Tables
+Keynote,Option-Shift-Command-Down Arrow,Expand Selection to Last Populated Cell (Column),apple productivity tables,0,Expand the current selection to include the last populated cell in the current column,Keynote - Tables
+Keynote,Control-Command-M,Merge Selected Cells,apple productivity tables,0,Merge selected cells,Keynote - Tables
+Keynote,Control-Shift-Command-M,Unmerge Selected Cells,apple productivity tables,0,Unmerge selected cells,Keynote - Tables
+Keynote,Control-Option-Command-Up Arrow,Add/Remove Top Border,apple productivity tables,0,Add or remove the top border,Keynote - Tables
+Keynote,Control-Option-Command-Down Arrow,Add/Remove Bottom Border,apple productivity tables,0,Add or remove the bottom border,Keynote - Tables
+Keynote,Control-Option-Command-Right Arrow,Add/Remove Right Border,apple productivity tables,0,Add or remove the right border,Keynote - Tables
+Keynote,Control-Option-Command-Left Arrow,Add/Remove Left Border,apple productivity tables,0,Add or remove the left border,Keynote - Tables
+Keynote,Command-Backslash (\),Turn on Autofill Mode,apple productivity tables,0,Turn on autofill mode,Keynote - Tables
+Keynote,Control-Command-Backslash (\),Autofill from Column Before,apple productivity tables,0,Autofill from the column before,Keynote - Tables
+Keynote,Option-Command-Backslash (\),Autofill from Row Above,apple productivity tables,0,Autofill from the row above,Keynote - Tables
+Keynote,Shift-Command-D,Show or Hide Chart Data Editor,apple productivity charts,0,Show or hide the Chart Data Editor,Keynote - Charts
+Keynote,Return,Complete Cell Entry & Move Down,apple productivity charts,0,Complete a cell entry and move the selection down,Keynote - Charts
+Keynote,Shift-Return,Complete Cell Entry & Move Up,apple productivity charts,0,Complete a cell entry and move the selection up,Keynote - Charts
+Keynote,Tab,Complete Cell Entry & Move Right,apple productivity charts,0,Complete a cell entry and move the selection to the right,Keynote - Charts
+Keynote,Shift-Tab,Complete Cell Entry & Move Left,apple productivity charts,0,Complete a cell entry and move the selection to the left,Keynote - Charts
+Keynote,Move One Character Left/Right,Press Left/Right Arrow key,apple productivity charts,0,Move one character to the left or right,Keynote - Charts
+Keynote,Move to Beginning/End of Text,Press Up/Down Arrow key,apple productivity charts,0,Move to the beginning of text or to the end of text,Keynote - Charts
+Keynote,Navigate & Select Single Cell,Press Option and an arrow key,apple productivity formulas,0,Navigate to and select a single cell,Keynote - Formulas
+Keynote,Press Option-Shift and an arrow key,Extend/Shrink Selected Cell Reference,apple productivity formulas,0,Extend or shrink a selected cell reference,Keynote - Formulas
+Keynote,Press Option-Command and an arrow key,Navigate to First/Last Nonheader Cell (Row/Column),apple productivity formulas,0,Navigate to the first or last nonheader cell in a row or column,Keynote - Formulas
+Keynote,Option-Return,Insert Line Break,apple productivity formulas,0,Insert a line break,Keynote - Formulas
+Keynote,Option-Tab,Insert Tab,apple productivity formulas,0,Insert a tab,Keynote - Formulas
+Keynote,Command-K or Shift-Command-K,Specify Absolute/Relative Attributes of Cell References,apple productivity formulas,0,Specify absolute and relative attributes of selected cell references,Keynote - Formulas
+Keynote,Option-Command-K or Option-Shift-Command-K,Specify Absolute/Relative Attributes of First/Last Cells of References,apple productivity formulas,0,Specify absolute and relative attributes of the first and last cells of selected cell references,Keynote - Formulas
+Pages,Command-N,Create New Document (Template Chooser),apple productivity document,0,Create a new document (open the template chooser),Pages - General
+Pages,Option-Command-N,Open Template Chooser & Show Language Pop-up,apple productivity document,0,Open the template chooser and show the Language pop-up menu,Pages - General
+Pages,Esc,Close Template Chooser,apple productivity document,0,Close the template chooser,Pages - General
+Pages,Command-O,Open Existing Document (Document Manager),apple productivity file-management,0,Open an existing document (open the document manager),Pages - General
+Pages,Shift-Command-S,Duplicate Document,apple productivity file-management,0,Duplicate a document,Pages - General
+Pages,Command-P,Print Document,apple productivity printing,0,Print a document,Pages - General
+Pages,Shift-Command-Question Mark (?),Open Pages User Guide,apple productivity help,0,Open the Pages User Guide,Pages - General
+Pages,Command-Plus Sign (+),Increase Text Size,apple productivity text-editing,0,Increase text size,Pages - General
+Pages,Command-Minus Sign (-),Decrease Text Size,apple productivity text-editing,0,Decrease text size,Pages - General
+Pages,Command-R,Show or Hide Ruler,apple productivity display,0,Show or hide the ruler,Pages - General
+Pages,Shift-Command-P,Open Page Setup Window,apple productivity printing,0,Open the Page Setup window,Pages - General
+Pages,Shift-Command-L,Show or Hide Layout Boundaries,apple productivity display,0,Show or hide layout boundaries,Pages - General
+Pages,Shift-Command-I,Show Formatting Characters (Invisibles),apple productivity text-editing,0,Show formatting characters (invisibles),Pages - General
+Pages,Option-Command-I,Hide or Show Sidebars (Right Side),apple productivity interface,0,Hide or show sidebars on the right side of the Pages window,Pages - General
+Pages,Command-H,Hide Pages,apple productivity app-management,0,Hide Pages,Pages - General
+Pages,Option-Command-H,Hide Windows of Other Applications,apple productivity app-management,0,Hide windows of other applications,Pages - General
+Pages,Command-Q,Quit Pages,apple productivity app-management,0,Quit Pages,Pages - General
+Pages,Option-Command-Q,Quit Pages & Keep Windows Open,apple productivity app-management,0,Quit Pages and keep windows open,Pages - General
+Pages,Option-Left Arrow,Move to Left Edge of Current Word,apple productivity text-editing,0,Move to the left edge of the current word (works for left-to-right and right-to-left text),Pages - Text Movement
+Pages,Option-Right Arrow,Move to Right Edge of Current Word,apple productivity text-editing,0,Move to the right edge of the current word (works for left-to-right and right-to-left text),Pages - Text Movement
+Pages,Control-A or Option-Up Arrow,Move to Beginning of Paragraph,apple productivity text-editing,0,Move to the beginning of the paragraph,Pages - Text Movement
+Pages,Control-E or Option-Down Arrow,Move to End of Paragraph,apple productivity text-editing,0,Move to the end of the paragraph,Pages - Text Movement
+Pages,Command-Left Arrow,Move to Left Edge of Current Line,apple productivity text-editing,0,Move to the left edge of the current line,Pages - Text Movement
+Pages,Command-Right Arrow,Move to Right Edge of Current Line,apple productivity text-editing,0,Move to the right edge of the current line,Pages - Text Movement
+Pages,Fn-Up Arrow or Page Up,Scroll Up One Page (No Insertion Point Move),apple productivity navigation,0,Scroll up one page without moving the insertion point,Pages - Text Movement
+Pages,Fn-Down Arrow or Page Down,Scroll Down One Page (No Insertion Point Move),apple productivity navigation,0,Scroll down one page without moving the insertion point,Pages - Text Movement
+Pages,Option-Page Up,Scroll Up One Page (Move Insertion Point),apple productivity navigation,0,Scroll up one page and move the insertion point,Pages - Text Movement
+Pages,Control-V or Option-Page Down,Scroll Down One Page (Move Insertion Point),apple productivity navigation,0,Scroll down one page and move the insertion point,Pages - Text Movement
+Pages,Home or Fn-Left Arrow,Move to Document Beginning (No Insertion Point Move),apple productivity navigation,0,Move to the beginning of the document without moving the insertion point,Pages - Text Movement
+Pages,End or Fn-Right Arrow,Move to Document End (No Insertion Point Move),apple productivity navigation,0,Move to the end of the document without moving the insertion point,Pages - Text Movement
+Pages,Control-L,Center Insertion Point in Window,apple productivity text-editing,0,Center the insertion point in the center of the application window,Pages - Text Movement
+Pages,Control-Command-G,Go to Specific Page,apple productivity navigation,0,Go to a specific page,Pages - Text Movement
+Pages,Option-Shift-Left Arrow,Extend Selection to Beginning of Current Word,apple productivity selection,0,Extend the selection to the beginning of the current word,Pages - Text Selection
+Pages,Option-Shift-Up Arrow,Extend Selection to Beginning of Current Paragraph,apple productivity selection,0,Extend the selection to the beginning of the current paragraph,Pages - Text Selection
+Pages,Option-Shift-Down Arrow,Extend Selection to End of Current Paragraph,apple productivity selection,0,Extend the selection to the end of the current paragraph,Pages - Text Selection
+Pages,Option-Command-Left Bracket ([),Decrease (Tighten) Space Between Characters,apple productivity text-editing,0,Decrease (tighten) the space between selected characters,Pages - Text Editing
+Pages,Option-Command-Right Bracket (]),Increase (Loosen) Space Between Characters,apple productivity text-editing,0,Increase (loosen) the space between selected characters,Pages - Text Editing
+Pages,Shift-Tab,Decrease Indent Level (List Item),apple productivity text-editing,0,Decrease the indent level of a list item,Pages - Text Editing
+Pages,Tab,Increase Indent Level (List Item),apple productivity text-editing,0,Increase the indent level of a list item,Pages - Text Editing
+Pages,Option-Command-B,Add a Bookmark,apple productivity bookmarks,0,Add a bookmark,Pages - Text Editing
+Pages,Shift-drag,Add/Remove Range to/from Selection,apple productivity selection,0,Add a range to (or remove it from) the selection,Pages - Text Editing
+Pages,Command-Return,Insert Page Break,apple productivity text-editing,0,Insert a page break,Pages - Text Editing
+Pages,Shift-Option-Command-E,Add EndNote Bibliography,apple productivity text-editing,0,Add an EndNote bibliography,Pages - Text Editing
+Pages,Delete,Delete Previous Character/Selection,apple productivity text-editing,0,Delete the previous character or selection,Pages - Find & Replace
+Pages,Fn-Delete or Forward Delete,Delete Next Character/Selection,apple productivity text-editing,0,Delete the next character or selection,Pages - Find & Replace
+Pages,Shift-Command-H,Highlight Text,apple productivity text-editing,0,Highlight text,Pages - Find & Replace
+Pages,Option-Command-A,Accept a Change (Tracking On),apple productivity tracking,0,Accept a change (when change tracking is on),Pages - Find & Replace
+Pages,Option-Command-R,Reject a Change (Tracking On),apple productivity tracking,0,Reject a change (when change tracking is on),Pages - Find & Replace
+Pages,Shift-Command-W,Show or Hide Word Count,apple productivity display,0,Show or hide word count,Pages - Find & Replace
+Pages,Shift-Command-E,Enter or Exit Edit Page Template View,apple productivity layout,0,Enter or exit Edit Page Template view,Pages - Find & Replace
+Pages,Command-A,Select All Objects,apple productivity selection,0,Select all objects,Pages - Objects
+Pages,Shift-Command-A,Deselect All Objects,apple productivity selection,0,Deselect all objects,Pages - Objects
+Pages,Select Objects by Dragging (Page Layout),Drag from blank part of page,apple productivity selection,0,Select objects by dragging,Pages - Objects
+Pages,Shift-Tab,Select Previous Object on Page,apple productivity navigation,0,Select the previous object on the page,Pages - Objects
+Pages,Option-Command-C,Copy Graphic Style,apple productivity styling,0,Copy the graphic style,Pages - Objects
+Pages,Option-Command-V,Paste Graphic Style,apple productivity styling,0,Paste the graphic style,Pages - Objects
+Pages,Option-click the shape style in the sidebar,Apply Shape Style (No Text Style),apple productivity styling,0,Apply the shape style but not its text style,Pages - Objects
+Pages,Double-click the object,Select an Object in a Group,apple productivity selection,0,Select an object in a group,Pages - Objects
+Pages,Tab,Select Next Object in a Group,apple productivity navigation,0,Select the next object in a group,Pages - Objects
+Pages,Shift-Tab,Select Previous Object in a Group,apple productivity navigation,0,Select the previous object in a group,Pages - Objects
+Pages,Command-drag,Disable Alignment Guides While Moving/Resizing,apple productivity guides,0,Disable alignment guides while moving or resizing an object,Pages - Objects
+Pages,Option-Shift-drag a selection handle,Constrain Aspect Ratio from Center (Resizing),apple productivity resizing,0,Constrain the aspect ratio when resizing the object from the center,Pages - Objects
+Pages,Shift-Command-M,Mask or Unmask Image,apple productivity image-editing,0,Mask or unmask the image,Pages - Objects
+Pages,Double-click the masked image,Show Image Mask Controls,apple productivity image-editing,0,Show image mask controls,Pages - Objects
+Pages,Command-Return,Exit Text Editing & Select Object,apple productivity text-editing,0,Exit text editing and select the object,Pages - Objects
+Pages,Shift-Command-V,Choose Object to Insert,apple productivity file-management,0,Choose an object to insert,Pages - Objects
+Pages,Control-Option-Command-I,Define Image/Movie as Media Placeholder,apple productivity placeholders,0,Define the image or movie as a media placeholder,Pages - Objects
+Pages,Option-Return,Insert Row at Bottom of Table,apple productivity tables,0,Insert a row at the bottom of the table,Pages - Tables
+Pages,Command-Return,Select Table from Cell Selection,apple productivity tables,0,Select a table from a cell selection,Pages - Tables
+Pages,Option-Shift-Command-V,Paste and Preserve Style of Destination Cell,apple productivity tables,0,Paste and preserve the style of the destination cell,Pages - Tables
+Pages,Shift-click in the destination cell,Extend Selection to Destination Cell,apple productivity tables,0,Extend the selection from the selected cell to the destination cell,Pages - Tables
+Pages,Begin Text Editing,Return or Enter (in a selected cell),apple productivity tables,0,Begin text editing,Pages - Tables
+Pages,Tab,Select Next Cell,apple productivity tables,0,Select the next cell,Pages - Tables
+Pages,Press Option-Command and an arrow key,Navigate to First/Last Cell (Row/Column),apple productivity formulas,0,Navigate to and select the first or last cell in a row or column,Pages - Formulas
+Pages,Select reference and press Option-Return,Change Selected Cell Reference Back to Text,apple productivity formulas,0,Change a selected cell reference back to text,Pages - Formulas
+Numbers,Command-N,Open Template Chooser,apple productivity spreadsheet,0,Open the template chooser,Numbers - General
+Numbers,Command-O,Open Existing Spreadsheet,apple productivity file-management,0,Open an existing spreadsheet,Numbers - General
+Numbers,Command-S,Save Spreadsheet,apple productivity file-management,0,Save a spreadsheet,Numbers - General
+Numbers,Return,End Editing Spreadsheet/Sheet Name,apple productivity editing,0,End editing the spreadsheet or sheet name,Numbers - General
+Numbers,Shift-Command-S,Duplicate Spreadsheet,apple productivity file-management,0,Duplicate a spreadsheet,Numbers - General
+Numbers,End Editing Spreadsheet/Sheet Name & Restore Original,Esc (Escape),apple productivity editing,0,End editing the spreadsheet or sheet name and restore the original name,Numbers - General
+Numbers,Command-P,Print Spreadsheet,apple productivity printing,0,Print a spreadsheet,Numbers - General
+Numbers,Shift-Command-N,Add New Sheet,apple productivity sheet-management,0,Add a new sheet,Numbers - General
+Numbers,Shift-Command-Left Brace ({),Switch to Previous Sheet,apple productivity sheet-navigation,0,Switch to the previous sheet,Numbers - General
+Numbers,Shift-Command-Right Brace (}),Switch to Next Sheet,apple productivity sheet-navigation,0,Switch to the next sheet,Numbers - General
+Numbers,Option-Shift-Command-Left Brace ({),Switch to First Sheet,apple productivity sheet-navigation,0,Switch to the first sheet,Numbers - General
+Numbers,Option-Shift-Command-Right Brace (}),Switch to Last Sheet,apple productivity sheet-navigation,0,Switch to the last sheet,Numbers - General
+Numbers,Scroll One Page Up (Print Preview),Page Up,apple productivity printing,0,Scroll one page up in print preview,Numbers - General
+Numbers,Scroll One Page Down (Print Preview),Page Down,apple productivity printing,0,Scroll one page down in print preview,Numbers - General
+Numbers,Option-Command-P,Preview a Sheet or Spreadsheet,apple productivity printing,0,Preview a sheet or spreadsheet,Numbers - General
+Numbers,Shift-Command-Question Mark (?),Open Numbers User Guide,apple productivity help,0,Open the Numbers User Guide,Numbers - General
+Numbers,Command-R,Show Spreadsheet Rulers,apple productivity display,0,Show the spreadsheet rulers,Numbers - General
+Numbers,Option-Command-I,Hide or Show Sidebar,apple productivity interface,0,Hide or show the sidebar,Numbers - General
+Numbers,Control-Grave (`),Open Next Tab of Sidebar,apple productivity navigation,0,Open the next tab of the sidebar,Numbers - General
+Numbers,Shift-Control-Grave (`),Open Previous Tab of Sidebar,apple productivity navigation,0,Open the previous tab of the sidebar,Numbers - General
+Numbers,Command-H,Hide Numbers,apple productivity app-management,0,Hide Numbers,Numbers - General
+Numbers,Command-Q,Quit Numbers,apple productivity app-management,0,Quit Numbers,Numbers - General
+Numbers,Option-Command-Q,Quit Numbers & Keep Windows Open,apple productivity app-management,0,Quit Numbers and keep windows open,Numbers - General
+Numbers,Command-1 through 7,Select One of First Seven Sheets,apple productivity sheet-navigation,0,Select one of the first seven sheets,Numbers - General
+Numbers,Command-E,Find Selected Item in Spreadsheet,apple productivity search,0,Find the selected item in the spreadsheet,Numbers - Text Movement
+Numbers,Command-J,Jump to Selection in Spreadsheet,apple productivity navigation,0,Jump to a selection in a spreadsheet,Numbers - Text Movement
+Numbers,Scroll Up the Sheet,Page Up,apple productivity navigation,0,Scroll up the sheet,Numbers - Text Movement
+Numbers,Scroll Down the Sheet,Page Down,apple productivity navigation,0,Scroll down the sheet,Numbers - Text Movement
+Numbers,Home or Fn-Up Arrow,Scroll to Beginning of Sheet,apple productivity navigation,0,Scroll to the beginning of the sheet,Numbers - Text Movement
+Numbers,End or Fn-Down Arrow,Scroll to End of Sheet,apple productivity navigation,0,Scroll to the end of the sheet,Numbers - Text Movement
+Numbers,Control-V,Move Down a Page,apple productivity navigation,0,Move down a page,Numbers - Text Movement
+Numbers,Control-Shift-Command-T,Insert Current Time,apple productivity text-editing,0,Insert the current time,Numbers - Text Editing
+Numbers,Control-Shift-Command-D,Insert Current Date,apple productivity text-editing,0,Insert the current date,Numbers - Text Editing
+Numbers,Tab,Select Next Object on Sheet,apple productivity navigation,0,Select the next object on the sheet,Numbers - Objects
+Numbers,Shift-Tab,Select Previous Object on Sheet,apple productivity navigation,0,Select the previous object on the sheet,Numbers - Objects
+Numbers,Option-drag Add/Remove Rows or Columns button,Add/Remove Rows and Columns with Content,apple productivity tables,0,Add or remove rows and columns with content,Numbers - Tables
+Numbers,Option-Return,Edit a Cell,apple productivity tables,0,Edit a cell,Numbers - Tables
+Numbers,Select Value in Pop-up Menu,Return or Space bar,apple productivity tables,0,Select a value in a pop-up menu in a selected cell,Numbers - Tables
+Numbers,Set Slider Value,Type a value that’s within the slider range,apple productivity tables,0,Set the value for a slider in a selected cell,Numbers - Tables
+Numbers,Control-Equal Sign (=),Open Formula Editor (Selected Cell Contents),apple productivity tables,0,Open the Formula Editor with the contents of the selected cell,Numbers - Tables
+Numbers,Control-Equal Sign (=),Convert Formula to Text (Formula Editor),apple productivity tables,0,Convert the formula in the open Formula Editor to text,Numbers - Tables
+Numbers,Equal Sign (=),Open Empty Formula Editor,apple productivity tables,0,Open the empty Formula Editor,Numbers - Tables
+Numbers,Shift-Command-V,Paste Formula Results,apple productivity tables,0,Paste formula results,Numbers - Tables
+Numbers,Option-Command-F,Turn Filters On or Off,apple productivity tables,0,Turn Filters on or off,Numbers - Tables
+Numbers,Shift-Command-R,Apply Sorting Rules,apple productivity tables,0,Apply sorting rules,Numbers - Tables
+Numbers,Command-8,Collapse Selected Category Groups,apple productivity tables,0,Collapse selected category groups,Numbers - Tables
+Numbers,Command-9,Expand Selected Category Groups,apple productivity tables,0,Expand selected category groups,Numbers - Tables
+Numbers,Shift-Command-D,Edit Chart Data References,apple productivity charts,0,Edit chart data references,Numbers - Charts
+Notes,Command-N,Create a New Note,apple productivity notes,0,Create a new note,Notes - General
+Notes,Fn-Q,Create a Quick Note,apple productivity notes,0,Create a Quick Note,Notes - General
+Notes,Command-D,Duplicate a Note,apple productivity notes,0,Duplicate a note,Notes - General
+Notes,Shift-Command-N,Create a New Folder,apple productivity notes,0,Create a new folder,Notes - General
+Notes,Option-Command-S,Show or Hide Folders,apple productivity notes,0,Show or hide folders,Notes - General
+Notes,Command-0 (zero),Show Main Notes Window,apple productivity notes,0,Show the main Notes window,Notes - General
+Notes,Command-1,Show Notes in a List,apple productivity notes,0,Show notes in a list,Notes - General
+Notes,Command-2,Show Notes in Gallery View,apple productivity notes,0,Show notes in gallery view,Notes - General
+Notes,Command-3,Show Attachments,apple productivity notes,0,Show attachments,Notes - General
+Notes,Option-Command-F,Search All Notes,apple productivity notes,0,Search all notes,Notes - General
+Notes,Return,Begin Typing in Selected Note,apple productivity notes,0,Begin typing in the note selected in the notes list or gallery view,Notes - General
+Notes,Command-P,Print a Note,apple productivity notes,0,Print a note,Notes - General
+Notes,Control-Command-I,Show or Hide Highlights (Shared Note),apple productivity notes,0,Show or hide highlights in a shared note,Notes - General
+Notes,Control-Command-K,Show or Hide Activity List (Shared Note),apple productivity notes,0,Show or hide the activity list in a shared note,Notes - General
+Notes,Option+Command+],Go Forward to Linked Note,apple productivity notes,0,Go forward to a linked note,Notes - General
+Notes,Option+Command+[,Return Back to Linked Note,apple productivity notes,0,Return back to the note containing the linked note,Notes - General
+Notes,Shift-Command-A,Attach a File,apple productivity notes,0,Attach a file,Notes - Edit
+Notes,Command-K,Create a Webpage Link,apple productivity notes,0,Create a link to a webpage,Notes - Edit
+Notes,Option-Command-T,Insert a Table,apple productivity notes,0,Insert a table,Notes - Edit
+Notes,Shift-Command-T,Apply Title Format,apple productivity notes,0,Apply Title format,Notes - Edit
+Notes,Shift-Command-H,Apply Heading Format,apple productivity notes,0,Apply Heading format,Notes - Edit
+Notes,Shift-Command-J,Apply Subheading Format,apple productivity notes,0,Apply Subheading format,Notes - Edit
+Notes,Shift-Command-B,Apply Body Format,apple productivity notes,0,Apply Body format,Notes - Edit
+Notes,Shift-Command-M,Apply Monostyled Format,apple productivity notes,0,Apply Monostyled format,Notes - Edit
+Notes,Shift-Command-7,Apply Bulleted List Format,apple productivity notes,0,Apply Bulleted List format,Notes - Edit
+Notes,Shift-Command-8,Apply Dashed List Format,apple productivity notes,0,Apply Dashed List format,Notes - Edit
+Notes,Shift-Command-9,Apply Numbered List Format,apple productivity notes,0,Apply Numbered List format,Notes - Edit
+Notes,Shift-Command-L,Apply Checklist Format,apple productivity notes,0,Apply Checklist format,Notes - Edit
+Notes,Command-',Apply Block Quote Format,apple productivity notes,0,Apply Block Quote format,Notes - Edit
+Notes,Command-Plus sign,Increase Font Size,apple productivity notes,0,Increase font size,Notes - Edit
+Notes,Command-Minus sign,Decrease Font Size,apple productivity notes,0,Decrease font size,Notes - Edit
+Notes,Command-] or Tab,Increase List Level,apple productivity notes,0,Increase list level,Notes - Edit
+Notes,Command-[ or Shift-Tab,Decrease List Level,apple productivity notes,0,Decrease list level,Notes - Edit
+Notes,Shift-Return,Add Line Break (Soft Return) to List/Checklist,apple productivity notes,0,Add a line break (soft return) to a list item or checklist,Notes - Edit
+Notes,Option-Tab,Insert Tab Character in List Item,apple productivity notes,0,Insert a tab character in a list item,Notes - Edit
+Notes,Shift-Command-U,Mark or Unmark Checklist Item,apple productivity notes,0,Mark or unmark a checklist item,Notes - Edit
+Notes,Control-Command-Up Arrow,Move List/Checklist Item Up,apple productivity notes,0,Move a list or checklist item up in the list,Notes - Edit
+Notes,Control-Command-Down Arrow,Move List/Checklist Item Down,apple productivity notes,0,Move a list or checklist item down in the list,Notes - Edit
+Notes,Shift-Command->,Zoom In on Note's Contents,apple productivity notes,0,Zoom in on note’s contents,Notes - Edit
+Notes,Shift-Command-<,Zoom Out on Note's Contents,apple productivity notes,0,Zoom out on note’s contents,Notes - Edit
+Notes,Shift-Command-0 (zero),Change Size of Note's Contents to Default,apple productivity notes,0,Change size of note’s contents to default,Notes - Edit
+Notes,Return,Move Down One Row/Add New Row,apple productivity notes,0,Move down one row or add a new row at the bottom of the table,Notes - Tables
+Notes,Option-Return,Add New Paragraph in Cell,apple productivity notes,0,Add a new paragraph in a cell,Notes - Tables
+Notes,Option-Command-Up Arrow,Add New Row Above Current Row,apple productivity notes,0,Add a new row above the current row,Notes - Tables
+Notes,Option-Command-Down Arrow,Add New Row Below Current Row,apple productivity notes,0,Add a new row below the current row,Notes - Tables
+Notes,Option-Command-Right Arrow,Add New Column to Right,apple productivity notes,0,Add a new column to the right of the current column,Notes - Tables
+Notes,Option-Command-Left Arrow,Add New Column to Left,apple productivity notes,0,Add a new column to the left of the current column,Notes - Tables
+Notes,Tab,Move to Next Cell to Right,apple productivity notes,0,Move to the next cell to the right,Notes - Tables
+Notes,Shift-Tab,Move to Next Cell to Left,apple productivity notes,0,Move to the next cell to the left,Notes - Tables
+Notes,Option-Tab,Add Tab Character in Cell,apple productivity notes,0,Add a tab character in a cell,Notes - Tables
+Notes,Shift-Left Arrow or Shift-Right Arrow,Select Range of Cells in Row,apple productivity notes,0,Select a range of cells in a row,Notes - Tables
+Notes,Shift-Up Arrow or Shift-Down Arrow,Select Range of Cells in Column,apple productivity notes,0,Select a range of cells in a column,Notes - Tables
+Notes,Command-A,Select Content of Current Cell,apple productivity notes,0,Select the content of the current cell,Notes - Tables
+News,Command-N,Open a News Window,apple news,0,Open a News window,News
+News,Control-Command-S,Show or Hide Sidebar in News Window,apple news,0,Show or hide the sidebar in a News window,News
+News,Command-F,Jump to Search Field,apple news,0,Jump to the search field,News
+News,Command-W,Close News Window (No Tabs),apple news,0,Close a News window (when it doesn’t contain tabs),News
+News,Shift-Command-W,Close News Window (With Tabs),apple news,0,Close a News window (when it contains tabs),News
+News,Option-Command-W,Close All News Windows (No Tabs),apple news,0,Close all News windows (from a window with no tabs),News
+News,Option-Shift-Command-W,Close All News Windows (With Tabs),apple news,0,Close all News windows (from a window with tabs),News
+News,Command-T,Open a Tab in Current News Window,apple news,0,Open a tab in the current News window,News
+News,Shift-Command-Backslash (\),Show All Tabs in Current News Window,apple news,0,Show all tabs in the current News window,News
+News,Control-Tab,Show Next Tab in Current News Window,apple news,0,Show the next tab in the current News window,News
+News,Control-Shift-Tab,Show Previous Tab in Current News Window,apple news,0,Show the previous tab in the current News window,News
+News,Command-W,Close Current Tab in News Window,apple news,0,Close the current tab in a News window,News
+News,Option-Command-W,Close All Tabs Except Current,apple news,0,Close all tabs other than the current tab in a News window,News
+News,Shift-Command-L,Follow or Unfollow Channel/Topic,apple news,0,Follow or unfollow the current channel or topic,News
+News,Shift-Command-D,Block or Unblock Channel/Topic,apple news,0,Block or unblock the current channel or topic,News
+News,Shift-Command-G,Go to Channel for Current Story,apple news,0,Go to the channel for the story you’re currently reading,News
+News,Command-L,Suggest More Stories Like Current,apple news,0,Suggest more stories like the one you’re currently reading,News
+News,Command-D,Suggest Fewer Stories Like Current,apple news,0,Suggest fewer stories like the one you’re currently reading,News
+News,Command-S,Save or Unsave a Story,apple news,0,Save or unsave a story,News
+News,Option-Command-C,Copy Link for Current Story,apple news,0,Copy the link for the current story,News
+News,Command-Up Arrow,Move to Top of Feed or Story,apple news,0,Move to the top of a feed or story,News
+News,Command-Down Arrow,Move to Bottom of Feed or Story,apple news,0,Move to the bottom of a feed or story,News
+News,Command-R,Refresh Feed for Latest Stories,apple news,0,Refresh a feed to check for and show the latest stories,News
+News,Command-Left Bracket ([),Close Current Story/Issue & Return to Feed,apple news,0,Close the current story or issue and return to the most recent feed,News
+News,Shift-Command-0 (zero),Return Content to Actual Size,apple news,0,Return content to its actual size,News
+News,Command-Q,Quit News,apple news,0,Quit News,News
+Music,Start Playing or Pause Song,Space bar,apple music playback,0,Start playing or pause the selected song,Music - Playback
+Music,Return,Play Selected Song from Beginning,apple music playback,0,Play the currently selected song from the beginning,Music - Playback
+Music,Option-Command-Right Arrow or Left Arrow,Move Forward/Backward Within Song,apple music playback,0,Move forward or backward within a song,Music - Playback
+Music,Command-Period,Stop Playing Selected Song,apple music playback,0,Stop playing the selected song,Music - Playback
+Music,Command-L,Show Currently Playing Song in List,apple music playback,0,Show the currently playing song in the list,Music - Playback
+Music,Option-Command-U,Show Playing Next Queue,apple music playback,0,Show the Playing Next queue,Music - Playback
+Music,Option-Right Arrow or Left Arrow,Play Next/Previous Album,apple music playback,0,Play the next or previous album in a list,Music - Playback
+Music,Command-Up Arrow,Increase Volume,apple music audio,0,Increase the volume,Music - Playback
+Music,Command-Down Arrow,Decrease Volume,apple music audio,0,Decrease the volume,Music - Playback
+Music,Option-Command-E,Open Equalizer,apple music audio,0,Open the equalizer,Music - Playback
+Music,Shift-Command-Right Arrow or Shift-Command-Left Arrow,Go to Next/Last Chapter,apple music navigation,0,Go to the next or last chapter (if available),Music - Playback
+Music,Command-U,Stream Audio File (URL),apple music streaming,0,Stream audio file at a specific URL to Music,Music - Playback
+Music,Command-N,Create New Playlist,apple music playlists,0,Create a new playlist,Music - Playlists
+Music,Shift-Command-N,Create Playlist from Selection,apple music playlists,0,Create a playlist from a selection of songs,Music - Playlists
+Music,Option-Command-N,Create New Smart Playlist,apple music playlists,0,Create a new Smart Playlist,Music - Playlists
+Music,Option-Space bar,Start Genius Shuffle,apple music playlists,0,Start Genius Shuffle,Music - Playlists
+Music,Command-R,Refresh Genius Playlist,apple music playlists,0,Refresh a Genius Playlist (when the playlist is selected),Music - Playlists
+Music,Delete,Delete Selected Song from Playlist/Library,apple music library,0,Delete the selected song from the playlist or library,Music - Playlists
+Music,Command-Delete,Delete Selected Song (No Confirmation),apple music library,0,Delete the selected song from the playlist or library without confirming that you want to delete it,Music - Playlists
+Music,Option-Delete,Delete Selected Song (Library & Playlists),apple music library,0,Delete the selected song from your library and all playlists,Music - Playlists
+Music,Command-O,Add File to Library (Import),apple music library,0,Add a file (import) to your library,Music - Library
+Music,Shift-Command-R,Show Song File Location,apple music library,0,Show where a song file is located,Music - Library
+Music,Command-F,Select Search Field,apple music search,0,Select the search field,Music - Library
+Music,Command-Z,Undo Last Typing Change (Item Info),apple music editing,0,Undo your last typing change while editing an item’s information,Music - Library
+Music,Command-X,Cut Selected Song Info/Artwork,apple music editing,0,Cut the selected song’s information or artwork,Music - Library
+Music,Command-C,Copy Selected Song Info/Artwork,apple music editing,0,Copy the selected song’s information or artwork,Music - Library
+Music,Command-V,Paste Selected Song Info/Artwork,apple music editing,0,Paste the selected song’s information or artwork,Music - Library
+Music,Command-A,Select All Songs in List,apple music selection,0,Select all the songs in the list,Music - Library
+Music,Command-B,Show or Hide Column Browser,apple music interface,0,Show or hide the column browser,Music - Library
+Music,Shift-Command-A,Deselect All Songs in List,apple music selection,0,Deselect all the songs in the list,Music - Library
+Music,Command-click checkbox,Select or Deselect All Songs in List,apple music selection,0,Select or deselect all the songs in a list,Music - Library
+Music,Option-Command-M or Shift-Command-M,Open or Close MiniPlayer,apple music interface,0,Open or close MiniPlayer,Music - View
+Music,Shift-Command-F,Open or Close Full Screen Player,apple music interface,0,Open or close Full Screen Player,Music - View
+Music,Option-click green button,Switch Window Sizes (Custom/Maximum),apple music interface,0,Switch between custom and maximum window sizes,Music - View
+Music,Control-click a column heading,Change Song Information Columns,apple music interface,0,Change the song information columns,Music - View
+Music,Command-/,Show or Hide Status Bar,apple music interface,0,Show or hide the status bar,Music - View
+Music,Command-I,Open Info Window for Selected Song,apple music interface,0,Open the Info window for the selected song,Music - View
+Music,Command-J,Open View Options Window,apple music interface,0,Open the View Options window for the selected source,Music - View
+Music,Command-T,Turn Visualizer On or Off,apple music interface,0,Turn the visualizer on or off,Music - View
+Music,Command-R,Refresh Apple Music or iTunes Store,apple music sync,0,Refresh Apple Music or iTunes Store,Music - View
+Music,Command-0 (zero),Open Music Window,apple music interface,0,Open the Music window,Music - View
+Music,Command-W,Close Music Window,apple music window-management,0,Close the Music window,Music - View
+Music,Command-M,Put Music Window in Dock,apple music window-management,0,Put the Music window in the Dock,Music - View
+Music,Command-H,Hide Music Window,apple music app-management,0,Hide the Music window,Music - View
+Music,Option-Command-H,Hide All Other Applications,apple music app-management,0,Hide all other applications,Music - View
+Music,Type word/phrase and press Option-Return,Initiate Search in iTunes Store,apple music search,0,Initiate a search in the iTunes Store (from anywhere in Music),Music - iTunes Store
+Music,Command-Right Bracket (]),Go to Next Page in iTunes Store,apple music navigation,0,Go to the next page in the iTunes Store,Music - iTunes Store
+Music,Command-Left Bracket ([),Go to Previous Page in iTunes Store,apple music navigation,0,Go to the previous page in the iTunes Store,Music - iTunes Store
+Music,Command-R,Reload Current Page,apple music refresh,0,Reload the current page,Music - iTunes Store
+Music,Command-Comma,Open Music Settings,apple music settings,0,Open Music settings,Music - Other
+Music,Command-Q,Quit Music,apple music app-management,0,Quit Music,Music - Other
+Music,Command-E,Eject a CD,apple music media,0,Eject a CD,Music - Other
+Music,Command-?,Open Music Help Menu,apple music help,0,Open Music Help menu,Music - Other
+Music,Option (while opening Music),Open Different Music Library,apple music library,0,Open a different music library,Music - Other
+Messages,Command-H,Hide Messages,apple messaging app-management,0,Hide Messages,Messages
+Messages,Option-Command-H,Hide Everything Except Messages,apple messaging app-management,0,Hide everything except Messages,Messages
+Messages,Command-Q,Quit Messages,apple messaging app-management,0,Quit Messages,Messages
+Messages,Command-N,Start a New Message,apple messaging chat,0,Start a new message,Messages
+Messages,Command-0,Open Messages Window,apple messaging interface,0,Open the Messages window,Messages
+Messages,Command-W,Close Messages Window,apple messaging window-management,0,Close the Messages window,Messages
+Messages,Command-P,Print the Conversation,apple messaging printing,0,Print the conversation,Messages
+Messages,Control-Command-1,Show All Conversations,apple messaging navigation,0,Show all Messages conversations,Messages
+Messages,Control-Command-2,Show Conversations from Known Senders,apple messaging navigation,0,Show conversations from known senders,Messages
+Messages,Control-Command-3,Show Conversations from Unknown Senders,apple messaging navigation,0,Show conversations from unknown senders,Messages
+Messages,Control-Command-4,Show Conversations with Unread Messages,apple messaging navigation,0,Show conversations with unread messages,Messages
+Messages,Control-Command-5,Show Recently Deleted Messages/Conversations,apple messaging navigation,0,Show recently deleted messages or conversations,Messages
+Messages,Command-F,Search All Conversations,apple messaging search,0,Search all conversations,Messages
+Messages,Command-[number] (press 1-9),Go to Pinned Conversation,apple messaging navigation,0,Go to a pinned conversation,Messages
+Messages,Option-Command-1,Go to First Unpinned Conversation,apple messaging navigation,0,Go to the first unpinned conversation,Messages
+Messages,Control-Command-Space,Open Emoji & Symbols Window,apple messaging text-work,0,Open the Emoji & Symbols window,Messages
+Messages,Command-M,Minimize a Window,apple messaging window-management,0,Minimize a window,Messages
+Messages,Command-Plus Sign (+),Make the Text Bigger,apple messaging text-size,0,Make the text bigger,Messages - Conversations
+Messages,Command-Minus Sign (–),Make the Text Smaller,apple messaging text-size,0,Make the text smaller,Messages - Conversations
+Messages,Option-Return or Shift-Return,Insert Line Break/Create New Paragraph,apple messaging text-editing,0,Insert a line break or create a new paragraph in a message,Messages - Conversations
+Messages,Return,Send a Message,apple messaging chat,0,Send a message,Messages - Conversations
+Messages,Command-E,Edit a Sent Message,apple messaging text-editing,0,Edit a sent message,Messages - Conversations
+Messages,Command-C,Copy the Selected Text,apple messaging text-editing,0,Copy the selected text,Messages - Conversations
+Messages,Command-V,Paste Copied Text,apple messaging text-editing,0,Paste copied text,Messages - Conversations
+Messages,Shift-Command-Colon (:),Open Spelling and Grammar Window,apple messaging text-editing,0,Open the Spelling and Grammar window,Messages - Conversations
+Messages,Command-Semicolon (;),Check Message Field for Spelling/Grammar,apple messaging text-editing,0,Check the message field for spelling and grammar issues,Messages - Conversations
+Messages,Command-R,Reply to Last Incoming/Selected Message,apple messaging chat,0,Reply to the last incoming (or selected) message in a conversation,Messages - Conversations
+Messages,Control-Tab,Select Next Conversation,apple messaging navigation,0,Select the next conversation,Messages - Conversations
+Messages,Control-Shift-Tab,Select Previous Conversation,apple messaging navigation,0,Select the previous conversation,Messages - Conversations
+Messages,Option-Command-I,Open Conversation Info View,apple messaging interface,0,Open the conversation Info view,Messages - Conversations
+Messages,Option-Command-M,Hide or Unhide Alerts for Conversation,apple messaging notifications,0,Hide or unhide alerts for a conversation,Messages - Conversations
+Messages,Shift-Command-U,Mark Conversation Unread or Read,apple messaging chat,0,Mark a conversation as unread or read,Messages - Conversations
+Messages,Option-Command-B,Open Contact Card for Recipient,apple messaging contacts,0,Open the Contact card for the conversation recipient,Messages - Conversations
+Messages,Option-Command-E,Send Email to Selected Person,apple messaging contacts,0,Send an email to a selected person in the conversation,Messages - Conversations
+Messages,Shift-Command-E,Show Video Effects (in Video Call),apple messaging video,0,Show video effects (while in a video call in Messages),Messages - Conversations
+Messages,Space,Show Selected Image in Quick Look,apple messaging media,0,Show the selected image in the Quick Look window,Messages - Conversations
+Maps,Command-L,Show Your Current Location,apple maps navigation,0,Show your current location,Maps
+Maps,Shift-Command-Up Arrow,Return to North-facing Orientation,apple maps navigation,0,Return to the north-facing orientation,Maps
+Maps,Command-1,Switch to Explore View,apple maps view,0,Switch to explore view,Maps
+Maps,Command-2,Switch to Driving View,apple maps view,0,Switch to driving view,Maps
+Maps,Command-3,Switch to Transit View,apple maps view,0,Switch to transit view,Maps
+Maps,Command-4,Switch to Satellite View,apple maps view,0,Switch to satellite view,Maps
+Maps,Command-D,Show or Hide 3D Map,apple maps view,0,Show or hide the 3D map,Maps
+Maps,Command-K,Show or Hide Look Around,apple maps view,0,Show or hide Look Around,Maps
+Maps,Command-R,Show or Hide Directions,apple maps navigation,0,Show or hide directions,Maps
+Maps,Shift-Command-D,Drop a Pin,apple maps location,0,Drop a pin in the middle of the map,Maps
+Maps,Control-Command-S,Show or Hide Sidebar,apple maps interface,0,Show or hide the sidebar,Maps
+Mail,Command-N,Start a New Email,apple mail composition,0,Start a new email,Mail
+Mail,Option-Command-N,Open New Mail Viewer Window,apple mail window-management,0,Open a new Mail viewer window,Mail
+Mail,Option-Shift-Command-N,Open New Tab in Mail Viewer Window,apple mail tab-management,0,Open a new tab in the Mail viewer window,Mail
+Mail,Shift-Command-A,Attach Files to Email,apple mail composition,0,Attach files to your email,Mail
+Mail,Shift-Command-V,Paste Text as Quotation,apple mail composition,0,Paste text into your email as a quotation,Mail
+Mail,Option-Command-I,Append Selected Emails to Current Email,apple mail composition,0,Append selected emails to your email,Mail
+Mail,Option-Command-B,Show Bcc Address Field,apple mail composition,0,Show the Bcc address field in your email,Mail
+Mail,Option-Command-R,Show Reply-To Address Field,apple mail composition,0,Show the Reply-To address field in your email,Mail
+Mail,Shift-Command-N,Get New Emails,apple mail sync,0,Get new emails,Mail
+Mail,Option-Command-J,Erase Junk Mail,apple mail organization,0,Erase junk mail,Mail
+Mail,Shift-Command-D,Send Emails,apple mail composition,0,Send emails,Mail
+Mail,Command-Z,Unsend Email,apple mail composition,0,Unsend email,Mail
+Mail,Command-R,Reply to Selected Email,apple mail communication,0,Reply to the selected email,Mail
+Mail,Shift-Command-R,Reply All to Selected Email,apple mail communication,0,Reply All to the selected email,Mail
+Mail,Shift-Command-F,Forward Selected Email,apple mail communication,0,Forward the selected email,Mail
+Mail,Shift-Command-E,Redirect Selected Email,apple mail communication,0,Redirect the selected email,Mail
+Mail,Control-Command-S,Hide or Show Mail Sidebar,apple mail interface,0,Hide or show the Mail sidebar,Mail
+Mail,Command-L,Enable or Disable Message Filter,apple mail filtering,0,Enable or disable the Message Filter for the current mailbox,Mail
+Mail,Shift-Command-U,Mark Emails Read/Unread,apple mail organization,0,Mark emails as read or unread in Mail on Mac,Mail
+Mail,Shift-Command-J,Move Selected Emails to Junk Mailbox,apple mail organization,0,Move the selected emails to the Junk mailbox,Mail
+Mail,Control-Command-L,Apply Active Mail Rules,apple mail rules,0,Apply active Mail rules,Mail
+Mail,Shift-Command-T,Format Email as Plain Text or Rich,apple mail composition,0,Format the current email as Plain Text or Rich Format,Mail
+Mail,Command-0,Show Mail Viewer Window,apple mail interface,0,Show the Mail viewer window,Mail
+Mail,Control-Command-0,Show Mail Activity Window,apple mail interface,0,Show the Mail Activity window,Mail
+Mail,Option-Command-W,Close All Mail Windows,apple mail window-management,0,Close all Mail windows,Mail
+Photos,Double-click/tap photo or Space bar,Open Individual Photo,apple photos view,0,Open an individual photo,Photos - View
+Photos,Scroll Through Photos,Press arrow keys or swipe up/down with two fingers,apple photos navigation,0,Scroll through photos in the Photos window,Photos - View
+Photos,Option-Space bar,Start or Stop Playing Video,apple photos media,0,Start or stop playing a video,Photos - View
+Photos,Option-S,Show or Hide Thumbnails,apple photos view,0,Show or hide thumbnails below an open photo,Photos - View
+Photos,Return,Open/Close Photo in Editing View,apple photos editing,0,Open or close a selected photo in editing view,Photos - Edit
+Photos,C or Command-3,Crop a Photo,apple photos editing,0,Crop a photo,Photos - Edit
+Photos,A or Command-1,Adjust a Photo,apple photos editing,0,Adjust a photo,Photos - Edit
+Photos,F or Command-2,Apply a Filter,apple photos editing,0,Apply a filter,Photos - Edit
+Photos,Command-E,Enhance a Photo,apple photos editing,0,Enhance a photo,Photos - Edit
+Photos,Show Original Unadjusted Photo (Editing),Press and hold M,apple photos editing,0,Show the original unadjusted photo while editing,Photos - Edit
+Photos,Go to Next Photo,Right Arrow (hold to scroll quickly),apple photos navigation,0,Go to the next photo,Photos - Edit
+Photos,Go to Previous Photo,Left Arrow (hold to scroll quickly),apple photos navigation,0,Go to the previous photo,Photos - Edit
+Photos,Delete,Delete Selected Photos,apple photos management,0,Delete selected photos,Photos - Edit
+Photos,Option-Space bar,Play or Pause Live Photo/Video,apple photos media,0,Play or pause a Live Photo or video,Photos - Edit
+Photos,Command-F,Find Photos,apple photos search,0,Find photos,Photos - Edit
+Photos,Z,Zoom Between Current & 100 Percent,apple photos zoom,0,Zoom between the current zoom level and 100 percent,Photos - Edit
+Photos,Command-Plus Sign (+) or Command-Minus Sign (–),Zoom In or Out,apple photos zoom,0,Zoom in or out,Photos - Edit
+Photos,Command-L,Hide a Selected Photo,apple photos management,0,Hide a selected photo,Photos - Edit
+Photos,Adjust View of Photo (Zoomed In),Drag the photo,apple photos navigation,0,Adjust the view of a photo when zoomed in,Photos - Edit
+Photos,Select a Single Photo,Click the photo,apple photos selection,0,Select a single photo,Photos - Select/Deselect
+Photos,Command-A,Select All Photos,apple photos selection,0,Select all photos,Photos - Select/Deselect
+Photos,Shift key + click nonadjacent photo,Select Photos Between Current & Nonadjacent,apple photos selection,0,Select all photos between the current selection and a nonadjacent photo,Photos - Select/Deselect
+Photos,Command key + click additional photos,Select Nonadjacent Photos,apple photos selection,0,Select photos that are not adjacent to one another,Photos - Select/Deselect
+Photos,Select Several Photos Together,Click outside photos and drag rectangle,apple photos selection,0,Select several photos located together,Photos - Select/Deselect
+Photos,Command key + click photos to deselect,Deselect Specific Photos in Group,apple photos selection,0,Deselect specific photos in a group of selected photos,Photos - Select/Deselect
+Photos,Shift-Command-A or click outside a photo,Deselect All Photos,apple photos selection,0,Deselect all photos,Photos - Select/Deselect
+Photos,Command-N,Create New Album,apple photos organization,0,Create a new album,Photos - Organize
+Photos,Shift-Command-K,Set Selected Photo as Key Photo for Album,apple photos organization,0,Set a selected photo as the key photo for an album,Photos - Organize
+Photos,Option-Command-N,Create Smart Album,apple photos organization,0,Create a Smart Album,Photos - Organize
+Photos,Shift-Command-N,Create Folder,apple photos organization,0,Create a folder,Photos - Organize
+Photos,Command-Plus Sign (+) or Command-Minus Sign (–),Change Photo Thumbnail Size,apple photos view,0,Change the size of photo thumbnails,Photos - Organize
+Photos,Double-click/tap thumbnail or Space bar,Open or Close Photo (Thumbnail),apple photos view,0,Open or close a photo,Photos - Organize
+Photos,Move to Previous or Next Photo,Left Arrow or Right Arrow,apple photos navigation,0,Move to the previous or next photo,Photos - Organize
+Photos,Control-Command-F,Enter or Leave Full-screen View,apple photos view,0,Enter or leave full-screen view,Photos - Organize
+Photos,Shift-Command-T,Show or Hide Titles,apple photos display,0,Show or hide titles,Photos - Organize
+Photos,Command-I,Show or Hide Photo Info Window,apple photos display,0,Show or hide photo information in the Info window,Photos - Organize
+Photos,Command-D,Duplicate a Photo,apple photos management,0,Duplicate a photo,Photos - Organize
+Photos,Command-X,Cut a Photo,apple photos management,0,Cut a photo,Photos - Organize
+Photos,Command-C,Copy a Photo,apple photos management,0,Copy a photo,Photos - Organize
+Photos,Command-V,Paste a Photo,apple photos management,0,Paste a photo,Photos - Organize
+Photos,Make a Photo a Favorite,Period (.),apple photos organization,0,Make a photo a favorite,Photos - Organize
+Photos,Command-K,Show or Hide Keyword Manager,apple photos organization,0,Show or hide the Keyword Manager,Photos - Organize
+Photos,Command-Delete,Delete Photo or Item from Library,apple photos management,0,Delete a photo or item from the library,Photos - Organize
+Photos,Delete,Remove Photo from Album (Not Library),apple photos organization,0,Remove a photo from an album (but not from the library),Photos - Organize
+Photos,Stop Playing Slideshow,Escape (Esc) key or click close button (X),apple photos slideshow,0,Stop playing a slideshow,Photos - Slideshows
+Photos,Pause or Resume Slideshow,Space bar,apple photos slideshow,0,Pause or resume playing a slideshow,Photos - Slideshows
+Photos,Move Through Slides Manually,Right Arrow or Left Arrow,apple photos slideshow,0,Move through slides in a slideshow manually,Photos - Slideshows
+Photos,Shift-Command-I,Import Photos,apple photos import-export,0,Import photos,Photos - Import/Export
+Photos,Shift-Command-E or drag to desktop,Export Photos,apple photos import-export,0,Export photos,Photos - Import/Export
+Photos,Command-P,Print,apple photos printing,0,Print,Photos - Print
+Photos,Command-W,Close Window & Quit Photos,apple photos app-management,0,Close a window and quit Photos,Photos - General
+Photos,Command-M,Minimize Photos Window,apple photos window-management,0,Minimize the Photos window,Photos - General
+Photos,Command-H,Hide Photos App (Without Quitting),apple photos app-management,0,Hide the Photos app (without quitting),Photos - General
+Photos,Command-Q,Quit Photos,apple photos app-management,0,Quit Photos,Photos - General
+Reminders,Command-N,New Reminder (or New Item),apple reminders,0,New Reminder (or New Item),Reminders
+Reminders,Shift-Command-N,New List,apple reminders,0,New List,Reminders
+Reminders,Option-Command-N,New Section (or New Column),apple reminders,0,New Section (or New Column),Reminders
+Reminders,Control-Command-N,New Section with Selection (or New Column with Selection),apple reminders,0,New Section with Selection (or New Column with Selection),Reminders
+Reminders,Command-[list number],Go to Pinned List,apple reminders,0,Go to pinned list,Reminders
+Reminders,Command-],Indent Reminder,apple reminders,0,Indent reminder,Reminders
+Reminders,Command-[,Outdent Reminder,apple reminders,0,Outdent reminder,Reminders
+Reminders,Command-E,Show All Subtasks,apple reminders,0,Show all subtasks,Reminders
+Reminders,Shift-Command-E,Hide All Subtasks,apple reminders,0,Hide all subtasks,Reminders
+Reminders,Shift-Command-F,Flag or Unflag Reminder,apple reminders,0,Flag or unflag reminder,Reminders
+Reminders,Command-P,Print Reminder List,apple reminders,0,Print reminder list,Reminders
+Reminders,Shift-Command-C,Mark Reminder Completed or Incomplete,apple reminders,0,Mark a reminder completed or incomplete,Reminders
+Reminders,Shift-Command-H,Show or Hide Completed Reminders,apple reminders,0,Show or hide completed reminders,Reminders
+Reminders,Delete,Delete Tag,apple reminders,0,Delete tag,Reminders
+Reminders,Command-T,Set Reminder as Due Today,apple reminders,0,Set reminder as due today,Reminders
+Reminders,Option-Command-T,Set Reminder as Due Tomorrow,apple reminders,0,Set reminder as due tomorrow,Reminders
+Reminders,Control-Command-T,Set All Overdue Reminders as Due Today,apple reminders,0,Set all overdue reminders as due today,Reminders
+Reminders,Command-K,Set Reminder as Due This Weekend,apple reminders,0,Set reminder as due this weekend,Reminders
+Reminders,Option-Command-K,Set Reminder as Due Next Week,apple reminders,0,Set reminder as due next week,Reminders
+Reminders,Control-Command-F,Enter or Exit Full Screen,apple reminders,0,Enter or exit full screen,Reminders
+Reminders,Command-W,Close Reminders Window & Quit App,apple reminders,0,Close the Reminders window and quit the app,Reminders
+Reminders,Command-Q,Quit Reminders,apple reminders,0,Quit Reminders,Reminders
+Preview,Command-S,Save a File,apple preview file-management,0,Save a file,Preview
+Preview,Control-Tab,Go to Next Tab,apple preview navigation,0,Go to next tab,Preview
+Preview,Shift-Control-Tab,Go to Previous Tab,apple preview navigation,0,Go to previous tab,Preview
+Preview,Control-Command-F,Enter Full Screen,apple preview view,0,Enter full screen,Preview
+Preview,Command-P,Print Current PDF or Image,apple preview printing,0,Print the current PDF or image,Preview
+Preview,Command-C,Copy Selected Text or Area,apple preview clipboard,0,Copy the selected text or area to the Clipboard,Preview
+Preview,Command-X,Cut Selected Item,apple preview clipboard,0,Cut the selected item and copy it to the Clipboard,Preview
+Preview,Command-V,Paste Contents of Clipboard,apple preview clipboard,0,Paste the contents of the Clipboard into an image,Preview
+Preview,Scroll Down One Screen/Next Image,Page Down,apple preview navigation,0,Scroll down one screen at a time or view the next image in the window,Preview
+Preview,Scroll Up One Screen/Previous Image,Page Up,apple preview navigation,0,Scroll up one screen at a time or view the previous image in the window,Preview
+Preview,Option-Page Down,Move to Next Document in Window,apple preview navigation,0,Move to next document in the window,Preview
+Preview,Option-Page Up,Move to Previous Document in Window,apple preview navigation,0,Move to previous document in the window,Preview
+Preview,Option-Down Arrow,Move to Next Page,apple preview navigation,0,Move to next page,Preview
+Preview,Option-Up Arrow,Move to Previous Page,apple preview navigation,0,Move to previous page,Preview
+Preview,Option-Command-0,Zoom All Images to Actual Size,apple preview zoom,0,Zoom all images to actual size,Preview
+Preview,Option-Command-9,Zoom All Images to Fit,apple preview zoom,0,Zoom all images to fit,Preview
+Preview,Option-Command-Plus (+),Zoom All Images In,apple preview zoom,0,Zoom all images in,Preview
+Preview,Option-Command-Minus (–),Zoom All Images Out,apple preview zoom,0,Zoom all images out,Preview
+Safari,Option key + arrow key,Scroll in Larger Increments,apple safari navigation,0,Scroll in larger increments,Safari - Scroll
+Safari,Scroll Down a Screen,Page Down or Space bar,apple safari navigation,0,Scroll down a screen,Safari - Scroll
+Safari,Scroll Up a Screen,Page Up or Shift–Space bar,apple safari navigation,0,Scroll up a screen,Safari - Scroll
+Safari,Scroll to Top-Left/Bottom-Left of Webpage,Command–Up Arrow or Command–Down Arrow,apple safari navigation,0,Scroll to the top-left or bottom-left corner of the webpage,Safari - Scroll
+Safari,Command-F,Search Current Webpage,apple safari search,0,Search the current webpage,Safari - Current Webpage
+Safari,Tab,Highlight Next Field/Pop-up Menu,apple safari navigation,0,Highlight the next field or pop-up menu on a webpage,Safari - Current Webpage
+Safari,Command-L,Select Smart Search Field,apple safari search,0,Select the Smart Search field,Safari - Current Webpage
+Safari,Command-P,Print Current Webpage,apple safari printing,0,Print the current webpage,Safari - Current Webpage
+Safari,Command-C,Copy Selected Item,apple safari clipboard,0,Copy the selected item,Safari - Current Webpage
+Safari,Command-V,Paste Most Recently Copied Item,apple safari clipboard,0,Paste the most recently copied item,Safari - Current Webpage
+Safari,Command-click a link/bookmark or Command-Return,Open Webpage in New Tab (Link/Bookmark/Smart Search),apple safari tab-management,0,Open a webpage in a new tab,Safari - Tabs
+Safari,Command-1 to Command-9,Select One of First Nine Tabs,apple safari tab-navigation,0,Select one of your first nine tabs,Safari - Tabs
+Safari,Command-W,Close Active Tab,apple safari tab-management,0,Close the active tab,Safari - Tabs
+Safari,Option-click Close button on tab,Close All Tabs Except One,apple safari tab-management,0,Close all tabs except for one,Safari - Tabs
+Safari,Shift-Command-T,Reopen Last Closed Tab,apple safari tab-management,0,Reopen the last tab you closed,Safari - Tabs
+Safari,Shift-Command-H,Go to Your Homepage,apple safari navigation,0,Go to your homepage,Safari - Settings
+Safari,Command-[,Go Back to Previous Webpage,apple safari history,0,Go back to the previous webpage,Safari - History
+Safari,Command-],Go Forward to Next Webpage,apple safari history,0,Go forward to the next webpage,Safari - History
+Safari,See Recently Visited Webpages by Name,Press and hold Back/Forward button,apple safari history,0,See a list of your recently visited webpages by name,Safari - History
+Safari,Option key + press and hold Back/Forward button,See Recently Visited Webpages by URL,apple safari history,0,See a list of your recently visited webpages by web address (URL),Safari - History
+Safari,Esc,Exit Full-screen View,apple safari view,0,Exit full-screen view,Safari - Zoom
+Safari,Command-Plus Sign (+) or Command-Minus Sign (-),Zoom Website Content,apple safari zoom,0,Zoom website content,Safari - Zoom
+Safari,Option key + View > Make Text Bigger/Smaller,Zoom Website Text,apple safari zoom,0,Zoom website text,Safari - Zoom
+Safari,Option-click a link to the file,Download a Linked File,apple safari downloads,0,Download a linked file,Safari - Downloads
+Safari,Double-click file in downloads list,Open a Downloaded File,apple safari downloads,0,Open a downloaded file,Safari - Downloads
+Safari,Command-` (above Tab key),Switch to Another Safari Window,apple safari window-management,0,Switch to another Safari window,Safari - Window
+Safari,Shift-Command-T,Reopen Last Closed Window,apple safari window-management,0,Reopen the last window you closed,Safari - Window
+Safari,Control-Command-2,Show or Hide Reading List Sidebar,apple safari reading-list,0,Show or Hide the Reading List sidebar,Safari - Reading List
+Safari,Shift-Command-D,Add Current Webpage to Reading List,apple safari reading-list,0,Add the current webpage,Safari - Reading List
+Safari,Shift-click a link to the webpage,Add Linked Webpage to Reading List,apple safari reading-list,0,Add a linked webpage,Safari - Reading List
+Safari,Shift-Command-R,Open Reader,apple safari reader,0,Open Reader,Safari - Reading List
+Safari,Esc,Close Reader,apple safari reader,0,Close Reader,Safari - Reading List
+Safari,Add Bookmark to Favorites Bar,Drag website icon to Favorites bar,apple safari bookmarks,0,Add a bookmark to the Favorites bar,Safari - Bookmarks
+Safari,Command-click folder in Favorites bar,Open All Bookmarks from Favorites Folder,apple safari bookmarks,0,Open all bookmarks from a folder in the Favorites bar,Safari - Bookmarks
+Safari,Move Bookmark on Favorites Bar,Drag the bookmark left or right,apple safari bookmarks,0,Move a bookmark on the Favorites bar,Safari - Bookmarks
+Safari,Remove Bookmark from Favorites Bar,Drag bookmark off top of bar,apple safari bookmarks,0,Remove a bookmark from the Favorites bar,Safari - Bookmarks
+Safari,Control-Command-1,Show or Hide Bookmarks Sidebar,apple safari bookmarks,0,Show or Hide the Bookmarks sidebar,Safari - Bookmarks
+Safari,Command-click each bookmark and folder,Select Bookmarks and Folders in Sidebar,apple safari bookmarks,0,Select bookmarks and folders in the sidebar,Safari - Bookmarks
+Safari,Select Next Bookmark or Folder,Up Arrow or Down Arrow,apple safari bookmarks,0,Select the next bookmark or folder,Safari - Bookmarks
+Safari,Open Selected Bookmark,Space bar,apple safari bookmarks,0,Open the selected bookmark,Safari - Bookmarks
+Safari,Open Selected Folder,Space bar or Right Arrow,apple safari bookmarks,0,Open the selected folder,Safari - Bookmarks
+Safari,Close Selected Folder,Space bar or Left Arrow,apple safari bookmarks,0,Close the selected folder,Safari - Bookmarks
+Safari,Esc,Cancel Editing Bookmark Name (Sidebar),apple safari bookmarks,0,Cancel editing a bookmark name in the sidebar,Safari - Bookmarks
+Safari,Return,Finish Editing Bookmark Name,apple safari bookmarks,0,Finish editing a bookmark name,Safari - Bookmarks
+Safari,Option-click New Folder button,Create Folder from Selected Bookmarks/Folders,apple safari bookmarks,0,Create a folder containing the selected bookmarks and folders in bookmarks view,Safari - Bookmarks
+Terminal,Command-N,New Window,macos terminal,0,New window,Terminal - Windows and Tabs
+Terminal,Control-Command-N,New Window with Same Command,macos terminal,0,New window with same command,Terminal - Windows and Tabs
+Terminal,Command-T,New Tab,macos terminal,0,New tab,Terminal - Windows and Tabs
+Terminal,Control-Command-T,New Tab with Same Command,macos terminal,0,New tab with same command,Terminal - Windows and Tabs
+Terminal,Shift-Command-T,Show or Hide Tab Bar,macos terminal,0,Show or hide tab bar,Terminal - Windows and Tabs
+Terminal,Shift-Command-Backslash (\),Show All Tabs or Exit Tab Overview,macos terminal,0,Show all tabs or exit tab overview,Terminal - Windows and Tabs
+Terminal,Shift-Command-N,New Command,macos terminal,0,New command,Terminal - Windows and Tabs
+Terminal,Shift-Command-K,New Remote Connection,macos terminal,0,New remote connection,Terminal - Windows and Tabs
+Terminal,Command-I,Show or Hide Inspector,macos terminal,0,Show or hide Inspector,Terminal - Windows and Tabs
+Terminal,Shift-Command-I,Edit Title,macos terminal,0,Edit title,Terminal - Windows and Tabs
+Terminal,Option-Command-I,Edit Background Color,macos terminal,0,Edit background color,Terminal - Windows and Tabs
+Terminal,Command-Plus (+),Make Fonts Bigger,macos terminal,0,Make fonts bigger,Terminal - Windows and Tabs
+Terminal,Command-Minus (–),Make Fonts Smaller,macos terminal,0,Make fonts smaller,Terminal - Windows and Tabs
+Terminal,Command-Grave Accent (`),Next Window,macos terminal,0,Next window,Terminal - Windows and Tabs
+Terminal,Command-Shift-Tilde (~),Previous Window,macos terminal,0,Previous window,Terminal - Windows and Tabs
+Terminal,Command-D,Split Window into Two Panes,macos terminal,0,Split window into two panes,Terminal - Windows and Tabs
+Terminal,Shift-Command-D,Close Split Pane,macos terminal,0,Close split pane,Terminal - Windows and Tabs
+Terminal,Command-W,Close Tab,macos terminal,0,Close tab,Terminal - Windows and Tabs
+Terminal,Option-Command-W,Close Other Tabs,macos terminal,0,Close other tabs,Terminal - Windows and Tabs
+Terminal,Option-Shift-Command-W,Close All,macos terminal,0,Close all,Terminal - Windows and Tabs
+Terminal,Command-Home,Scroll to Top,macos terminal,0,Scroll to top,Terminal - Windows and Tabs
+Terminal,Command-End,Scroll to Bottom,macos terminal,0,Scroll to bottom,Terminal - Windows and Tabs
+Terminal,Command-Page Up,Page Up,macos terminal,0,Page up,Terminal - Windows and Tabs
+Terminal,Command-Page Down,Page Down,macos terminal,0,Page down,Terminal - Windows and Tabs
+Terminal,Option-Command-Page Up,Line Up,macos terminal,0,Line up,Terminal - Windows and Tabs
+Terminal,Option-Command-Page Down,Line Down,macos terminal,0,Line down,Terminal - Windows and Tabs
+Terminal,Reposition Insertion Point,Press and hold Option + move pointer,macos terminal,0,Reposition the insertion point,Terminal - Command Line
+Terminal,Control-A,Move Insertion Point to Beginning of Line,macos terminal,0,Move the insertion point to the beginning of the line,Terminal - Command Line
+Terminal,Control-E,Move Insertion Point to End of Line,macos terminal,0,Move the insertion point to the end of the line,Terminal - Command Line
+Terminal,Right Arrow,Move Insertion Point Forward One Character,macos terminal,0,Move the insertion point forward one character,Terminal - Command Line
+Terminal,Left Arrow,Move Insertion Point Backward One Character,macos terminal,0,Move the insertion point backward one character,Terminal - Command Line
+Terminal,Option-Right Arrow,Move Insertion Point Forward One Word,macos terminal,0,Move the insertion point forward one word,Terminal - Command Line
+Terminal,Option-Left Arrow,Move Insertion Point Backward One Word,macos terminal,0,Move the insertion point backward one word,Terminal - Command Line
+Terminal,Control-U,Delete the Line,macos terminal,0,Delete the line,Terminal - Command Line
+Terminal,Control-K,Delete to End of Line,macos terminal,0,Delete to the end of the line,Terminal - Command Line
+Terminal,Option-D,Delete Forward to End of Word,macos terminal,0,Delete forward to the end of the word,Terminal - Command Line
+Terminal,Control-W,Delete Backward to Beginning of Word,macos terminal,0,Delete backward to the beginning of the word,Terminal - Command Line
+Terminal,Delete,Delete One Character,macos terminal,0,Delete one character,Terminal - Command Line
+Terminal,Forward-Delete One Character,Forward Delete (or Fn-Delete),macos terminal,0,Forward-delete one character,Terminal - Command Line
+Terminal,Control-T,Transpose Two Characters,macos terminal,0,Transpose two characters,Terminal - Command Line
+Terminal,Shift and Command keys + double-click path,Select Complete File Path,macos terminal,0,Select a complete file path,Terminal - Select & Find
+Terminal,Triple-click the line,Select Complete Line of Text,macos terminal,0,Select a complete line of text,Terminal - Select & Find
+Terminal,Shift and Command keys + double-click URL,Select a URL,macos terminal,0,Select a URL,Terminal - Select & Find
+Terminal,Option key + drag to select text,Select Rectangular Block,macos terminal,0,Select a rectangular block,Terminal - Select & Find
+Terminal,Command-X,Cut,macos terminal,0,Cut,Terminal - Select & Find
+Terminal,Command-C,Copy,macos terminal,0,Copy,Terminal - Select & Find
+Terminal,Control-Shift-Command-C,Copy Without Background Color,macos terminal,0,Copy without background color,Terminal - Select & Find
+Terminal,Option-Shift-Command-C,Copy Plain Text,macos terminal,0,Copy plain text,Terminal - Select & Find
+Terminal,Command-V,Paste,macos terminal,0,Paste,Terminal - Select & Find
+Terminal,Shift-Command-V,Paste the Selection,macos terminal,0,Paste the selection,Terminal - Select & Find
+Terminal,Control-Command-V,Paste Escaped Text,macos terminal,0,Paste escaped text,Terminal - Select & Find
+Terminal,Control-Shift-Command-V,Paste Escaped Selection,macos terminal,0,Paste escaped selection,Terminal - Select & Find
+Terminal,Command-G,Find Next,macos terminal,0,Find next,Terminal - Select & Find
+Terminal,Command-Shift-G,Find Previous,macos terminal,0,Find previous,Terminal - Select & Find
+Terminal,Command-E,Find Using Selected Text,macos terminal,0,Find using the selected text,Terminal - Select & Find
+Terminal,Command-J,Jump to Selected Text,macos terminal,0,Jump to the selected text,Terminal - Select & Find
+Terminal,Control-Command-Space,Open Character Viewer,macos terminal,0,Open the character viewer,Terminal - Select & Find
+Terminal,Command-U,Mark,macos terminal,0,Mark,Terminal - Marks & Bookmarks
+Terminal,Option-Command-U,Mark as Bookmark,macos terminal,0,Mark as bookmark,Terminal - Marks & Bookmarks
+Terminal,Shift-Command-U,Unmark,macos terminal,0,Unmark,Terminal - Marks & Bookmarks
+Terminal,Command-Return,Mark Line and Send Return,macos terminal,0,Mark line and send return,Terminal - Marks & Bookmarks
+Terminal,Shift-Command-Return,Send Return Without Marking,macos terminal,0,Send return without marking,Terminal - Marks & Bookmarks
+Terminal,Shift-Command-M,Insert Bookmark,macos terminal,0,Insert bookmark,Terminal - Marks & Bookmarks
+Terminal,Option-Shift-Command-M,Insert Bookmark with Name,macos terminal,0,Insert bookmark with name,Terminal - Marks & Bookmarks
+Terminal,Command-Up Arrow,Jump to Previous Mark,macos terminal,0,Jump to previous mark,Terminal - Marks & Bookmarks
+Terminal,Command-Down Arrow,Jump to Next Mark,macos terminal,0,Jump to next mark,Terminal - Marks & Bookmarks
+Terminal,Option-Command-Up Arrow,Jump to Previous Bookmark,macos terminal,0,Jump to previous bookmark,Terminal - Marks & Bookmarks
+Terminal,Option-Command-Down Arrow,Jump to Next Bookmark,macos terminal,0,Jump to next bookmark,Terminal - Marks & Bookmarks
+Terminal,Command-L,Clear to Previous Mark,macos terminal,0,Clear to previous mark,Terminal - Marks & Bookmarks
+Terminal,Option-Command-L,Clear to Previous Bookmark,macos terminal,0,Clear to previous bookmark,Terminal - Marks & Bookmarks
+Terminal,Command-K,Clear to Start,macos terminal,0,Clear to start,Terminal - Marks & Bookmarks
+Terminal,Shift-Command-A,Select Between Marks,macos terminal,0,Select between marks,Terminal - Marks & Bookmarks
+Terminal,Shift-Command-C,Show or Hide Colors,macos terminal,0,Show or hide colors,Terminal - Other
+Terminal,Command-Period (.),Break (Equivalent to Control-C),macos terminal,0,Break,Terminal - Other
+Terminal,Option-Command-R,Soft Reset Terminal Emulator State,macos terminal,0,Soft reset terminal emulator state,Terminal - Other
+Terminal,Control-Option-Command-R,Hard Reset Terminal Emulator State,macos terminal,0,Hard reset terminal emulator state,Terminal - Other
+Terminal,Command key + double-click URL,Open a URL,macos terminal,0,Open a URL,Terminal - Other
+Terminal,Add Complete File Path,Drag file from Finder into Terminal window,macos terminal,0,Add the complete path to a file,Terminal - Other
+Terminal,Command-S,Export Text As,macos terminal,0,Export text as,Terminal - Other
+Terminal,Shift-Command-S,Export Selected Text As,macos terminal,0,Export selected text as,Terminal - Other
+Terminal,Control-R,Reverse Search Command History,macos terminal,0,Reverse search command history,Terminal - Other
+Terminal,Command-R,Toggle Allow Mouse Reporting,macos terminal,0,Toggle “Allow Mouse Reporting” option,Terminal - Other
+Terminal,Command-Option-O,Toggle Use Option as Meta Key,macos terminal,0,Toggle “Use Option as Meta Key” option,Terminal - Other
+Terminal,Shift-Command-Down Arrow,Show Alternate Screen,macos terminal,0,Show alternate screen,Terminal - Other
+Terminal,Shift-Command-Up Arrow,Hide Alternate Screen,macos terminal,0,Hide alternate screen,Terminal - Other
+Terminal,Control-Shift-Command-Question Mark (?),Open Man Page for Selection,macos terminal,0,Open man page for selection,Terminal - Other
+Terminal,Control-Option-Command-Slash (/),Search Man Page Index for Selection,macos terminal,0,Search man page index for selection,Terminal - Other
+Spotlight,Command-Space bar,Open or Close Spotlight Window,macos spotlight,0,Open or close the Spotlight window,Spotlight
+Spotlight,Open Search Result in Quick Look,Space bar,macos spotlight,0,Open a search result in Quick Look,Spotlight
+Spotlight,Switch Between Search Field & Results,Tab key,macos spotlight,0,Switch between the search field and the search results,Spotlight
+Spotlight,Down Arrow,Move to Next Result,macos spotlight,0,Move to the next result,Spotlight
+Spotlight,Up Arrow,Move to Previous Result,macos spotlight,0,Move to the previous result,Spotlight
+Spotlight,Command-Down Arrow,Move to First Result in Next Category,macos spotlight,0,Move to the first result in the next category,Spotlight
+Spotlight,Command-Up Arrow,Move to First Result in Previous Category,macos spotlight,0,Move to the first result in the previous category,Spotlight
+Spotlight,Command,Show Path of a Result,macos spotlight,0,Show the path of a result (such as a file),Spotlight
+Spotlight,Open a Result,Return key,macos spotlight,0,Open a result,Spotlight
+Spotlight,Command-R or Command-Double-click,See File in App or Finder,macos spotlight,0,See a file in an app or the Finder,Spotlight
+Spotlight,Option-Command-Space bar,Open Finder Window with Search Field Selected,macos spotlight,0,Open a Finder window with the search field selected,Spotlight
+Voice Memos,Command-N,Create a Recording,apple voice-memos,0,Create a recording,Voice Memos
+Voice Memos,Play or Pause Recording,Space bar,apple voice-memos,0,Play or pause a recording,Voice Memos
+Voice Memos,Command-D,Duplicate a Recording,apple voice-memos,0,Duplicate a recording,Voice Memos
+Voice Memos,Shift-Command-E,Enhance a Recording,apple voice-memos,0,Enhance a recording,Voice Memos
+Voice Memos,Shift-Command-X,Skip Silence in a Recording,apple voice-memos,0,Skip silence in a recording,Voice Memos
+Voice Memos,Command-T,Trim a Recording,apple voice-memos,0,Trim a recording,Voice Memos
+Voice Memos,Delete a Recording,Delete key,apple voice-memos,0,Delete a recording,Voice Memos
+Voice Memos,Command-S,Save a Recording,apple voice-memos,0,Save a recording,Voice Memos
+Voice Memos,Command-Left Arrow,Jump Backward 15 Seconds,apple voice-memos,0,Jump backward 15 seconds in a recording,Voice Memos
+Voice Memos,Command-Right Arrow,Jump Forward 15 Seconds,apple voice-memos,0,Jump forward 15 seconds in a recording,Voice Memos
+Voice Memos,Command-M,Minimize Voice Memos Window,apple voice-memos,0,Minimize the Voice Memos window,Voice Memos
+Voice Memos,Command-H,Hide Voice Memos Window,apple voice-memos,0,Hide the Voice Memos window,Voice Memos
+Voice Memos,Option-Command-H,Hide Everything Except Voice Memos,apple voice-memos,0,Hide everything except Voice Memos,Voice Memos
+Voice Memos,Command-Q or Command-W,Quit Voice Memos App,apple voice-memos,0,Quit the Voice Memos app,Voice Memos

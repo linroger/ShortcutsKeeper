@@ -37,6 +37,7 @@ class AppModel {
     // MEMORY OPTIMIZATION: Cached computed properties
     private var _filteredApplicationsCache: [Application] = []
     private var _lastFilterSettings = (showSystemApps: false, hiddenApps: Set<String>())
+    private var _filteredApplicationsCount: Int = 0
     
     private init() {
         setupNotifications()
@@ -92,13 +93,30 @@ class AppModel {
             guard let self = self, let context = self.modelContext else { return }
             
             for scannedApp in scannedApps {
-                if !self.applications.contains(where: { $0.bundleIdentifier == scannedApp.bundleIdentifier }) {
+                // DUPLICATE PREVENTION: Check both bundle identifier and name
+                let isDuplicate = self.applications.contains { existingApp in
+                    existingApp.bundleIdentifier == scannedApp.bundleIdentifier ||
+                    existingApp.name == scannedApp.name
+                }
+                
+                if !isDuplicate {
                     context.insert(scannedApp)
+                    print("📱 Added new application: \(scannedApp.name)")
+                } else {
+                    print("⚠️ Skipped duplicate application: \(scannedApp.name)")
                 }
             }
             
             self.saveContext()
-            self.fetchData()
+            // PERFORMANCE: Only refresh applications data
+            if let context = self.modelContext {
+                do {
+                    self.applications = try context.fetch(FetchDescriptor<Application>())
+                    self.invalidateApplicationCache()
+                } catch {
+                    print("Error refreshing applications: \(error)")
+                }
+            }
             self.isScanning = false
         }
     }
@@ -109,10 +127,14 @@ class AppModel {
         let extractedShortcuts = await accessibilityExtractor.extractShortcuts(from: app.bundleIdentifier)
         
         for shortcutInfo in extractedShortcuts {
-            // Check if shortcut already exists
-            if !shortcuts.contains(where: { 
-                $0.application == app && $0.keyCombination == shortcutInfo.keyCombination 
-            }) {
+            // DUPLICATE PREVENTION: Enhanced checking for existing shortcuts
+            let isDuplicate = shortcuts.contains { existingShortcut in
+                existingShortcut.application == app && 
+                (existingShortcut.keyCombination == shortcutInfo.keyCombination ||
+                 existingShortcut.title == shortcutInfo.title)
+            }
+            
+            if !isDuplicate {
                 let shortcut = Shortcut(
                     title: shortcutInfo.title,
                     keyCombination: shortcutInfo.keyCombination,
@@ -122,11 +144,22 @@ class AppModel {
                 )
                 
                 modelContext?.insert(shortcut)
+                print("⌨️ Added shortcut: \(shortcutInfo.title) (\(shortcutInfo.keyCombination))")
+            } else {
+                print("⚠️ Skipped duplicate shortcut: \(shortcutInfo.title)")
             }
         }
         
         saveContext()
-        fetchData()
+        // PERFORMANCE: Only refresh affected data, not full fetch
+        if let context = modelContext {
+            do {
+                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
+                invalidateApplicationCache() // Update filtered applications cache
+            } catch {
+                print("Error refreshing shortcuts: \(error)")
+            }
+        }
     }
     
     // MARK: - Shortcut Management
@@ -134,6 +167,7 @@ class AppModel {
     func addShortcut(
         title: String,
         keyCombination: String,
+        keyCombinations: [String] = [],
         description: String,
         category: String,
         subcategory: String? = nil,
@@ -145,6 +179,7 @@ class AppModel {
         let shortcut = Shortcut(
             title: title,
             keyCombination: keyCombination,
+            keyCombinations: keyCombinations,
             shortcutDescription: description,
             category: category.isEmpty ? "General" : category,
             subcategory: subcategory,
@@ -188,7 +223,15 @@ class AppModel {
         guard let context = modelContext else { return }
         context.delete(shortcut)
         saveContext()
-        fetchData()
+        // PERFORMANCE: Only refresh affected data, not full fetch
+        if let context = modelContext {
+            do {
+                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
+                invalidateApplicationCache() // Update filtered applications cache
+            } catch {
+                print("Error refreshing shortcuts: \(error)")
+            }
+        }
     }
     
     func clearAllShortcuts() {
@@ -203,7 +246,15 @@ class AppModel {
         shortcuts.removeAll()
         
         saveContext()
-        fetchData()
+        // PERFORMANCE: Only refresh affected data, not full fetch
+        if let context = modelContext {
+            do {
+                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
+                invalidateApplicationCache() // Update filtered applications cache
+            } catch {
+                print("Error refreshing shortcuts: \(error)")
+            }
+        }
     }
     
     func duplicateShortcut(_ shortcut: Shortcut) {
@@ -220,7 +271,15 @@ class AppModel {
         
         context.insert(duplicated)
         saveContext()
-        fetchData()
+        // PERFORMANCE: Only refresh affected data, not full fetch
+        if let context = modelContext {
+            do {
+                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
+                invalidateApplicationCache() // Update filtered applications cache
+            } catch {
+                print("Error refreshing shortcuts: \(error)")
+            }
+        }
     }
     
     func toggleFavorite(_ shortcut: Shortcut) {
@@ -249,12 +308,31 @@ class AppModel {
             }
             .sorted { $0.name < $1.name }
         
+        _filteredApplicationsCount = _filteredApplicationsCache.count
         _lastFilterSettings = currentSettings
         return _filteredApplicationsCache
     }
     
+    // PERFORMANCE OPTIMIZATION: Fast access to count without recalculating array
+    var filteredApplicationsCount: Int {
+        let showSystemApps = UserDefaults.standard.bool(forKey: "showSystemApps")
+        let currentSettings = (showSystemApps: showSystemApps, hiddenApps: hiddenApplications)
+        
+        // Return cached count if settings haven't changed
+        if _lastFilterSettings.showSystemApps == currentSettings.showSystemApps &&
+           _lastFilterSettings.hiddenApps == currentSettings.hiddenApps &&
+           _filteredApplicationsCount > 0 {
+            return _filteredApplicationsCount
+        }
+        
+        // Trigger cache update by accessing filteredApplications
+        _ = filteredApplications
+        return _filteredApplicationsCount
+    }
+    
     func invalidateApplicationCache() {
         _filteredApplicationsCache.removeAll()
+        _filteredApplicationsCount = 0
     }
     
     var filteredShortcuts: [Shortcut] {
@@ -586,6 +664,15 @@ class AppModel {
         }
         
         saveContext()
+        // PERFORMANCE: Only refresh affected data, not full fetch
+        if let context = modelContext {
+            do {
+                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
+                invalidateApplicationCache() // Update filtered applications cache
+            } catch {
+                print("Error refreshing shortcuts: \(error)")
+            }
+        } // Refresh data to update UI
     }
     
     func moveShortcut(_ shortcut: Shortcut, to application: Application) {
@@ -596,32 +683,41 @@ class AppModel {
     // MARK: - Memory Management & Performance Monitoring
     
     private func startMemoryMonitoring() {
-        // Reduce frequency to every 2 minutes instead of 10 seconds
-        memoryTimer = Timer.scheduledTimer(withTimeInterval: 120.0, repeats: true) { _ in
-            Task { @MainActor in
-                self.checkMemoryUsage()
-            }
-        }
+        // DISABLED: Memory monitoring was causing 99% CPU usage
+        // The expensive mach_task_basic_info calls are not needed for normal operation
+        // Users can manually check memory in Activity Monitor if needed
+        print("📱 Memory monitoring disabled to prevent CPU overload")
+        // memoryTimer = Timer.scheduledTimer(withTimeInterval: 600.0, repeats: true) { _ in
+        //     Task { @MainActor in
+        //         self.performLightweightMemoryCheck()
+        //     }
+        // }
     }
     
     @MainActor
     private func checkMemoryUsage() {
-        var memoryInfo = mach_task_basic_info()
-        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
+        // DISABLED: This function was causing excessive CPU usage with expensive kernel calls
+        // The mach_task_basic_info system calls were consuming 99% CPU
+        print("💾 Memory monitoring disabled - use Activity Monitor for memory stats")
+        return
         
-        let kerr: kern_return_t = withUnsafeMutablePointer(to: &memoryInfo) {
-            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
-                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
-            }
-        }
-        
-        if kerr == KERN_SUCCESS {
-            let memoryUsageMB = memoryInfo.resident_size / 1_024 / 1_024
-            if memoryUsageMB > 1000 { // Alert if over 1GB
-                print("⚠️ High memory usage: \(memoryUsageMB)MB")
-                performMemoryCleanup()
-            }
-        }
+        // Original expensive code commented out:
+        // var memoryInfo = mach_task_basic_info()
+        // var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
+        // 
+        // let kerr: kern_return_t = withUnsafeMutablePointer(to: &memoryInfo) {
+        //     $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+        //         task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+        //     }
+        // }
+        // 
+        // if kerr == KERN_SUCCESS {
+        //     let memoryUsageMB = memoryInfo.resident_size / 1_024 / 1_024
+        //     if memoryUsageMB > 1000 { // Alert if over 1GB
+        //         print("⚠️ High memory usage: \(memoryUsageMB)MB")
+        //         performMemoryCleanup()
+        //     }
+        // }
     }
     
     private func performMemoryCleanup() {
@@ -652,18 +748,23 @@ class AppModel {
         let appCount = applications.count
         let shortcutCount = shortcuts.count
         
-        var memoryInfo = mach_task_basic_info()
-        var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
-        
-        let kerr: kern_return_t = withUnsafeMutablePointer(to: &memoryInfo) {
-            $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
-                task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
-            }
-        }
-        
-        let totalMB = kerr == KERN_SUCCESS ? Int(memoryInfo.resident_size / 1_024 / 1_024) : -1
+        // PERFORMANCE FIX: Avoid expensive kernel calls
+        // Return -1 for memory to indicate monitoring is disabled
+        let totalMB = -1 // Use Activity Monitor for memory stats
         
         return (applications: appCount, shortcuts: shortcutCount, totalMB: totalMB)
+        
+        // Original expensive code commented out:
+        // var memoryInfo = mach_task_basic_info()
+        // var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
+        // 
+        // let kerr: kern_return_t = withUnsafeMutablePointer(to: &memoryInfo) {
+        //     $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
+        //         task_info(mach_task_self_, task_flavor_t(MACH_TASK_BASIC_INFO), $0, &count)
+        //     }
+        // }
+        // 
+        // let totalMB = kerr == KERN_SUCCESS ? Int(memoryInfo.resident_size / 1_024 / 1_024) : -1
     }
     
     // MARK: - Import/Export
@@ -706,6 +807,7 @@ class AppModel {
             
             var appName: String
             var keyCombination: String
+            var title: String
             var description: String
             var tags: [String]
             var subcategory: String? = nil
@@ -718,15 +820,19 @@ class AppModel {
                     continue 
                 }
                 
-                appName = fields[0]
-                keyCombination = fields[1]
-                let shortcutName = fields[2]
+                appName = fields[0]                // App column
+                keyCombination = fields[1]         // Shortcut column (the actual keys)
+                let shortcutName = fields[2]       // Name column (the command name)
                 tags = fields[3].split(separator: " ").map { String($0.trimmingCharacters(in: .whitespaces)) }
-                isFavorite = fields[4] == "1"
-                description = fields[5].isEmpty ? shortcutName : fields[5]
+                isFavorite = fields[4] == "1"      // Pinned column
+                let descriptionField = fields[5]  // description column
                 if fields.count > 6 && !fields[6].isEmpty {
-                    subcategory = fields[6]
+                    subcategory = fields[6]        // subcategory column
                 }
+                
+                // Use Name column as title, description column as description
+                title = shortcutName.isEmpty ? "Imported Shortcut" : shortcutName
+                description = descriptionField
             } else if isNewFormat {
                 // New format: app_name,shortcut_name,key_combination,description,tags
                 guard fields.count >= 5 else { 
@@ -737,7 +843,8 @@ class AppModel {
                 appName = fields[0]
                 let shortcutName = fields[1]
                 keyCombination = fields[2]
-                description = fields[3].isEmpty ? shortcutName : fields[3]
+                title = shortcutName.isEmpty ? "Imported Shortcut" : shortcutName
+                description = fields[3]
                 tags = fields[4].split(separator: ",").map { String($0.trimmingCharacters(in: .whitespaces)) }
             } else {
                 // Old format: App,Shortcut,Description,Tags,Pinned
@@ -748,6 +855,7 @@ class AppModel {
                 
                 appName = fields[0]
                 keyCombination = fields[1]
+                title = fields[2].isEmpty ? "Imported Shortcut" : fields[2]
                 description = fields[2]
                 tags = fields[3].split(separator: " ").map { String($0) }
                 isFavorite = fields[4] == "1"
@@ -779,9 +887,18 @@ class AppModel {
             }
             
             if !exists {
+                // Parse multiple key combinations separated by | or ;
+                let multipleKeys = keyCombination.components(separatedBy: CharacterSet(charactersIn: "|;"))
+                    .map { $0.trimmingCharacters(in: .whitespaces) }
+                    .filter { !$0.isEmpty }
+                
+                let primaryKey = multipleKeys.first ?? keyCombination
+                let allKeys = multipleKeys.count > 1 ? multipleKeys : []
+                
                 addShortcut(
-                    title: description.isEmpty ? "Imported Shortcut" : description,
-                    keyCombination: keyCombination,
+                    title: title,
+                    keyCombination: primaryKey,
+                    keyCombinations: allKeys,
                     description: description,
                     category: "Imported",
                     subcategory: subcategory,

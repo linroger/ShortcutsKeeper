@@ -59,7 +59,7 @@ struct BeautifulSidebarView: View {
                             BeautifulSidebarRow(
                                 icon: "square.grid.2x2",
                                 title: "All Apps",
-                                count: appModel.filteredApplications.count,
+                                count: appModel.filteredApplicationsCount,
                                 color: .purple,
                                 isSelected: false,
                                 showChevron: true
@@ -264,6 +264,10 @@ struct BeautifulSidebarRow: View {
                 isHovered = hovering
             }
         }
+        // ACCESSIBILITY: Enhanced VoiceOver support
+        .accessibilityLabel(count != nil ? "\(title), \(count!) items" : title)
+        .accessibilityHint(isSelected ? "Currently selected" : "Tap to select \(title) section")
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : [.isButton])
     }
 }
 
@@ -539,6 +543,14 @@ struct AppContextMenu: View {
             appModel.showNewShortcutSheet = true
         } label: {
             Label("Add Shortcut to \(application.name)", systemImage: "plus")
+        }
+        
+        Button {
+            appModel.selectedApplication = application
+            selectedSection = .allApps
+            appModel.showCaptureWindow = true
+        } label: {
+            Label("Assign Keyboard Shortcut", systemImage: "keyboard")
         }
         
         Divider()

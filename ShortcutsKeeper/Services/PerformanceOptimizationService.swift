@@ -19,8 +19,24 @@ class PerformanceOptimizationService: ObservableObject {
     private var applicationIndex: [String: [UUID]] = [:]
     private var shortcutLookup: [UUID: Shortcut] = [:]
     
-    // MEMORY OPTIMIZED: Store IDs instead of full objects
+    // DISABLED: Search index building was causing CPU overload
     func buildSearchIndex(from shortcuts: [Shortcut]) {
+        print("🚫 Search index building disabled to prevent CPU overload")
+        
+        // Clear existing indices to prevent stale data
+        searchIndex.removeAll()
+        categoryIndex.removeAll()
+        applicationIndex.removeAll()
+        shortcutLookup.removeAll()
+        
+        // Set optimization progress to completed
+        isOptimizing = false
+        optimizationProgress = 1.0
+        
+        return
+        
+        // Original expensive code commented out:
+        /*
         searchIndexQueue.async { [weak self] in
             guard let self = self else { return }
             
@@ -95,55 +111,33 @@ class PerformanceOptimizationService: ObservableObject {
                 self.optimizationProgress = 1.0
             }
         }
+        */
     }
     
-    // OPTIMIZED: Convert IDs back to objects only when needed
+    // DISABLED: Return empty results since search indexing is disabled for performance
     func fastSearch(_ query: String, limit: Int = 100) -> [Shortcut] {
-        guard !query.isEmpty else { return [] }
-        
-        let searchTerms = query.lowercased().components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }
-        guard !searchTerms.isEmpty else { return [] }
-        
-        var resultSet: Set<UUID>?
-        
-        for term in searchTerms {
-            let matchingIds = searchIndex[term] ?? Set<UUID>()
-            
-            if resultSet == nil {
-                resultSet = matchingIds
-            } else {
-                resultSet = resultSet?.intersection(matchingIds)
-            }
-            
-            if resultSet?.isEmpty == true {
-                return []
-            }
-        }
-        
-        let shortcutIds = Array(resultSet ?? Set<UUID>()).prefix(limit)
-        return shortcutIds.compactMap { shortcutLookup[$0] }
+        print("🚫 Fast search disabled - use AppModel.searchAllShortcuts() instead")
+        return []
     }
     
     func getShortcutsInCategory(_ category: String) -> [Shortcut] {
-        let ids = categoryIndex[category] ?? []
-        return ids.compactMap { shortcutLookup[$0] }
+        print("🚫 Category search disabled - search indexing turned off for performance")
+        return []
     }
     
     func getShortcutsForApplication(_ applicationName: String) -> [Shortcut] {
-        let ids = applicationIndex[applicationName] ?? []
-        return ids.compactMap { shortcutLookup[$0] }
+        print("🚫 Application search disabled - search indexing turned off for performance")
+        return []
     }
     
     func getTopCategories(limit: Int = 10) -> [(category: String, count: Int)] {
-        let sorted = categoryIndex.map { (category: $0.key, count: $0.value.count) }
-            .sorted { $0.count > $1.count }
-        return Array(sorted.prefix(limit))
+        print("🚫 Category statistics disabled - search indexing turned off for performance")
+        return []
     }
     
     func getTopApplications(limit: Int = 10) -> [(application: String, count: Int)] {
-        let sorted = applicationIndex.map { (application: $0.key, count: $0.value.count) }
-            .sorted { $0.count > $1.count }
-        return Array(sorted.prefix(limit))
+        print("🚫 Application statistics disabled - search indexing turned off for performance")
+        return []
     }
     
     func invalidateIndex() {
@@ -153,26 +147,19 @@ class PerformanceOptimizationService: ObservableObject {
         shortcutLookup.removeAll()
     }
     
-    // MEMORY MONITORING
+    // MEMORY MONITORING - DISABLED
     func getMemoryUsage() -> (searchIndex: Int, categoryIndex: Int, applicationIndex: Int, lookup: Int) {
-        let searchSize = MemoryLayout.size(ofValue: searchIndex)
-        let categorySize = MemoryLayout.size(ofValue: categoryIndex)
-        let applicationSize = MemoryLayout.size(ofValue: applicationIndex)
-        let lookupSize = MemoryLayout.size(ofValue: shortcutLookup)
-        
-        return (searchIndex: searchSize, categoryIndex: categorySize, 
-                applicationIndex: applicationSize, lookup: lookupSize)
+        // Return zero values since indexing is disabled
+        return (searchIndex: 0, categoryIndex: 0, applicationIndex: 0, lookup: 0)
     }
     
     func optimizeMemoryUsage() {
-        // Remove empty entries
-        searchIndex = searchIndex.filter { !$0.value.isEmpty }
-        categoryIndex = categoryIndex.filter { !$0.value.isEmpty }
-        applicationIndex = applicationIndex.filter { !$0.value.isEmpty }
-        
-        // Remove orphaned shortcuts from lookup
-        let allUsedIds = Set(searchIndex.values.flatMap { $0 })
-        shortcutLookup = shortcutLookup.filter { allUsedIds.contains($0.key) }
+        // Clear all indices since they're disabled
+        searchIndex.removeAll()
+        categoryIndex.removeAll()
+        applicationIndex.removeAll()
+        shortcutLookup.removeAll()
+        print("🧹 Search indices cleared - indexing disabled for performance")
     }
 }
 

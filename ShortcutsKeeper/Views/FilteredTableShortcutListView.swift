@@ -24,12 +24,33 @@ struct FilteredTableShortcutListView: View {
         Table(sortedShortcuts, selection: $selection, sortOrder: $sortOrder) {
             // Keys column with custom ordering
             TableColumn("Shortcut") { shortcut in
-                EnhancedKeyDisplayView(
-                    keyCombination: shortcut.keyCombination,
-                    style: .compact,
-                    ordered: true
-                )
-                .padding(.vertical, 4)
+                if shortcut.keyCombinations.count > 1 {
+                    VStack(alignment: .leading, spacing: 2) {
+                        ForEach(Array(shortcut.keyCombinations.enumerated()), id: \.offset) { index, keyCombo in
+                            HStack {
+                                EnhancedKeyDisplayView(
+                                    keyCombination: keyCombo,
+                                    style: .compact,
+                                    ordered: true
+                                )
+                                
+                                if index < shortcut.keyCombinations.count - 1 {
+                                    Text("or")
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.vertical, 4)
+                } else {
+                    EnhancedKeyDisplayView(
+                        keyCombination: shortcut.keyCombination,
+                        style: .compact,
+                        ordered: true
+                    )
+                    .padding(.vertical, 4)
+                }
             }
             .width(min: 120, ideal: 180)
             

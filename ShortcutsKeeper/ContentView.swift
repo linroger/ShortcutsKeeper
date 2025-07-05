@@ -44,7 +44,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            // Beautiful native macOS sidebar
+            // Beautiful native macOS sidebar with translucent effects
             BeautifulSidebarView(
                 appModel: appModel, 
                 selectedSection: $selectedSidebarSection, 
@@ -54,14 +54,16 @@ struct ContentView: View {
                 showAppSelector: $showAppSelector
             )
             .navigationSplitViewColumnWidth(min: 260, ideal: 300, max: 340)
+            .toolbarBackground(.ultraThinMaterial, for: .windowToolbar)
         } detail: {
-            // Main content view with enhanced design
+            // Main content view with enhanced native design
             BeautifulMainContentView(
                 selectedSection: selectedSidebarSection, 
                 appModel: appModel, 
                 selectedShortcut: $selectedShortcut
             )
             .navigationSplitViewColumnWidth(min: 600, ideal: 900)
+            .toolbarBackground(.ultraThinMaterial, for: .windowToolbar)
         }
         .navigationTitle("")
         .toolbar {
@@ -82,7 +84,7 @@ struct ContentView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                     
-                    Text("(\(appModel.filteredApplications.count))")
+                    Text("(\(appModel.filteredApplicationsCount))")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     
@@ -332,7 +334,7 @@ struct EnhancedSidebarView: View {
                                 .frame(width: 16)
                             Text("All Apps")
                             Spacer()
-                            Text("\(appModel.filteredApplications.count)")
+                            Text("\(appModel.filteredApplicationsCount)")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }

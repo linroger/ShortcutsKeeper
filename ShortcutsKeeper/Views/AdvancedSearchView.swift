@@ -443,14 +443,28 @@ struct AdvancedSearchResultRow: View {
             return Text(text)
         }
         
+        // PERFORMANCE FIX: Use AttributedString like GlobalSearchView
         let ranges = text.ranges(of: searchQuery, options: .caseInsensitive)
         if ranges.isEmpty {
             return Text(text)
         }
         
-        // Simple highlighted text without complex concatenation
-        return Text(text)
-            .foregroundColor(.primary)
+        // Create AttributedString for highlighting
+        var attributedString = AttributedString(text)
+        
+        // Apply highlighting to matched ranges (iterate in reverse to avoid index shifting)
+        for range in ranges.reversed() {
+            let startIndex = AttributedString.Index(range.lowerBound, within: attributedString)
+            let endIndex = AttributedString.Index(range.upperBound, within: attributedString)
+            
+            if let start = startIndex, let end = endIndex {
+                let attributedRange = start..<end
+                attributedString[attributedRange].foregroundColor = .accentColor
+                attributedString[attributedRange].font = .body.weight(.semibold)
+            }
+        }
+        
+        return Text(attributedString)
     }
 }
 

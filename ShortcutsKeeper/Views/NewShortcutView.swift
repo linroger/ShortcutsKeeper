@@ -62,17 +62,19 @@ struct NewShortcutView: View {
                                     .textFieldStyle(.roundedBorder)
                                     .disabled(isCapturing)
                                 
-                                Button(action: captureShortcut) {
-                                    Label(isCapturing ? "Capturing..." : "Capture", 
-                                          systemImage: "keyboard")
+                                Button(action: isCapturing ? cancelCapture : captureShortcut) {
+                                    Label(isCapturing ? "Cancel" : "Capture", 
+                                          systemImage: isCapturing ? "xmark.circle" : "keyboard")
                                 }
-                                .disabled(isCapturing)
+                                .foregroundColor(isCapturing ? .red : .blue)
                             }
                         }
                     }
                     
                     if !viewModel.conflictingShortcuts.isEmpty && showConflicts {
-                        ConflictWarningView(conflicts: viewModel.conflictingShortcuts)
+                        EnhancedConflictWarningView(conflicts: viewModel.conflictingShortcuts)
+                            .transition(.opacity.combined(with: .scale(scale: 0.95)))
+                            .animation(.easeInOut(duration: 0.3), value: showConflicts)
                     }
                     
                     TextField("Description (optional)", text: $description, axis: .vertical)
@@ -110,6 +112,16 @@ struct NewShortcutView: View {
                 checkForConflicts()
             }
         }
+        .onDisappear {
+            // Clean up capture service if view is dismissed
+            cancelCapture()
+        }
+        // ERROR HANDLING: Validation error alert
+        .alert("Input Error", isPresented: $showingErrorAlert) {
+            Button("OK") { }
+        } message: {
+            Text(errorMessage)
+        }
     }
     
     private var headerView: some View {
@@ -142,12 +154,27 @@ struct NewShortcutView: View {
     }
     
     private func captureShortcut() {
-        isCapturing = true
-        viewModel.startCapturingShortcut()
+        guard !isCapturing else { return }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            checkForCapturedShortcut()
+        isCapturing = true
+        
+        // ENHANCED SHORTCUT CAPTURE: Use proper capture service API
+        captureService = ShortcutCaptureService()
+        captureService?.startCapturing { capturedKeys in
+            DispatchQueue.main.async {
+                self.keyCombination = capturedKeys
+                self.checkForConflicts()
+                self.isCapturing = false
+                self.captureService = nil
+                print("✅ Captured shortcut: \(capturedKeys)")
+            }
         }
+    }
+    
+    private func cancelCapture() {
+        captureService?.stopCapturing()
+        captureService = nil
+        isCapturing = false
     }
     
     private func checkForCapturedShortcut() {
@@ -169,18 +196,61 @@ struct NewShortcutView: View {
     }
     
     private func saveShortcut() {
+        // INPUT VALIDATION: Enhanced validation with user feedback
+        guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
+            // Show error alert for empty title
+            showValidationError("Please enter a title for the shortcut")
+            return
+        }
+        
+        guard !keyCombination.trimmingCharacters(in: .whitespaces).isEmpty else {
+            showValidationError("Please enter or capture a keyboard shortcut")
+            return
+        }
+        
+        // Validate shortcut format
+        if !isValidShortcutFormat(keyCombination) {
+            showValidationError("Invalid shortcut format. Use combinations like ⌘K or Command+K")
+            return
+        }
+        
         let tagArray = tags.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces) }
         
-        viewModel.addShortcut(
-            title: title,
-            keyCombination: keyCombination,
-            description: description,
-            category: category,
-            application: selectedApplication,
-            tags: tagArray
-        )
-        
-        dismiss()
+        do {
+            viewModel.addShortcut(
+                title: title.trimmingCharacters(in: .whitespaces),
+                keyCombination: keyCombination.trimmingCharacters(in: .whitespaces),
+                description: description.trimmingCharacters(in: .whitespaces),
+                category: category.isEmpty ? "General" : category,
+                application: selectedApplication,
+                tags: tagArray
+            )
+            
+            print("✅ Successfully added shortcut: \(title)")
+            dismiss()
+        } catch {
+            showValidationError("Failed to save shortcut: \(error.localizedDescription)")
+        }
+    }
+    
+    private func isValidShortcutFormat(_ shortcut: String) -> Bool {
+        // Basic validation for shortcut format
+        let trimmed = shortcut.trimmingCharacters(in: .whitespaces)
+        return !trimmed.isEmpty && 
+               (trimmed.contains("⌘") || trimmed.contains("⌃") || trimmed.contains("⌥") || trimmed.contains("⇧") ||
+                trimmed.lowercased().contains("command") || trimmed.lowercased().contains("ctrl") || 
+                trimmed.lowercased().contains("option") || trimmed.lowercased().contains("shift") ||
+                trimmed.count == 1) // Single key shortcuts are valid
+    }
+    
+    @State private var showingErrorAlert = false
+    @State private var errorMessage = ""
+    @State private var captureService: ShortcutCaptureService?
+    
+    private func showValidationError(_ message: String) {
+        errorMessage = message
+        showingErrorAlert = true
+        print("❌ Validation error: \(message)")
     }
 }
 
@@ -288,5 +358,104 @@ struct ShortcutDropdownPicker: View {
         if hasShift { modifiers.append("⇧") }
         
         keyCombination = modifiers.joined() + selectedKey
+    }
+}
+
+// MARK: - Enhanced Conflict Warning View
+
+struct EnhancedConflictWarningView: View {
+    let conflicts: [Shortcut]
+    @State private var isExpanded = false
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Enhanced header with animation
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    isExpanded.toggle()
+                }
+            }) {
+                HStack {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.orange)
+                        .font(.system(size: 16, weight: .semibold))
+                    
+                    Text("Shortcut Conflict Warning")
+                        .font(.headline)
+                        .foregroundColor(.orange)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.orange)
+                        .font(.caption)
+                        .rotationEffect(.degrees(isExpanded ? 90 : 0))
+                        .animation(.easeInOut(duration: 0.2), value: isExpanded)
+                }
+            }
+            .buttonStyle(.plain)
+            
+            Text("This shortcut is already used by \(conflicts.count) other \(conflicts.count == 1 ? "item" : "items")")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            if isExpanded {
+                LazyVStack(alignment: .leading, spacing: 8) {
+                    ForEach(conflicts) { conflict in
+                        HStack {
+                            // App icon or placeholder
+                            if let app = conflict.application, let icon = app.icon {
+                                Image(nsImage: icon)
+                                    .resizable()
+                                    .frame(width: 16, height: 16)
+                                    .clipShape(RoundedRectangle(cornerRadius: 3))
+                            } else {
+                                Image(systemName: "app.fill")
+                                    .foregroundColor(.secondary)
+                                    .frame(width: 16, height: 16)
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(conflict.title)
+                                    .font(.callout)
+                                    .fontWeight(.medium)
+                                
+                                if let app = conflict.application {
+                                    Text(app.name)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                            
+                            Spacer()
+                            
+                            // Shortcut display
+                            Text(conflict.keyCombination)
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(.ultraThinMaterial)
+                                .clipShape(Capsule())
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.ultraThinMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.orange.opacity(0.3), lineWidth: 1)
+                )
+        )
+        // ACCESSIBILITY: Enhanced VoiceOver support
+        .accessibilityLabel("Shortcut conflict warning")
+        .accessibilityHint("This shortcut is already in use by other items. Tap to see details.")
+        .accessibilityAddTraits([.isButton])
     }
 }
