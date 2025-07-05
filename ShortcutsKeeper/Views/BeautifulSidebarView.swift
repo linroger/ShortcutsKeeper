@@ -541,6 +541,14 @@ struct AppContextMenu: View {
             Label("Add Shortcut to \(application.name)", systemImage: "plus")
         }
         
+        Button {
+            appModel.selectedApplication = application
+            selectedSection = .allApps
+            appModel.showCaptureWindow = true
+        } label: {
+            Label("Assign Keyboard Shortcut", systemImage: "keyboard")
+        }
+        
         Divider()
         
         Button {

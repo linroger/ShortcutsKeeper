@@ -21,6 +21,11 @@ struct EnhancedSettingsView: View {
     @AppStorage("displayInDock") private var displayInDock = true
     @AppStorage("useTableView") private var useTableView = false
     
+    // Key Display Customization Settings
+    @AppStorage("keyDisplaySize") private var keyDisplaySize: Double = 1.0
+    @AppStorage("keyVerticalPadding") private var keyVerticalPadding: Double = 6.0
+    @AppStorage("keyHorizontalPadding") private var keyHorizontalPadding: Double = 10.0
+    
     @State private var showingChangeShortcutAlert = false
     @State private var showingClearAllAlert = false
     
@@ -146,6 +151,100 @@ struct EnhancedSettingsView: View {
                 Text("Choose between a modern card-based layout or a compact table view for displaying shortcuts.")
                     .font(.caption)
                     .foregroundColor(.secondary)
+            }
+            
+            // Key Display Customization Section
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Key Display Customization")
+                    .font(.body)
+                    .fontWeight(.medium)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Key Size:")
+                                .font(.body)
+                            Spacer()
+                            Text("\(Int(keyDisplaySize * 100))%")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Slider(value: $keyDisplaySize, in: 0.5...2.0, step: 0.1) {
+                            Text("Key Size")
+                        }
+                        .accentColor(.blue)
+                        
+                        Text("Adjust the overall size of keyboard shortcut keys.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Vertical Padding:")
+                                .font(.body)
+                            Spacer()
+                            Text("\(Int(keyVerticalPadding))pt")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Slider(value: $keyVerticalPadding, in: 2...20, step: 1) {
+                            Text("Vertical Padding")
+                        }
+                        .accentColor(.green)
+                        
+                        Text("Control the spacing above and below the key text.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Horizontal Padding:")
+                                .font(.body)
+                            Spacer()
+                            Text("\(Int(keyHorizontalPadding))pt")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Slider(value: $keyHorizontalPadding, in: 4...30, step: 1) {
+                            Text("Horizontal Padding")
+                        }
+                        .accentColor(.orange)
+                        
+                        Text("Control the spacing to the left and right of the key text.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    // Preview Section
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Preview:")
+                            .font(.body)
+                            .fontWeight(.medium)
+                        
+                        HStack {
+                            CustomizableKeyDisplayView(
+                                keyCombination: "⌘⇧K",
+                                size: keyDisplaySize,
+                                verticalPadding: keyVerticalPadding,
+                                horizontalPadding: keyHorizontalPadding
+                            )
+                            
+                            CustomizableKeyDisplayView(
+                                keyCombination: "⌃⌥F12",
+                                size: keyDisplaySize,
+                                verticalPadding: keyVerticalPadding,
+                                horizontalPadding: keyHorizontalPadding
+                            )
+                            
+                            Spacer()
+                        }
+                    }
+                }
             }
             
             // System Integration Section

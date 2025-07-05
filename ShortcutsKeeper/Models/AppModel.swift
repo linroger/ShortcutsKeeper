@@ -134,6 +134,7 @@ class AppModel {
     func addShortcut(
         title: String,
         keyCombination: String,
+        keyCombinations: [String] = [],
         description: String,
         category: String,
         subcategory: String? = nil,
@@ -145,6 +146,7 @@ class AppModel {
         let shortcut = Shortcut(
             title: title,
             keyCombination: keyCombination,
+            keyCombinations: keyCombinations,
             shortcutDescription: description,
             category: category.isEmpty ? "General" : category,
             subcategory: subcategory,
@@ -586,6 +588,7 @@ class AppModel {
         }
         
         saveContext()
+        fetchData() // Refresh data to update UI
     }
     
     func moveShortcut(_ shortcut: Shortcut, to application: Application) {
@@ -706,6 +709,7 @@ class AppModel {
             
             var appName: String
             var keyCombination: String
+            var title: String
             var description: String
             var tags: [String]
             var subcategory: String? = nil
@@ -718,15 +722,19 @@ class AppModel {
                     continue 
                 }
                 
-                appName = fields[0]
-                keyCombination = fields[1]
-                let shortcutName = fields[2]
+                appName = fields[0]                // App column
+                keyCombination = fields[1]         // Shortcut column (the actual keys)
+                let shortcutName = fields[2]       // Name column (the command name)
                 tags = fields[3].split(separator: " ").map { String($0.trimmingCharacters(in: .whitespaces)) }
-                isFavorite = fields[4] == "1"
-                description = fields[5].isEmpty ? shortcutName : fields[5]
+                isFavorite = fields[4] == "1"      // Pinned column
+                let descriptionField = fields[5]  // description column
                 if fields.count > 6 && !fields[6].isEmpty {
-                    subcategory = fields[6]
+                    subcategory = fields[6]        // subcategory column
                 }
+                
+                // Use Name column as title, description column as description
+                title = shortcutName.isEmpty ? "Imported Shortcut" : shortcutName
+                description = descriptionField
             } else if isNewFormat {
                 // New format: app_name,shortcut_name,key_combination,description,tags
                 guard fields.count >= 5 else { 
@@ -737,7 +745,8 @@ class AppModel {
                 appName = fields[0]
                 let shortcutName = fields[1]
                 keyCombination = fields[2]
-                description = fields[3].isEmpty ? shortcutName : fields[3]
+                title = shortcutName.isEmpty ? "Imported Shortcut" : shortcutName
+                description = fields[3]
                 tags = fields[4].split(separator: ",").map { String($0.trimmingCharacters(in: .whitespaces)) }
             } else {
                 // Old format: App,Shortcut,Description,Tags,Pinned
@@ -748,6 +757,7 @@ class AppModel {
                 
                 appName = fields[0]
                 keyCombination = fields[1]
+                title = fields[2].isEmpty ? "Imported Shortcut" : fields[2]
                 description = fields[2]
                 tags = fields[3].split(separator: " ").map { String($0) }
                 isFavorite = fields[4] == "1"
@@ -779,9 +789,18 @@ class AppModel {
             }
             
             if !exists {
+                // Parse multiple key combinations separated by | or ;
+                let multipleKeys = keyCombination.components(separatedBy: CharacterSet(charactersIn: "|;"))
+                    .map { $0.trimmingCharacters(in: .whitespaces) }
+                    .filter { !$0.isEmpty }
+                
+                let primaryKey = multipleKeys.first ?? keyCombination
+                let allKeys = multipleKeys.count > 1 ? multipleKeys : []
+                
                 addShortcut(
-                    title: description.isEmpty ? "Imported Shortcut" : description,
-                    keyCombination: keyCombination,
+                    title: title,
+                    keyCombination: primaryKey,
+                    keyCombinations: allKeys,
                     description: description,
                     category: "Imported",
                     subcategory: subcategory,

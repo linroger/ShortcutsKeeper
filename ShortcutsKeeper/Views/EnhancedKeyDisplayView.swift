@@ -14,6 +14,11 @@ struct EnhancedKeyDisplayView: View {
     var style: KeyDisplayStyle = .normal
     var interactive: Bool = false
     var ordered: Bool = false
+    var useCustomSettings: Bool = true
+    
+    @AppStorage("keyDisplaySize") private var keyDisplaySize: Double = 1.0
+    @AppStorage("keyVerticalPadding") private var keyVerticalPadding: Double = 6.0
+    @AppStorage("keyHorizontalPadding") private var keyHorizontalPadding: Double = 10.0
     
     enum KeyDisplayStyle {
         case normal
@@ -37,26 +42,79 @@ struct EnhancedKeyDisplayView: View {
                 EnhancedKeyCap(
                     component: component,
                     style: style,
-                    interactive: interactive
+                    interactive: interactive,
+                    customSize: useCustomSettings ? keyDisplaySize : nil,
+                    customVerticalPadding: useCustomSettings ? keyVerticalPadding : nil,
+                    customHorizontalPadding: useCustomSettings ? keyHorizontalPadding : nil
                 )
             }
         }
     }
     
-    private func parseKeyCombination(_ combo: String) -> [EnhancedKeyComponent] {
+    func parseKeyCombination(_ combo: String) -> [EnhancedKeyComponent] {
         var components: [EnhancedKeyComponent] = []
         var remaining = combo
         
         // Parse all possible modifiers and special keys
         // Support both Unicode symbols and text representations
         let allKeys = [
+            // Modifiers
             ("fn", "Function", "fn", KeyType.fn),
             ("⌘", "Command", "Command", KeyType.command),
             ("⌃", "Control", "Control", KeyType.control),
             ("⌥", "Option", "Option", KeyType.option),
             ("⇧", "Shift", "Shift", KeyType.shift),
+            
+            // Special keys
             ("⎋", "Escape", "Escape", KeyType.escape),
             ("⇥", "Tab", "Tab", KeyType.tab),
+            ("↩", "Return", "Return", KeyType.special),
+            ("⌫", "Delete", "Delete", KeyType.special),
+            ("⌦", "Del", "Del", KeyType.special),
+            ("⌃", "Control", "Ctrl", KeyType.control),
+            
+            // Function keys F1-F17
+            ("F1", "F1", "F1", KeyType.function),
+            ("F2", "F2", "F2", KeyType.function),
+            ("F3", "F3", "F3", KeyType.function),
+            ("F4", "F4", "F4", KeyType.function),
+            ("F5", "F5", "F5", KeyType.function),
+            ("F6", "F6", "F6", KeyType.function),
+            ("F7", "F7", "F7", KeyType.function),
+            ("F8", "F8", "F8", KeyType.function),
+            ("F9", "F9", "F9", KeyType.function),
+            ("F10", "F10", "F10", KeyType.function),
+            ("F11", "F11", "F11", KeyType.function),
+            ("F12", "F12", "F12", KeyType.function),
+            ("F13", "F13", "F13", KeyType.function),
+            ("F14", "F14", "F14", KeyType.function),
+            ("F15", "F15", "F15", KeyType.function),
+            ("F16", "F16", "F16", KeyType.function),
+            ("F17", "F17", "F17", KeyType.function),
+            
+            // Arrow keys
+            ("←", "Left Arrow", "Left", KeyType.arrow),
+            ("→", "Right Arrow", "Right", KeyType.arrow),
+            ("↑", "Up Arrow", "Up", KeyType.arrow),
+            ("↓", "Down Arrow", "Down", KeyType.arrow),
+            
+            // Special characters and punctuation
+            ("`", "Backtick", "`", KeyType.special),
+            ("~", "Tilde", "~", KeyType.special),
+            ("\\", "Backslash", "\\", KeyType.special),
+            (";", "Semicolon", ";", KeyType.special),
+            (":", "Colon", ":", KeyType.special),
+            ("{", "Left Brace", "{", KeyType.special),
+            ("}", "Right Brace", "}", KeyType.special),
+            ("|", "Pipe", "|", KeyType.special),
+            ("[", "Left Bracket", "[", KeyType.special),
+            ("]", "Right Bracket", "]", KeyType.special),
+            (".", "Period", ".", KeyType.special),
+            ("?", "Question Mark", "?", KeyType.special),
+            ("<", "Less Than", "<", KeyType.special),
+            (">", "Greater Than", ">", KeyType.special),
+            
+            // Gestures
             ("􀊜", "Click", "Click", KeyType.gesture),
             ("􀆔", "Tap", "Tap", KeyType.gesture),
             ("􀦍", "Drag", "Drag", KeyType.gesture),
@@ -149,11 +207,15 @@ struct EnhancedKeyDisplayView: View {
         switch key {
         case "Space":
             return .space
-        case "F1"..."F12":
+        case "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17":
             return .function
-        case "⎋", "⇥", "↩", "⌫", "⌦": // Escape, Tab, Return, Delete, Forward Delete
+        case "⎋", "Escape", "Esc":
+            return .escape
+        case "⇥", "Tab":
+            return .tab
+        case "↩", "Return", "Enter", "⌫", "Delete", "⌦", "Del", "`", "~", "\\", ";", ":", "{", "}", "|", "[", "]", ".", "?", "<", ">":
             return .special
-        case "←", "→", "↑", "↓": // Arrow keys
+        case "←", "→", "↑", "↓", "Left", "Right", "Up", "Down":
             return .arrow
         case "⇞", "⇟", "↖", "↘": // Page Up, Page Down, Home, End
             return .navigation
@@ -245,6 +307,9 @@ struct EnhancedKeyCap: View {
     let component: EnhancedKeyComponent
     let style: EnhancedKeyDisplayView.KeyDisplayStyle
     let interactive: Bool
+    let customSize: Double?
+    let customVerticalPadding: Double?
+    let customHorizontalPadding: Double?
     
     @State private var isPressed = false
     @State private var isHovered = false
@@ -262,35 +327,59 @@ struct EnhancedKeyCap: View {
         }
     }
     
+    private var keySize: CGSize {
+        let baseSize: CGSize
+        switch style {
+        case .compact:
+            baseSize = CGSize(width: 32, height: 20)
+        case .prominent:
+            baseSize = CGSize(width: 48, height: 32)
+        case .minimal:
+            baseSize = CGSize(width: 24, height: 16)
+        case .normal:
+            baseSize = CGSize(width: 40, height: 26)
+        }
+        
+        let sizeMultiplier = customSize ?? 1.0
+        return CGSize(
+            width: baseSize.width * sizeMultiplier,
+            height: baseSize.height * sizeMultiplier
+        )
+    }
+    
     private var padding: EdgeInsets {
         switch style {
         case .compact:
-            return EdgeInsets(top: 3, leading: 6, bottom: 3, trailing: 6)
-        case .prominent:
-            return EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
-        case .minimal:
             return EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4)
+        case .prominent:
+            return EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6)
+        case .minimal:
+            return EdgeInsets(top: 1, leading: 3, bottom: 1, trailing: 3)
         case .normal:
-            return EdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10)
+            return EdgeInsets(top: 3, leading: 5, bottom: 3, trailing: 5)
         }
     }
     
     private var cornerRadius: CGFloat {
+        let baseRadius: CGFloat
         switch style {
         case .compact, .minimal:
-            return 4
+            baseRadius = 4
         case .prominent:
-            return 10
+            baseRadius = 10
         case .normal:
-            return 7
+            baseRadius = 7
         }
+        
+        let sizeMultiplier = customSize ?? 1.0
+        return baseRadius * sizeMultiplier
     }
     
     var body: some View {
         Text(component.symbol)
             .font(fontSize)
             .foregroundColor(component.keyType.foregroundColor)
-            .padding(padding)
+            .frame(width: keySize.width, height: keySize.height)
             .background(
                 ZStack {
                     // Main background with subtle gradient
@@ -345,9 +434,9 @@ struct EnhancedKeyCap: View {
             )
             .shadow(
                 color: isPressed ? .clear : component.keyType.shadowColor,
-                radius: isPressed ? 0 : (style == .prominent ? 4 : 2),
+                radius: isPressed ? 0 : (style == .prominent ? 4 : 2) * (customSize ?? 1.0),
                 x: 0,
-                y: isPressed ? 0 : (style == .prominent ? 2 : 1)
+                y: isPressed ? 0 : (style == .prominent ? 2 : 1) * (customSize ?? 1.0)
             )
             .scaleEffect(isPressed ? 0.95 : (isHovered && interactive ? 1.05 : 1.0))
             .animation(.easeInOut(duration: 0.1), value: isPressed)
@@ -403,7 +492,7 @@ struct CompactKeyDisplay: View {
     let keyCombination: String
     
     var body: some View {
-        EnhancedKeyDisplayView(keyCombination: keyCombination, style: .compact)
+        EnhancedKeyDisplayView(keyCombination: keyCombination, style: .compact, useCustomSettings: false)
     }
 }
 
@@ -420,7 +509,8 @@ struct ProminentKeyDisplay: View {
         EnhancedKeyDisplayView(
             keyCombination: keyCombination,
             style: .prominent,
-            interactive: interactive
+            interactive: interactive,
+            useCustomSettings: false
         )
     }
 }
@@ -429,18 +519,124 @@ struct MinimalKeyDisplay: View {
     let keyCombination: String
     
     var body: some View {
-        EnhancedKeyDisplayView(keyCombination: keyCombination, style: .minimal)
+        EnhancedKeyDisplayView(keyCombination: keyCombination, style: .minimal, useCustomSettings: false)
+    }
+}
+
+struct CustomizableKeyDisplayView: View {
+    let keyCombination: String
+    let size: Double
+    let verticalPadding: Double
+    let horizontalPadding: Double
+    
+    private var keyComponents: [EnhancedKeyComponent] {
+        let enhancedView = EnhancedKeyDisplayView(keyCombination: keyCombination)
+        return enhancedView.parseKeyCombination(keyCombination)
+    }
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            ForEach(Array(keyComponents.enumerated()), id: \.offset) { index, component in
+                if index > 0 {
+                    Text("+")
+                        .font(.system(.caption2, weight: .medium))
+                        .foregroundColor(.secondary)
+                        .opacity(0.7)
+                }
+                
+                CustomizableKeyCap(
+                    component: component,
+                    size: size,
+                    verticalPadding: verticalPadding,
+                    horizontalPadding: horizontalPadding
+                )
+            }
+        }
+    }
+}
+
+struct CustomizableKeyCap: View {
+    let component: EnhancedKeyComponent
+    let size: Double
+    let verticalPadding: Double
+    let horizontalPadding: Double
+    
+    private var scaledSize: CGSize {
+        CGSize(
+            width: 40 * size,
+            height: 26 * size
+        )
+    }
+    
+    private var fontSize: Font {
+        .system(size: 16 * size, weight: .semibold, design: .rounded)
+    }
+    
+    var body: some View {
+        Text(component.symbol)
+            .font(fontSize)
+            .foregroundColor(component.keyType.foregroundColor)
+            .frame(width: scaledSize.width, height: scaledSize.height)
+            .background(
+                RoundedRectangle(cornerRadius: 7 * size)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                component.keyType.backgroundColor,
+                                component.keyType.backgroundColor.opacity(0.8)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 7 * size)
+                            .stroke(
+                                component.keyType.backgroundColor.opacity(0.6),
+                                lineWidth: 1
+                            )
+                    )
+            )
+            .shadow(
+                color: component.keyType.shadowColor,
+                radius: 2 * size,
+                x: 0,
+                y: 1 * size
+            )
     }
 }
 
 #Preview {
     VStack(spacing: 20) {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Prominent Style")
+            Text("New Keys Support")
                 .font(.headline)
-            ProminentKeyDisplay(keyCombination: "⌘⇧K", interactive: true)
-            ProminentKeyDisplay(keyCombination: "⌃⌥⇧F12", interactive: true)
-            ProminentKeyDisplay(keyCombination: "⌘Space", interactive: true)
+            EnhancedKeyDisplayView(keyCombination: "⌘F1")
+            EnhancedKeyDisplayView(keyCombination: "⌃⌥F17")
+            EnhancedKeyDisplayView(keyCombination: "⇧⇥")
+            EnhancedKeyDisplayView(keyCombination: "⌘⌫")
+            EnhancedKeyDisplayView(keyCombination: "⌘;")
+            EnhancedKeyDisplayView(keyCombination: "⌘{")
+            EnhancedKeyDisplayView(keyCombination: "⌘←")
+            EnhancedKeyDisplayView(keyCombination: "⌘`")
+            EnhancedKeyDisplayView(keyCombination: "⌘\\")
+        }
+        
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Customizable Display")
+                .font(.headline)
+            CustomizableKeyDisplayView(
+                keyCombination: "⌘⇧K",
+                size: 1.5,
+                verticalPadding: 8,
+                horizontalPadding: 12
+            )
+            CustomizableKeyDisplayView(
+                keyCombination: "⌃⌥F12",
+                size: 0.8,
+                verticalPadding: 4,
+                horizontalPadding: 6
+            )
         }
         
         VStack(alignment: .leading, spacing: 8) {
@@ -449,22 +645,6 @@ struct MinimalKeyDisplay: View {
             EnhancedKeyDisplayView(keyCombination: "⌘K")
             EnhancedKeyDisplayView(keyCombination: "⌃⌥A")
             EnhancedKeyDisplayView(keyCombination: "⇧⇥")
-        }
-        
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Compact Style")
-                .font(.headline)
-            CompactKeyDisplay(keyCombination: "⌘K")
-            CompactKeyDisplay(keyCombination: "⌃⌥A")
-            CompactKeyDisplay(keyCombination: "⇧⇥")
-        }
-        
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Minimal Style")
-                .font(.headline)
-            MinimalKeyDisplay(keyCombination: "⌘K")
-            MinimalKeyDisplay(keyCombination: "⌃⌥A")
-            MinimalKeyDisplay(keyCombination: "⇧⇥")
         }
     }
     .padding()
