@@ -33,33 +33,28 @@ class AppModel {
     private let appScanner = ApplicationScannerService.shared
     private let shortcutCapture = ShortcutCaptureService()
     private let accessibilityExtractor = AccessibilityShortcutExtractor()
-    private var memoryTimer: Timer?
-    
     // MEMORY OPTIMIZATION: Cached computed properties
     private var _filteredApplicationsCache: [Application] = []
     private var _lastFilterSettings = (showSystemApps: false, hiddenApps: Set<String>())
     private var _filteredApplicationsCount: Int = 0
     
     private init() {
-        setupNotifications()
-        loadHiddenApplications()
-        startMemoryMonitoring()
+        // Minimal initialization only - complex setup moved to setup() method
     }
     
     func setup(with context: ModelContext) {
         self.modelContext = context
         
-        // Defer data loading to avoid blocking UI
-        Task { @MainActor in
-            fetchData()
-            
-            // Only scan if enabled and no apps exist
-            if UserDefaults.standard.bool(forKey: "autoScanOnLaunch") && applications.isEmpty {
-                // Add slight delay to ensure UI is responsive
-                try? await Task.sleep(nanoseconds: 100_000_000) // 0.1 seconds
-                await scanForAllApplications()
-            }
-        }
+        // Setup notifications and load settings
+        setupNotifications()
+        loadHiddenApplications()
+        
+        // Immediately fetch data to avoid stuck loading screen
+        fetchData()
+        
+        // NO AUTOMATIC SCANNING - User will trigger this manually
+        // The app should only load previously saved data from SwiftData
+        print("✅ App setup complete - no automatic scanning performed")
     }
     
     // MARK: - Data Management
@@ -91,8 +86,8 @@ class AppModel {
         
         do {
             try context.save()
-            // Only fetch if we need to refresh UI state
-            // Remove automatic fetchData() calls
+            // Removed automatic fetchData() calls for better performance
+            // Views should update automatically via @Query or manual refresh
         } catch {
             print("Error saving context: \(error)")
         }
@@ -122,15 +117,11 @@ class AppModel {
             }
             
             self.saveContext()
-            // PERFORMANCE: Only refresh applications data
-            if let context = self.modelContext {
-                do {
-                    self.applications = try context.fetch(FetchDescriptor<Application>())
-                    self.invalidateApplicationCache()
-                } catch {
-                    print("Error refreshing applications: \(error)")
-                }
-            }
+            // PERFORMANCE: Incremental update instead of full fetch
+            self.applications.append(contentsOf: scannedApps.filter { scannedApp in
+                !self.applications.contains { $0.bundleIdentifier == scannedApp.bundleIdentifier }
+            })
+            self.invalidateApplicationCache()
             self.isScanning = false
         }
     }
@@ -140,7 +131,10 @@ class AppModel {
         
         let extractedShortcuts = await accessibilityExtractor.extractShortcuts(from: app.bundleIdentifier)
         
-        for shortcutInfo in extractedShortcuts {
+        await MainActor.run { [weak self] in
+            guard let self = self else { return }
+            
+            for shortcutInfo in extractedShortcuts {
             // DUPLICATE PREVENTION: Enhanced checking for existing shortcuts
             let isDuplicate = shortcuts.contains { existingShortcut in
                 existingShortcut.application == app && 
@@ -164,15 +158,9 @@ class AppModel {
             }
         }
         
-        saveContext()
-        // PERFORMANCE: Only refresh affected data, not full fetch
-        if let context = modelContext {
-            do {
-                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
-                invalidateApplicationCache() // Update filtered applications cache
-            } catch {
-                print("Error refreshing shortcuts: \(error)")
-            }
+            saveContext()
+            // PERFORMANCE: Incremental update - shortcuts are already added to array
+            invalidateApplicationCache()
         }
     }
     
@@ -212,19 +200,14 @@ class AppModel {
     }
     
     func deleteShortcut(_ shortcut: Shortcut) {
-        print("Debug: AppModel deleteShortcut called for: \(shortcut.title)")
-        
         // Soft delete - move to bin
         shortcut.isDeleted = true
         shortcut.dateDeleted = Date()
         
-        print("Debug: Marked as deleted, saving context...")
         saveContext()
         
-        print("Debug: Fetching data to refresh UI...")
-        fetchData()
-        
-        print("Debug: Delete operation completed. Shortcuts count: \(shortcuts.count)")
+        // PERFORMANCE: No need to fetchData() - the change is already reflected in the object
+        // Views observing this will update automatically
     }
     
     func restoreShortcut(_ shortcut: Shortcut) {
@@ -236,16 +219,12 @@ class AppModel {
     func permanentlyDeleteShortcut(_ shortcut: Shortcut) {
         guard let context = modelContext else { return }
         context.delete(shortcut)
+        
+        // PERFORMANCE: Remove from array directly
+        shortcuts.removeAll { $0.id == shortcut.id }
+        
         saveContext()
-        // PERFORMANCE: Only refresh affected data, not full fetch
-        if let context = modelContext {
-            do {
-                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
-                invalidateApplicationCache() // Update filtered applications cache
-            } catch {
-                print("Error refreshing shortcuts: \(error)")
-            }
-        }
+        invalidateApplicationCache()
     }
     
     func clearAllShortcuts() {
@@ -260,15 +239,7 @@ class AppModel {
         shortcuts.removeAll()
         
         saveContext()
-        // PERFORMANCE: Only refresh affected data, not full fetch
-        if let context = modelContext {
-            do {
-                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
-                invalidateApplicationCache() // Update filtered applications cache
-            } catch {
-                print("Error refreshing shortcuts: \(error)")
-            }
-        }
+        invalidateApplicationCache()
     }
     
     func duplicateShortcut(_ shortcut: Shortcut) {
@@ -284,16 +255,10 @@ class AppModel {
         )
         
         context.insert(duplicated)
+        shortcuts.append(duplicated)
+        
         saveContext()
-        // PERFORMANCE: Only refresh affected data, not full fetch
-        if let context = modelContext {
-            do {
-                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
-                invalidateApplicationCache() // Update filtered applications cache
-            } catch {
-                print("Error refreshing shortcuts: \(error)")
-            }
-        }
+        invalidateApplicationCache()
     }
     
     func toggleFavorite(_ shortcut: Shortcut) {
@@ -677,16 +642,12 @@ class AppModel {
             selectedApplication = nil
         }
         
+        // PERFORMANCE: Remove from arrays directly
+        shortcuts.removeAll { $0.application == application }
+        applications.removeAll { $0.id == application.id }
+        
         saveContext()
-        // PERFORMANCE: Only refresh affected data, not full fetch
-        if let context = modelContext {
-            do {
-                shortcuts = try context.fetch(FetchDescriptor<Shortcut>())
-                invalidateApplicationCache() // Update filtered applications cache
-            } catch {
-                print("Error refreshing shortcuts: \(error)")
-            }
-        } // Refresh data to update UI
+        invalidateApplicationCache()
     }
     
     func moveShortcut(_ shortcut: Shortcut, to application: Application) {
@@ -969,10 +930,6 @@ class AppModel {
         }
     }
     
-    @MainActor
-    deinit {
-        memoryTimer?.invalidate()
-    }
 }
 
 struct ShortcutStatistics {

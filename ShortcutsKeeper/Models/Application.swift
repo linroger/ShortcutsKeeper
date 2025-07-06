@@ -74,8 +74,9 @@ extension Application {
         let appPath = appURL.path
         let app = Application(name: name, bundleIdentifier: bundleIdentifier, path: appPath)
         
+        // MEMORY OPTIMIZATION: Use compressed icon instead of full TIFF
         let icon = NSWorkspace.shared.icon(forFile: appPath)
-        app.iconData = icon.tiffRepresentation
+        app.setCompressedIcon(icon)
         
         return app
     }
