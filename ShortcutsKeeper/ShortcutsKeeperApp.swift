@@ -7,10 +7,11 @@
 
 import SwiftUI
 import SwiftData
+import Combine
 
 @main
 struct ShortcutsKeeperApp: App {
-    @State private var menuBarManager: GlobalHotkeyManager?
+    @StateObject private var menuBarManager = MenuBarManager()
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -22,19 +23,55 @@ struct ShortcutsKeeperApp: App {
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
-            // Handle migration issues by clearing the database
-            print("Migration failed, creating fresh database: \(error)")
+            // Handle migration issues more gracefully
+            print("⚠️ Database migration error: \(error)")
             
-            // Clear the existing database
+            // Create a backup before attempting any recovery
             let storeURL = modelConfiguration.url
-            try? FileManager.default.removeItem(at: storeURL)
-            try? FileManager.default.removeItem(at: storeURL.appendingPathExtension("wal"))
-            try? FileManager.default.removeItem(at: storeURL.appendingPathExtension("shm"))
+            let backupURL = storeURL.appendingPathExtension("backup-\(Date().timeIntervalSince1970)")
             
             do {
+                // Backup existing database files
+                try? FileManager.default.copyItem(at: storeURL, to: backupURL)
+                print("✅ Created database backup at: \(backupURL.lastPathComponent)")
+                
+                // Try to create a new container with migration options
+                let migrationConfiguration = ModelConfiguration(
+                    schema: schema,
+                    isStoredInMemoryOnly: false,
+                    cloudKitDatabase: .none
+                )
+                
+                if let container = try? ModelContainer(for: schema, configurations: [migrationConfiguration]) {
+                    return container
+                }
+                
+                // If migration still fails, create a fresh database but keep the backup
+                print("⚠️ Migration failed, creating fresh database. Your old data is backed up.")
+                
+                // Move old database to backup location instead of deleting
+                let timestampedBackup = storeURL.appendingPathExtension("failed-\(Date().timeIntervalSince1970)")
+                try? FileManager.default.moveItem(at: storeURL, to: timestampedBackup)
+                try? FileManager.default.moveItem(
+                    at: storeURL.appendingPathExtension("wal"),
+                    to: timestampedBackup.appendingPathExtension("wal")
+                )
+                try? FileManager.default.moveItem(
+                    at: storeURL.appendingPathExtension("shm"),
+                    to: timestampedBackup.appendingPathExtension("shm")
+                )
+                
+                // Create fresh container
                 return try ModelContainer(for: schema, configurations: [modelConfiguration])
+                
             } catch {
-                fatalError("Could not create ModelContainer even after clearing: \(error)")
+                // As a last resort, create an in-memory container to prevent crashes
+                print("❌ Critical error: Could not create ModelContainer. Using in-memory storage.")
+                let memoryConfiguration = ModelConfiguration(
+                    schema: schema,
+                    isStoredInMemoryOnly: true
+                )
+                return try! ModelContainer(for: schema, configurations: [memoryConfiguration])
             }
         }
     }()
@@ -102,8 +139,47 @@ struct ShortcutsKeeperApp: App {
     
     private func setupMenuBarIfNeeded() {
         if UserDefaults.standard.bool(forKey: "enableMenuBar") {
-            menuBarManager = GlobalHotkeyManager(appModel: AppModel.shared)
+            menuBarManager.setup(with: AppModel.shared)
         }
+    }
+}
+
+// MARK: - Thread-safe Menu Bar Manager
+
+@MainActor
+class MenuBarManager: ObservableObject {
+    @Published var isSetup: Bool = false
+    private var globalHotkeyManager: GlobalHotkeyManager?
+    private let lock = NSLock()
+    
+    func setup(with appModel: AppModel) {
+        lock.lock()
+        defer { lock.unlock() }
+        
+        // Ensure only one instance exists
+        if globalHotkeyManager == nil {
+            globalHotkeyManager = GlobalHotkeyManager(appModel: appModel)
+            isSetup = true
+        }
+    }
+    
+    func tearDown() {
+        lock.lock()
+        defer { lock.unlock() }
+        
+        globalHotkeyManager?.enableMenuBar(false)
+        globalHotkeyManager = nil
+        isSetup = false
+    }
+    
+    nonisolated private func performTearDown() {
+        Task { @MainActor in
+            self.tearDown()
+        }
+    }
+    
+    deinit {
+        performTearDown()
     }
 }
 

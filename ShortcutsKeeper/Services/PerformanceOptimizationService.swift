@@ -13,27 +13,36 @@ class PerformanceOptimizationService: ObservableObject {
     @Published var isOptimizing = false
     @Published var optimizationProgress: Double = 0.0
     
-    private let searchIndexQueue = DispatchQueue(label: "searchIndex", qos: .userInitiated)
+    private let searchIndexQueue = DispatchQueue(label: "searchIndex", qos: .background)
     private var searchIndex: [String: Set<UUID>] = [:]
     private var categoryIndex: [String: [UUID]] = [:]
     private var applicationIndex: [String: [UUID]] = [:]
     private var shortcutLookup: [UUID: Shortcut] = [:]
     
-    // DISABLED: Search index building was causing CPU overload
+    // Throttling properties
+    private var indexingWorkItem: DispatchWorkItem?
+    private let indexingDebounceDelay: TimeInterval = 0.5
+    private var lastIndexedCount = 0
+    
+    // OPTIMIZED: Re-enabled with throttling and selective indexing
     func buildSearchIndex(from shortcuts: [Shortcut]) {
-        print("🚫 Search index building disabled to prevent CPU overload")
+        // Cancel any existing indexing work
+        indexingWorkItem?.cancel()
         
-        // Clear existing indices to prevent stale data
-        searchIndex.removeAll()
-        categoryIndex.removeAll()
-        applicationIndex.removeAll()
-        shortcutLookup.removeAll()
+        // Skip if no significant changes
+        if shortcuts.count == lastIndexedCount && !searchIndex.isEmpty {
+            return
+        }
         
-        // Set optimization progress to completed
-        isOptimizing = false
-        optimizationProgress = 1.0
+        // Create new debounced work item
+        let workItem = DispatchWorkItem { [weak self] in
+            self?.performIncrementalIndexing(shortcuts: shortcuts)
+        }
         
-        return
+        indexingWorkItem = workItem
+        
+        // Schedule with debounce delay
+        searchIndexQueue.asyncAfter(deadline: .now() + indexingDebounceDelay, execute: workItem)
         
         // Original expensive code commented out:
         /*
@@ -114,30 +123,141 @@ class PerformanceOptimizationService: ObservableObject {
         */
     }
     
-    // DISABLED: Return empty results since search indexing is disabled for performance
+    private func performIncrementalIndexing(shortcuts: [Shortcut]) {
+        autoreleasepool { // Memory management
+            DispatchQueue.main.async { [weak self] in
+                self?.isOptimizing = true
+                self?.optimizationProgress = 0.0
+            }
+            
+            var newSearchIndex: [String: Set<UUID>] = [:]
+            var newCategoryIndex: [String: [UUID]] = [:]
+            var newApplicationIndex: [String: [UUID]] = [:]
+            var newShortcutLookup: [UUID: Shortcut] = [:]
+            
+            let batchSize = 50
+            let totalBatches = (shortcuts.count + batchSize - 1) / batchSize
+            
+            for (batchIndex, batch) in shortcuts.chunked(into: batchSize).enumerated() {
+                // Check if cancelled
+                if indexingWorkItem?.isCancelled == true { return }
+                
+                // Process batch
+                for shortcut in batch {
+                    newShortcutLookup[shortcut.id] = shortcut
+                    
+                    // Index only essential fields for search
+                    let searchableWords = Set(
+                        "\(shortcut.title) \(shortcut.keyCombination)"
+                            .lowercased()
+                            .components(separatedBy: .whitespacesAndNewlines)
+                            .filter { !$0.isEmpty && $0.count > 1 }
+                    )
+                    
+                    for word in searchableWords {
+                        if newSearchIndex[word] == nil {
+                            newSearchIndex[word] = Set<UUID>()
+                        }
+                        newSearchIndex[word]?.insert(shortcut.id)
+                        
+                        // Index first 2 characters only for performance
+                        for length in 2...min(word.count, 2) {
+                            let prefix = String(word.prefix(length))
+                            if newSearchIndex[prefix] == nil {
+                                newSearchIndex[prefix] = Set<UUID>()
+                            }
+                            newSearchIndex[prefix]?.insert(shortcut.id)
+                        }
+                    }
+                    
+                    // Category index
+                    if newCategoryIndex[shortcut.category] == nil {
+                        newCategoryIndex[shortcut.category] = []
+                    }
+                    newCategoryIndex[shortcut.category]?.append(shortcut.id)
+                    
+                    // Application index
+                    if let appName = shortcut.application?.name {
+                        if newApplicationIndex[appName] == nil {
+                            newApplicationIndex[appName] = []
+                        }
+                        newApplicationIndex[appName]?.append(shortcut.id)
+                    }
+                }
+                
+                // Update progress
+                let progress = Double(batchIndex + 1) / Double(totalBatches)
+                DispatchQueue.main.async { [weak self] in
+                    self?.optimizationProgress = progress
+                }
+                
+                // Small delay to prevent CPU overload
+                Thread.sleep(forTimeInterval: 0.01)
+            }
+            
+            // Update indices atomically
+            searchIndex = newSearchIndex
+            categoryIndex = newCategoryIndex
+            applicationIndex = newApplicationIndex
+            shortcutLookup = newShortcutLookup
+            lastIndexedCount = shortcuts.count
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.isOptimizing = false
+                self?.optimizationProgress = 1.0
+            }
+        }
+    }
+    
+    // OPTIMIZED: Re-enabled with efficient search
     func fastSearch(_ query: String, limit: Int = 100) -> [Shortcut] {
-        print("🚫 Fast search disabled - use AppModel.searchAllShortcuts() instead")
-        return []
+        guard !query.isEmpty else { return [] }
+        
+        let normalizedQuery = query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        var matchingIds = Set<UUID>()
+        
+        // Search for exact word matches first
+        if let exactMatches = searchIndex[normalizedQuery] {
+            matchingIds.formUnion(exactMatches)
+        }
+        
+        // Search for prefix matches
+        for (key, ids) in searchIndex where key.hasPrefix(normalizedQuery) && key != normalizedQuery {
+            matchingIds.formUnion(ids)
+        }
+        
+        // Convert IDs to shortcuts
+        let results = matchingIds.compactMap { shortcutLookup[$0] }
+            .sorted { $0.title < $1.title }
+            .prefix(limit)
+        
+        return Array(results)
     }
     
     func getShortcutsInCategory(_ category: String) -> [Shortcut] {
-        print("🚫 Category search disabled - search indexing turned off for performance")
-        return []
+        guard let shortcutIds = categoryIndex[category] else { return [] }
+        return shortcutIds.compactMap { shortcutLookup[$0] }
     }
     
     func getShortcutsForApplication(_ applicationName: String) -> [Shortcut] {
-        print("🚫 Application search disabled - search indexing turned off for performance")
-        return []
+        guard let shortcutIds = applicationIndex[applicationName] else { return [] }
+        return shortcutIds.compactMap { shortcutLookup[$0] }
     }
     
     func getTopCategories(limit: Int = 10) -> [(category: String, count: Int)] {
-        print("🚫 Category statistics disabled - search indexing turned off for performance")
-        return []
+        return categoryIndex
+            .map { (category: $0.key, count: $0.value.count) }
+            .sorted { $0.count > $1.count }
+            .prefix(limit)
+            .map { $0 }
     }
     
     func getTopApplications(limit: Int = 10) -> [(application: String, count: Int)] {
-        print("🚫 Application statistics disabled - search indexing turned off for performance")
-        return []
+        return applicationIndex
+            .map { (application: $0.key, count: $0.value.count) }
+            .sorted { $0.count > $1.count }
+            .prefix(limit)
+            .map { $0 }
     }
     
     func invalidateIndex() {
@@ -243,6 +363,17 @@ struct VirtualScrollView<Content: View>: View {
         if abs(newOffset - scrollOffset) > 10 { // Debounce updates
             scrollOffset = newOffset
             manager.updateVisibleItems(scrollOffset: newOffset, viewHeight: viewGeometry.size.height)
+        }
+    }
+}
+
+// MARK: - Array Extension for Chunking
+
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        guard size > 0 else { return [] }
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
         }
     }
 }

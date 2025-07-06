@@ -10,11 +10,63 @@ import SwiftUI
 import UniformTypeIdentifiers
 import Combine
 
+// MARK: - Thread-safe Backup Service using Actor
+
+actor BackupRestoreActor {
+    private var isBackingUp = false
+    private var isRestoring = false
+    private var backupProgress: Double = 0.0
+    private var restoreProgress: Double = 0.0
+    
+    func startBackup() -> Bool {
+        guard !isBackingUp else { return false }
+        isBackingUp = true
+        backupProgress = 0.0
+        return true
+    }
+    
+    func endBackup() {
+        isBackingUp = false
+        backupProgress = 0.0
+    }
+    
+    func startRestore() -> Bool {
+        guard !isRestoring else { return false }
+        isRestoring = true
+        restoreProgress = 0.0
+        return true
+    }
+    
+    func endRestore() {
+        isRestoring = false
+        restoreProgress = 0.0
+    }
+    
+    func updateBackupProgress(_ progress: Double) {
+        backupProgress = progress
+    }
+    
+    func updateRestoreProgress(_ progress: Double) {
+        restoreProgress = progress
+    }
+    
+    func getBackupProgress() -> Double {
+        return backupProgress
+    }
+    
+    func getRestoreProgress() -> Double {
+        return restoreProgress
+    }
+}
+
+@MainActor
 class BackupRestoreService: ObservableObject {
     @Published var isBackingUp = false
     @Published var isRestoring = false
     @Published var backupProgress: Double = 0.0
     @Published var restoreProgress: Double = 0.0
+    
+    private let backupActor = BackupRestoreActor()
     @Published var lastBackupDate: Date?
     @Published var autoBackupEnabled = UserDefaults.standard.bool(forKey: "autoBackupEnabled")
     
@@ -29,15 +81,22 @@ class BackupRestoreService: ObservableObject {
     // MARK: - Backup Operations
     
     func createBackup(appModel: AppModel, includeSettings: Bool = true) async -> URL? {
-        await MainActor.run {
-            isBackingUp = true
-            backupProgress = 0.0
+        // Use actor for thread-safe state management
+        guard await backupActor.startBackup() else {
+            print("Backup already in progress")
+            return nil
         }
         
+        isBackingUp = true
+        backupProgress = 0.0
+        
         defer {
-            Task { @MainActor in
-                isBackingUp = false
-                backupProgress = 0.0
+            Task {
+                await backupActor.endBackup()
+                await MainActor.run {
+                    self.isBackingUp = false
+                    self.backupProgress = 0.0
+                }
             }
         }
         
@@ -50,7 +109,8 @@ class BackupRestoreService: ObservableObject {
             try FileManager.default.createDirectory(at: backupURL.deletingLastPathComponent(), 
                                                    withIntermediateDirectories: true)
             
-            await updateProgress(0.1)
+            await backupActor.updateBackupProgress(0.1)
+            backupProgress = 0.1
             
             // Create backup structure
             let backup = BackupData(
@@ -60,7 +120,8 @@ class BackupRestoreService: ObservableObject {
                 settings: includeSettings ? createSettingsBackup() : nil
             )
             
-            await updateProgress(0.5)
+            await backupActor.updateBackupProgress(0.5)
+            backupProgress = 0.5
             
             // Encode and save
             let encoder = JSONEncoder()
@@ -70,7 +131,8 @@ class BackupRestoreService: ObservableObject {
             let backupData = try encoder.encode(backup)
             try backupData.write(to: backupURL)
             
-            await updateProgress(1.0)
+            await backupActor.updateBackupProgress(1.0)
+            backupProgress = 1.0
             
             // Update last backup date
             await MainActor.run {
@@ -111,20 +173,28 @@ class BackupRestoreService: ObservableObject {
     // MARK: - Restore Operations
     
     func restoreFromBackup(from url: URL, appModel: AppModel, restoreSettings: Bool = true) async -> Bool {
-        await MainActor.run {
-            isRestoring = true
-            restoreProgress = 0.0
+        // Use actor for thread-safe state management
+        guard await backupActor.startRestore() else {
+            print("Restore already in progress")
+            return false
         }
         
+        isRestoring = true
+        restoreProgress = 0.0
+        
         defer {
-            Task { @MainActor in
-                isRestoring = false
-                restoreProgress = 0.0
+            Task {
+                await backupActor.endRestore()
+                await MainActor.run {
+                    self.isRestoring = false
+                    self.restoreProgress = 0.0
+                }
             }
         }
         
         do {
-            await updateRestoreProgress(0.1)
+            await backupActor.updateRestoreProgress(0.1)
+            restoreProgress = 0.1
             
             let backupData = try Data(contentsOf: url)
             let decoder = JSONDecoder()
@@ -132,7 +202,8 @@ class BackupRestoreService: ObservableObject {
             
             let backup = try decoder.decode(BackupData.self, from: backupData)
             
-            await updateRestoreProgress(0.3)
+            await backupActor.updateRestoreProgress(0.3)
+            restoreProgress = 0.3
             
             // Validate backup version compatibility
             guard isBackupCompatible(backup.version) else {
@@ -145,7 +216,8 @@ class BackupRestoreService: ObservableObject {
                 appModel.applications.removeAll()
             }
             
-            await updateRestoreProgress(0.5)
+            await backupActor.updateRestoreProgress(0.5)
+            restoreProgress = 0.5
             
             // Restore applications and shortcuts
             for (index, appBackup) in backup.applications.enumerated() {
@@ -155,7 +227,8 @@ class BackupRestoreService: ObservableObject {
                 }
                 
                 let progress = 0.5 + (0.4 * Double(index + 1) / Double(backup.applications.count))
-                await updateRestoreProgress(progress)
+                await backupActor.updateRestoreProgress(progress)
+                restoreProgress = progress
             }
             
             // Restore settings if requested
@@ -163,7 +236,8 @@ class BackupRestoreService: ObservableObject {
                 restoreAppSettings(settings)
             }
             
-            await updateRestoreProgress(1.0)
+            await backupActor.updateRestoreProgress(1.0)
+            restoreProgress = 1.0
             
             return true
         } catch {
@@ -264,15 +338,13 @@ class BackupRestoreService: ObservableObject {
     // MARK: - Helper Methods
     
     private func updateProgress(_ progress: Double) async {
-        await MainActor.run {
-            backupProgress = progress
-        }
+        await backupActor.updateBackupProgress(progress)
+        backupProgress = progress
     }
     
     private func updateRestoreProgress(_ progress: Double) async {
-        await MainActor.run {
-            restoreProgress = progress
-        }
+        await backupActor.updateRestoreProgress(progress)
+        restoreProgress = progress
     }
     
     private func createSettingsBackup() -> SettingsBackup {
